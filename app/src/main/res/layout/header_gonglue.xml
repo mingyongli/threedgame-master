@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+    <!--顶部四个图片+viewpager-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/element_margin_7"
+        >
+
+        <TextView
+            android:id="@+id/top_img0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/gl_img0"
+            android:gravity="center"
+            android:text="单机"
+            android:textColor="@color/black_2a"
+            />
+
+        <TextView
+            android:id="@+id/top_img1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/gl_img1"
+            android:gravity="center"
+            android:text="网游"
+            android:textColor="@color/black_2a"
+            />
+
+        <TextView
+            android:id="@+id/top_img2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/gl_img2"
+            android:gravity="center"
+            android:text="手游"
+            android:textColor="@color/black_2a"
+            />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line_class"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/white"/>
+
+    <!--热门单机-->
+    <LinearLayout
+        android:id="@+id/ll_pc"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:drawableLeft="@drawable/img_red"
+            android:gravity="center_vertical"
+            android:text="热门单机"
+            android:textColor="@color/black_2a"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_more_pc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/element_margin_15"
+            android:background="@drawable/bg_rect_side_gray"
+            android:gravity="center"
+            android:text="  全部 +   "
+            android:textColor="@color/grey"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/pc1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/element_margin_5">
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/pc_img1"
+                android:layout_width="95dp"
+                android:layout_height="115dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_border_width="1dp"
+                app:riv_corner_radius="5dp"
+                />
+
+            <TextView
+                android:id="@+id/pc_name1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/element_margin_2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pc2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/element_margin_5">
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/pc_img2"
+                android:layout_width="95dp"
+                android:layout_height="115dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_border_width="1dp"
+                app:riv_corner_radius="5dp"
+                />
+
+            <TextView
+                android:id="@+id/pc_name2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/element_margin_2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pc3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/element_margin_5">
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/pc_img3"
+                android:layout_width="95dp"
+                android:layout_height="115dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_border_width="1dp"
+                app:riv_corner_radius="5dp"
+                />
+
+            <TextView
+                android:id="@+id/pc_name3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/element_margin_2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/pc4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/element_margin_5">
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/pc_img4"
+                android:layout_width="95dp"
+                android:layout_height="115dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_border_width="1dp"
+                app:riv_corner_radius="5dp"
+                />
+
+            <TextView
+                android:id="@+id/pc_name4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/element_margin_2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pc5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/element_margin_5">
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/pc_img5"
+                android:layout_width="95dp"
+                android:layout_height="115dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_border_width="1dp"
+                app:riv_corner_radius="5dp"
+                />
+
+            <TextView
+                android:id="@+id/pc_name5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/element_margin_2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/pc6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/element_margin_5">
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/pc_img6"
+                android:layout_width="95dp"
+                android:layout_height="115dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_border_width="1dp"
+                app:riv_corner_radius="5dp"
+                />
+
+            <TextView
+                android:id="@+id/pc_name6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/element_margin_2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--热门网游-->
+    <LinearLayout
+        android:id="@+id/ll_net"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/element_margin_10"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:drawableLeft="@drawable/img_red"
+            android:gravity="center_vertical"
+            android:text="热门网游"
+            android:textColor="@color/black_2a"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:id="@+id/textView4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_more_net"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/element_margin_15"
+            android:background="@drawable/bg_rect_side_gray"
+            android:gravity="center"
+            android:text="  全部 +   "
+            android:textColor="@color/grey"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/net1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/element_margin_5">
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/net_img1"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_border_width="1dp"
+                app:riv_corner_radius="5dp"
+                />
+
+            <TextView
+                android:id="@+id/net_name1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/element_margin_2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/net2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/element_margin_5">
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/net_img2"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_border_width="1dp"
+                app:riv_corner_radius="5dp"
+                />
+
+            <TextView
+                android:id="@+id/net_name2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/element_margin_2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/net3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/element_margin_5">
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/net_img3"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_border_width="1dp"
+                app:riv_corner_radius="5dp"
+                />
+
+            <TextView
+                android:id="@+id/net_name3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/element_margin_2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/net4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/element_margin_5">
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/net_img4"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_border_width="1dp"
+                app:riv_corner_radius="5dp"
+                />
+
+            <TextView
+                android:id="@+id/net_name4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/element_margin_2"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_14"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--热门手游-->
+    <LinearLayout
+        android:id="@+id/ll_mg"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/element_margin_10"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:drawableLeft="@drawable/img_red"
+            android:gravity="center_vertical"
+            android:text="热门手游"
+            android:textColor="@color/black_2a"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_more_mg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/element_margin_15"
+            android:background="@drawable/bg_rect_side_gray"
+            android:gravity="center"
+            android:text="  全部 +   "
+            android:textColor="@color/grey"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/mg1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/element_margin_7"
+            android:layout_marginRight="@dimen/element_margin_7"
+            android:layout_weight="1">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="@dimen/element_margin_20"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/mg_bg1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/mg_name1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_img1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/element_margin_7"
+                android:layout_marginTop="@dimen/element_margin_7"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14"/>
+
+            <TextView
+                android:id="@+id/mg_bt1"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_name1"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/element_margin_5"
+                android:background="@drawable/bg_rect_trans_gray"
+                android:gravity="center"
+                android:text="详情"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"/>
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/mg_img1"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_corner_radius="20dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mg2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/element_margin_7"
+            android:layout_marginRight="@dimen/element_margin_7"
+            android:layout_weight="1">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="@dimen/element_margin_20"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/mg_bg2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+            </androidx.cardview.widget.CardView>
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/mg_img2"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_corner_radius="20dp"
+                />
+
+            <TextView
+                android:id="@+id/mg_name2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_img2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/element_margin_7"
+                android:layout_marginTop="@dimen/element_margin_7"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14"/>
+
+            <TextView
+                android:id="@+id/mg_bt2"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_name2"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/element_margin_5"
+                android:background="@drawable/bg_rect_trans_gray"
+                android:gravity="center"
+                android:text="详情"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mg3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/element_margin_7"
+            android:layout_marginRight="@dimen/element_margin_7"
+            android:layout_weight="1">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="@dimen/element_margin_20"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/mg_bg3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+            </androidx.cardview.widget.CardView>
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/mg_img3"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_corner_radius="20dp"
+                />
+
+            <TextView
+                android:id="@+id/mg_name3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_img3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/element_margin_7"
+                android:layout_marginTop="@dimen/element_margin_7"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14"/>
+
+            <TextView
+                android:id="@+id/mg_bt3"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_name3"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/element_margin_5"
+                android:background="@drawable/bg_rect_trans_gray"
+                android:gravity="center"
+                android:text="详情"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="15dp">
+
+        <RelativeLayout
+            android:id="@+id/mg4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/element_margin_7"
+            android:layout_marginRight="@dimen/element_margin_7"
+            android:layout_weight="1">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="@dimen/element_margin_20"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/mg_bg4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+            </androidx.cardview.widget.CardView>
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/mg_img4"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_corner_radius="20dp"
+                />
+
+            <TextView
+                android:id="@+id/mg_name4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_img4"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/element_margin_7"
+                android:layout_marginTop="@dimen/element_margin_7"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14"/>
+
+            <TextView
+                android:id="@+id/mg_bt4"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_name4"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/element_margin_5"
+                android:background="@drawable/bg_rect_trans_gray"
+                android:gravity="center"
+                android:text="详情"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mg5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/element_margin_7"
+            android:layout_marginRight="@dimen/element_margin_7"
+            android:layout_weight="1">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="@dimen/element_margin_20"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/mg_bg5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+            </androidx.cardview.widget.CardView>
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/mg_img5"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_corner_radius="20dp"
+                />
+
+            <TextView
+                android:id="@+id/mg_name5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_img5"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/element_margin_7"
+                android:layout_marginTop="@dimen/element_margin_7"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14"/>
+
+            <TextView
+                android:id="@+id/mg_bt5"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_name5"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/element_margin_5"
+                android:background="@drawable/bg_rect_trans_gray"
+                android:gravity="center"
+                android:text="详情"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mg6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/element_margin_7"
+            android:layout_marginRight="@dimen/element_margin_7"
+            android:layout_weight="1">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="@dimen/element_margin_20"
+                android:layout_weight="1"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/mg_bg6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"/>
+            </androidx.cardview.widget.CardView>
+
+            <com.ws3dm.app.view.roundimage.RoundedImageView
+                android:id="@+id/mg_img6"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/load_default"
+                app:riv_border_color="@color/grey"
+                app:riv_corner_radius="20dp"
+                />
+
+            <TextView
+                android:id="@+id/mg_name6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_img6"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/element_margin_7"
+                android:layout_marginTop="@dimen/element_margin_7"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="鬼泣5"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_14"/>
+
+            <TextView
+                android:id="@+id/mg_bt6"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mg_name6"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/element_margin_5"
+                android:background="@drawable/bg_rect_trans_gray"
+                android:gravity="center"
+                android:text="详情"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

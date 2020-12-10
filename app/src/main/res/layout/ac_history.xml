@@ -1,0 +1,87 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.HistoryActivity"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+
+        <RelativeLayout
+            android:id="@+id/rlHead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="?attr/bg_title">
+
+            <LinearLayout
+                android:id="@+id/imgReturn"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:onClick="@{handler.clickHandler}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/img_return"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="浏览记录"
+                android:textColor="?attr/txt_search"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:padding="5dp"
+                android:id="@+id/tv_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清除记录"
+                android:textColor="@color/white_9c"
+                android:textSize="12sp"
+                android:onClick="@{handler.clickHandler}"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/element_margin_9"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <com.ws3dm.app.view.PinnedSectionListView
+            android:id="@+id/history_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:layout_below="@id/rlHead"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="false"/>
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/text_size_16"
+            android:visibility="gone"
+            android:text="没有浏览记录！"/>
+
+        <ImageView
+            android:id="@+id/imgLine"
+            android:layout_width="match_parent"
+            android:layout_height="9dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/line_bottom" />
+    </RelativeLayout>
+</layout>

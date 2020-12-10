@@ -1,0 +1,138 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.GameNewsActivity"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/bg_app">
+
+        <RelativeLayout
+            android:id="@+id/rlHead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/color_theme">
+
+            <LinearLayout
+                android:id="@+id/imgReturn"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:onClick="@{handler.clickHandler}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/img_return" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="游戏"
+                android:maxWidth="300dp"
+                android:textColor="@color/white_ff"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+        </RelativeLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/mTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/rlHead"
+            app:tabIndicatorHeight="2dp"
+            app:tabMinWidth="55dp"
+            app:tabMode="scrollable"
+            app:tabPaddingEnd="0dp"
+            android:visibility="gone"
+            app:tabPaddingStart="0dp"
+            app:tabIndicatorColor="@color/red_e8"
+            app:tabSelectedTextColor="@color/red_e8"
+            app:tabTextAppearance="@style/TabLayoutTextStyle"
+            app:tabTextColor="?attr/txt_bar" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_below="@+id/mTabLayout"
+            android:background="@color/white_e7"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/mViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/line"/>
+
+        <View
+            android:id="@+id/view_shade"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/ll_bottom"
+            android:visibility="gone"
+            android:background="@color/transparent_thirty_percent"/>
+
+        <RelativeLayout
+            android:id="@+id/llInPut"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/txtSend"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="取消"
+                android:gravity="center_vertical"
+                android:textColor="@color/white_9c"
+                android:paddingRight="@dimen/element_margin_9"
+                android:textSize="14sp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+
+            <EditText
+                android:id="@+id/search_word"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="7dp"
+                android:minHeight="27dp"
+                android:maxLines="5"
+                android:paddingLeft="28dp"
+                android:layout_toLeftOf="@+id/txtSend"
+                android:background="@drawable/shape_video_comment"
+                android:gravity="center_vertical"
+                android:textColor="?attr/txt_content"
+                android:textColorHint="?attr/txt_content"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:textSize="14sp"/>
+
+            <ImageView
+                android:id="@+id/img_dis"
+                android:layout_width="@dimen/element_margin_25"
+                android:layout_height="@dimen/element_margin_25"
+                android:layout_marginLeft="@dimen/element_margin_10"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/element_margin_4"
+                android:src="@drawable/search"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

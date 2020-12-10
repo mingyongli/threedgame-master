@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:background="@color/color_theme">
+
+    <ImageView
+        android:layout_marginLeft="25dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/img_head"
+        android:layout_width="107dp"
+        android:layout_height="@dimen/element_margin_25"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img_logo"/>
+
+    <LinearLayout
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:src="@drawable/notification"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imgEmail"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:src="@drawable/email"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgSet"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:src="@drawable/setting"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

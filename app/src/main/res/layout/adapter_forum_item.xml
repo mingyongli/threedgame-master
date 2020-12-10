@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/author_img"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="6dp" />
+
+            <TextView
+                android:id="@+id/author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="11dp"
+                android:layout_toEndOf="@id/author_img"
+                android:text="超级马里奥"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/topicLabel"
+                android:padding="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="11dp"
+                android:layout_toRightOf="@id/author_name"
+                android:background="@drawable/shape_bule_button"
+                android:backgroundTint="#7FB8FF"
+                android:gravity="center"
+                android:text="游戏资讯"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/article"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:layout_marginRight="11dp"
+            android:text="【3DM攻略站】《黑荆棘角斗场》图文攻略，全技能流派详解（含“系统解析”“上手指南”“流派/技能/属性详解”）。【完结】"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/topicContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="11dp"
+            android:text="以下内容由【3DM攻略站】上古晨风原创,转载请注明出处。你还可以通过3DM攻略站，来更直观的浏览本篇《黑荆棘角斗场》细分了内容的图文全攻略!"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="23dp"
+            android:layout_marginTop="16dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/time_icon"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginLeft="6dp"
+                android:src="@mipmap/forum_time" />
+
+            <TextView
+                android:textColor="#9195A3"
+                android:id="@+id/forum_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/time_icon"
+                android:gravity="center_vertical"
+                android:text="2020-05-20  21:21:21" />
+
+            <TextView
+                android:textColor="#9195A3"
+                android:id="@+id/forum_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="9999" />
+
+            <ImageView
+                android:id="@+id/forum_amount_icon"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_toStartOf="@id/forum_amount"
+                android:src="@mipmap/forum_amount" />
+
+            <TextView
+                android:textColor="#9195A3"
+                android:id="@+id/forum_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/forum_amount_icon"
+                android:text="23" />
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_toLeftOf="@id/forum_comments"
+                android:src="@mipmap/forum_commont" />
+        </RelativeLayout>
+
+        <View
+            android:background="#EFEFF4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+    </LinearLayout>
+</LinearLayout>

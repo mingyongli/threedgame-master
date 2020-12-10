@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        
+        <LinearLayout
+            android:id="@+id/llForumDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="@dimen/element_margin_5"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/img_head"
+                    android:layout_width="@dimen/element_margin_25"
+                    android:layout_height="@dimen/element_margin_25"
+                    android:layout_marginLeft="@dimen/element_margin_7"/>
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:text="DQueen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/element_margin_9"
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textColor="@color/gray_text_light"
+                    android:text="           魔法季节：沉睡的大魔法。魔法季节：沉睡的大魔法。"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:id="@+id/tv_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:padding="@dimen/element_margin_2"
+                    android:lineSpacingExtra="3dp"
+                    android:text="热门"
+                    android:background="@drawable/bg_roundrect_red"
+                    android:textColor="@color/red_two"
+                    android:textSize="@dimen/text_size_12" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/element_margin_9"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:text=" 2017-02-21"
+                    android:drawableLeft="@drawable/ic_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/element_margin_9"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/tv_commentnum"
+                    android:text="125"
+                    android:drawableLeft="@drawable/ic_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/element_margin_9"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/tv_read"
+                    android:text="125"
+                    android:drawableLeft="@drawable/ic_eye"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/element_margin_9"
+                    android:layout_marginRight="@dimen/element_margin_9"
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/item_delete"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="#88ff0000"
+            android:gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_del_white"
+            android:textColor="#ffffff"
+            android:padding="15dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtLine"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white_e7" />
+</RelativeLayout>

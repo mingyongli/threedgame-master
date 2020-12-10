@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_select"
+        android:layout_width="84dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_border"
+        />
+
+    <ImageView
+        android:id="@+id/img_game"
+        android:layout_width="@dimen/element_margin_80"
+        android:layout_height="@dimen/element_margin_60"
+        android:layout_marginLeft="@dimen/element_margin_5"
+        android:layout_marginTop="@dimen/element_margin_3"
+        android:layout_marginBottom="@dimen/element_margin_3"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/img_play"
+        android:layout_width="@dimen/element_margin_30"
+        android:layout_height="@dimen/element_margin_30"
+        android:src="@drawable/news_video"
+        android:layout_centerInParent="true"
+        android:scaleType="centerInside" />
+</RelativeLayout>

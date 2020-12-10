@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="7dp"
+                                    android:layout_marginLeft="7dp"
+                                    android:layout_marginTop="5dp"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="3dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_head"
+            android:layout_width="@dimen/element_margin_20"
+            android:layout_height="@dimen/element_margin_20"
+            android:layout_margin="@dimen/element_margin_7"
+            />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/element_margin_5"
+            android:layout_toRightOf="@+id/img_head"
+            android:text="DQueen"/>
+
+        <TextView
+            android:id="@+id/tv_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/element_margin_15"
+            android:background="@drawable/bg_rect_side_blue"
+            android:text="射击"
+            android:paddingLeft="@dimen/element_margin_4"
+            android:paddingRight="@dimen/element_margin_4"
+            android:layout_marginTop="@dimen/element_margin_7"
+            android:textColor="@color/blue"
+            android:textSize="12sp"
+            />
+
+        <ImageView
+            android:id="@+id/img_top"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_below="@id/img_head"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="37dp"
+            android:text="告诉对方的股份等各方对公司的风格大商股份对公司的风格订水的分公司的风格"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/img_top"
+            android:layout_marginRight="@dimen/element_margin_7"
+            android:layout_marginLeft="@dimen/element_margin_7"
+            android:paddingTop="@dimen/element_margin_3"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/black_2a"
+            android:textSize="@dimen/text_size_14"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txtComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginRight="8dp"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:paddingLeft="@dimen/element_margin_5"
+            android:layout_marginTop="@dimen/element_margin_3"
+            android:text="0"
+            android:textSize="12sp"/>
+
+        <ImageView
+            android:id="@+id/imgComment"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_below="@+id/tv_title"
+            android:layout_toLeftOf="@+id/txtComment"
+            android:layout_marginTop="@dimen/element_margin_5"
+            android:src="@drawable/ic_news_msg"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/img_game"
+            android:layout_below="@+id/tv_title"
+            android:gravity="left"
+            android:paddingBottom="@dimen/element_margin_3"
+            android:paddingTop="@dimen/element_margin_3"
+            android:paddingLeft="@dimen/element_margin_7"
+            android:text="20:45"
+            android:textSize="@dimen/text_size_12"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

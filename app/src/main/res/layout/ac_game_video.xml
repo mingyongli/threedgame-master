@@ -1,0 +1,77 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.GameVideoActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="?attr/bg_app">
+
+        <RelativeLayout
+            android:id="@+id/rlHead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/color_theme">
+
+            <LinearLayout
+                android:id="@+id/imgReturn"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:onClick="@{handler.clickHandler}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/img_return" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="游戏"
+                android:maxWidth="300dp"
+                android:textColor="@color/white_ff"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+        </RelativeLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/mTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:tabIndicatorHeight="2dp"
+            app:tabMinWidth="55dp"
+            app:tabMode="scrollable"
+            app:tabPaddingEnd="0dp"
+            android:layout_below="@+id/view_top"
+            app:tabPaddingStart="0dp"
+            app:tabIndicatorColor="@color/red_e8"
+            app:tabSelectedTextColor="@color/red_e8"
+            app:tabTextAppearance="@style/TabLayoutTextStyle"
+            app:tabTextColor="?attr/txt_bar" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/white_e7"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/mViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</layout>

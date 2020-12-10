@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.InfoActivity"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rlHead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
+
+            <LinearLayout
+                android:id="@+id/imgReturn"
+                android:layout_width="40dp"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:onClick="@{handler.clickHandler}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/img_return"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/rlImg"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/element_margin_15"
+                android:background="@drawable/icon_launcher"/>
+
+            <TextView
+                android:id="@+id/txt3DM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlImg"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:text="3DMGAME"
+                android:textColor="?attr/txt_title"
+                android:textSize="30dp"/>
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt3DM"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="隐私保护说明"
+                android:textColor="@color/gray_text"
+                android:textSize="16sp"/>
+            
+            <ImageView
+                android:id="@+id/img_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_search_down"
+                android:layout_below="@id/tv_info"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+        
+        <LinearLayout
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/element_margin_10"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:id="@+id/tv_no"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:onClick="@{handler.clickHandler}"
+                android:background="@drawable/bg_roundrect_gray"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/element_margin_15"
+                android:layout_marginRight="@dimen/element_margin_15"
+                android:text="不同意"
+                android:textColor="@color/black_55"
+                android:textSize="16sp"
+                android:layout_below="@+id/llContent"/>
+            
+            <TextView
+                android:id="@+id/tv_yes"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:onClick="@{handler.clickHandler}"
+                android:background="@drawable/bg_roundrect_fillred"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/element_margin_15"
+                android:text="同意"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_below="@+id/llContent"/>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rlHead"
+            android:layout_marginTop="@dimen/element_margin_9"
+            android:layout_marginLeft="@dimen/element_margin_7"
+            android:layout_marginRight="@dimen/element_margin_7"
+            android:background="@drawable/bg_roundrect_gray"
+            android:layout_above="@+id/ll_bottom">
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/element_margin_4"
+                android:padding="@dimen/element_margin_9"
+                android:text="@string/info_aggree"/>
+        </ScrollView>
+    </RelativeLayout>
+</layout>

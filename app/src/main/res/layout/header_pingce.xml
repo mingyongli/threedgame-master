@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/element_margin_7"
+        android:layout_marginRight="@dimen/element_margin_7"
+        android:layout_marginTop="@dimen/element_margin_5"
+        android:layout_marginBottom="@dimen/element_margin_2"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_top"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:scaleType="fitXY"/>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_top"
+                android:paddingBottom="@dimen/element_margin_5"
+                android:paddingLeft="@dimen/element_margin_10"
+                android:paddingTop="@dimen/element_margin_5"
+                android:text="鬼泣5"
+                android:textColor="@color/black_2a"
+                android:textSize="@dimen/text_size_14"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/img_head"
+                android:layout_width="@dimen/element_margin_20"
+                android:layout_height="@dimen/element_margin_20"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginBottom="@dimen/element_margin_7"
+                android:layout_marginLeft="@dimen/element_margin_10"/>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginLeft="@dimen/element_margin_5"
+                android:layout_toRightOf="@+id/img_head"
+                android:text="DQueen"/>
+
+            <TextView
+                android:id="@+id/txtComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginRight="15dp"
+                android:padding="@dimen/element_margin_5"
+                android:text="555"
+                android:textSize="12sp"/>
+
+            <ImageView
+                android:id="@+id/imgComment"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginTop="8dp"
+                android:layout_toLeftOf="@+id/txtComment"
+                android:src="@drawable/ic_news_msg"/>
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/imgComment"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginRight="@dimen/element_margin_15"
+                android:padding="@dimen/element_margin_5"
+                android:textSize="@dimen/text_size_12"/>
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_margin="@dimen/element_margin_10"
+                android:textStyle="italic|bold"
+                android:background="@drawable/bg_roundrect_fillred_light"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

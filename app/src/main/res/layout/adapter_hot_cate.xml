@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/ll_hot_cate"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        
+        <TextView
+            android:id="@+id/txt_cate_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_toLeftOf="@+id/more"
+            android:drawableLeft="@drawable/img_red"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="sdkfglak"
+            android:textColor="@color/black_2a"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rect_side_gray"
+            android:layout_marginRight="@dimen/element_margin_7"
+            android:gravity="center"
+            android:text="  全部 +   "
+            android:textColor="@color/grey"
+            android:textSize="12sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+    
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_hot_cates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/element_margin_2"
+        android:paddingRight="@dimen/element_margin_2"/>
+
+    <TextView
+        android:id="@+id/txtLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white_f1"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginRight="7dp" />
+</LinearLayout>

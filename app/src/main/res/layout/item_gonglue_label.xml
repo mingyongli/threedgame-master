@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:focusableInTouchMode="true"
+                android:descendantFocusability="blocksDescendants"
+                android:layout_marginTop="@dimen/element_margin_5"
+                android:layout_marginBottom="@dimen/element_margin_13"
+                android:background="@drawable/bg_roundrect_gray">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/element_margin_5"
+        android:text="name"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textColor="@color/black_55"
+        android:textSize="12sp"/>
+
+</RelativeLayout>

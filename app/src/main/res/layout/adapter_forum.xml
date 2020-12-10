@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llForum"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlForum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:id="@+id/rlCover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/element_margin_4">
+
+            <ImageView
+                android:id="@+id/imgCover"
+                android:layout_width="@dimen/element_margin_80"
+                android:layout_height="@dimen/element_margin_60"
+                android:scaleType="fitXY"
+                />
+
+            <ImageView
+                android:id="@+id/imgPhoneCover"
+                android:layout_width="@dimen/element_margin_60"
+                android:layout_height="@dimen/element_margin_60"
+                android:scaleType="fitXY"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtCollect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/gray_light"
+            android:gravity="center"
+            android:paddingLeft="@dimen/element_margin_7"
+            android:paddingRight="@dimen/element_margin_7"
+            android:paddingTop="@dimen/element_margin_4"
+            android:paddingBottom="@dimen/element_margin_4"
+            android:text="收藏"
+            android:textSize="@dimen/text_size_12" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/element_margin_10"
+            android:layout_toRightOf="@id/rlCover"
+            >
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_marginTop="5dp"
+                android:maxWidth="180dp"
+                android:text="魔法季节：沉睡的大地dsadsaddsaddsad"
+                android:textSize="@dimen/text_size_14" />
+
+            <TextView
+                android:id="@+id/txtContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="今日1500  排名：2"
+                android:textSize="@dimen/text_size_12" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtLine"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
+</LinearLayout>

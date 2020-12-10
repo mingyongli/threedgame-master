@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.SecurityActivity"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/bg_app"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rlHead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="?attr/bg_title">
+
+            <LinearLayout
+                android:id="@+id/imgReturn"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:onClick="@{handler.clickHandler}"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/img_return"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="账户与安全"
+                android:textColor="?attr/txt_search"
+                android:textSize="17sp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:onClick="@{handler.clickHandler}">
+
+            <com.ws3dm.app.theme.ColorTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="账户名称"
+                android:textColor="?attr/txt_title"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:text="头铁小王子"
+                android:textColor="?attr/txt_title"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"/>
+        </RelativeLayout>
+
+        <com.ws3dm.app.theme.ColorTextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="?attr/bg_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:onClick="@{handler.clickHandler}">
+
+            <com.ws3dm.app.theme.ColorTextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="登录账号"
+                android:textColor="?attr/txt_title"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/user_phone"
+                android:text="188****8888"
+                android:textColor="?attr/txt_title"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"/>
+        </RelativeLayout>
+
+        <com.ws3dm.app.theme.ColorTextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="?attr/bg_line" />
+
+        <RelativeLayout
+            android:id="@+id/rl_mod_pass"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:onClick="@{handler.clickHandler}">
+
+            <com.ws3dm.app.theme.ColorTextView
+                android:id="@+id/tv_mod_pass"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="修改密码"
+                android:onClick="@{handler.clickHandler}"
+                android:textColor="?attr/txt_title"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_mod_pass"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:onClick="@{handler.clickHandler}"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/next" />
+        </RelativeLayout>
+
+        <com.ws3dm.app.theme.ColorTextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="?attr/bg_line" />
+
+        <RelativeLayout
+            android:id="@+id/rl_changeno"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:background="@color/white"
+            android:onClick="@{handler.clickHandler}">
+
+            <com.ws3dm.app.theme.ColorTextView
+                android:id="@+id/tv_changeno"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="更换手机"
+                android:onClick="@{handler.clickHandler}"
+                android:textColor="?attr/txt_title"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/changePhone"
+                android:text="188****8888"
+                android:textColor="?attr/txt_title"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"/>
+        </RelativeLayout>
+        
+
+        <com.ws3dm.app.theme.ColorTextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="?attr/bg_line" />
+
+        <RelativeLayout
+            android:id="@+id/rl_address"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:onClick="@{handler.clickHandler}">
+
+            <com.ws3dm.app.theme.ColorTextView
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="第三方绑定"
+                android:onClick="@{handler.clickHandler}"
+                android:background="@color/white"
+                android:textColor="?attr/txt_title"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_address"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:onClick="@{handler.clickHandler}"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/next" />
+
+        </RelativeLayout>
+
+        <com.ws3dm.app.theme.ColorTextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="?attr/bg_line" />
+
+        <RelativeLayout
+            android:id="@+id/rl_close_account"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:background="@color/white"
+            android:onClick="@{handler.clickHandler}">
+
+            <com.ws3dm.app.theme.ColorTextView
+                android:id="@+id/tv_close_account"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:onClick="@{handler.clickHandler}"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="注销账号"
+                android:textColor="?attr/txt_title"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/iv_close_account"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:onClick="@{handler.clickHandler}"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/next" />
+        </RelativeLayout>
+
+        <com.ws3dm.app.theme.ColorTextView
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:background="?attr/bg_app" />
+
+        <com.ws3dm.app.theme.ColorTextView
+            android:id="@+id/tv_log_off"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:background="@color/white"
+            android:text="退出登录"
+            android:visibility="gone"
+            android:onClick="@{handler.clickHandler}"
+            android:textColor="?attr/txt_title"
+            android:textSize="14sp" />
+    </LinearLayout>
+</layout>

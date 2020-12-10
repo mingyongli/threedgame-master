@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/element_margin_7">
+
+    <ImageView
+        android:id="@+id/img_top"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="@dimen/element_margin_5"
+        android:src="@drawable/load_default"/>
+
+    <!--<com.ws3dm.app.view.roundimage.RoundedImageView
+        android:id="@+id/img_top"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="@dimen/element_margin_5"
+        android:src="@drawable/load_default"
+        app:riv_border_color="@color/grey"
+        app:riv_border_width="1dp"
+        app:riv_corner_radius="20dp"
+        />-->
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_top"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/element_margin_3"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="鬼泣5"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_14"/>
+</RelativeLayout>

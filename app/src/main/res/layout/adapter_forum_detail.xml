@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llForumDetail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/element_margin_5"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/img_head"
+            android:layout_width="@dimen/element_margin_20"
+            android:layout_height="@dimen/element_margin_20"
+            android:layout_marginLeft="@dimen/element_margin_7"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:text="DQueen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/element_margin_5"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:lineSpacingExtra="3dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/gray_text_light"
+            android:text="           魔法季节：沉睡的大魔法。"
+            android:textSize="@dimen/text_size_14" />
+
+        <TextView
+            android:id="@+id/tv_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:paddingLeft="@dimen/element_margin_4"
+            android:paddingRight="@dimen/element_margin_4"
+            android:paddingTop="@dimen/element_margin_1"
+            android:paddingBottom="@dimen/element_margin_1"
+            android:text="热门"
+            android:background="@drawable/bg_rect_side_red"
+            android:textColor="@color/red_two"
+            android:textSize="@dimen/text_size_10" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/element_margin_9"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/element_margin_15"
+            android:layout_height="@dimen/element_margin_15"
+            android:layout_marginLeft="@dimen/element_margin_9"
+            android:src="@drawable/ic_time"/>
+        <TextView
+            android:id="@+id/tv_time"
+            android:text="2017-02-21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#999999"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"/>
+
+        <ImageView
+            android:layout_width="@dimen/element_margin_15"
+            android:layout_height="@dimen/element_margin_15"
+            android:layout_marginLeft="@dimen/element_margin_9"
+            android:src="@drawable/ic_msg"/>
+        
+        <TextView
+            android:id="@+id/tv_commentnum"
+            android:text="125"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#999999"
+            android:gravity="center_vertical"/>
+
+        <View
+            android:layout_width="@dimen/element_margin_1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/element_margin_10"
+            android:layout_marginBottom="@dimen/element_margin_2"
+            android:layout_marginTop="@dimen/element_margin_2"
+            android:background="#999999"/>
+
+        <ImageView
+            android:layout_width="@dimen/element_margin_15"
+            android:layout_height="@dimen/element_margin_15"
+            android:layout_marginLeft="@dimen/element_margin_9"
+            android:src="@drawable/ic_eye"/>
+        <TextView
+            android:id="@+id/tv_read"
+            android:text="125"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#999999"
+            android:paddingRight="@dimen/element_margin_13"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtLine"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/white_e7"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+</LinearLayout>

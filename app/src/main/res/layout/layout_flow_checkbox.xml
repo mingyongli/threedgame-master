@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_margin="@dimen/element_margin_3"
+             android:background="@drawable/selector_check_border"
+             android:button="@null"
+             android:gravity="center"
+             android:paddingBottom="@dimen/element_margin_2"
+          android:paddingTop="@dimen/element_margin_2"
+          android:paddingLeft="@dimen/element_margin_5"
+          android:paddingRight="@dimen/element_margin_5"
+             android:text="闪电狗离"
+             android:textColor="@color/gray_text"
+             android:textSize="@dimen/text_size_12"/>

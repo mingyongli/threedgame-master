@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="3dp"
+                                    android:layout_marginLeft="7dp"
+                                    android:layout_marginRight="7dp"
+                                    android:layout_marginTop="6dp"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="3dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:paddingLeft="@dimen/element_margin_7">
+
+        <ImageView
+            android:id="@+id/img_head"
+            android:layout_width="@dimen/element_margin_80"
+            android:layout_height="@dimen/element_margin_80"
+            android:layout_margin="@dimen/element_margin_10"
+            android:scaleType="centerCrop"
+            android:src="@drawable/no_login"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/img_head"
+            android:text="作者"
+            android:layout_marginTop="@dimen/element_margin_15"
+            android:textColor="@color/black_2a"/>
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_marginTop="@dimen/element_margin_7"
+            android:layout_toRightOf="@+id/img_head"
+            android:textSize="@dimen/text_size_12"
+            android:text="鬼泣5没救了"/>
+
+        <TextView
+            android:id="@+id/txt_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_rect_side_blue"
+            android:text="发布 N 篇"
+            android:textColor="@color/blue"
+            android:layout_margin="13dp"
+            android:textSize="10sp"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

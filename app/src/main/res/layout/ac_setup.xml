@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.SetupActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--顶部-->
+        <RelativeLayout
+            android:id="@+id/rlHead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="?attr/bg_title">
+
+            <LinearLayout
+                android:id="@+id/imgReturn"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:onClick="@{handler.clickHandler}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/img_return"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="编辑资料"
+                android:textColor="?attr/txt_search"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_marginRight="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/tv_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="完成"
+                android:onClick="@{handler.clickHandler}"
+                android:textColor="?attr/txt_search"
+                android:textSize="16sp"/>
+
+        </RelativeLayout>
+
+        <com.ws3dm.app.theme.ColorScrollView
+            android:id="@+id/svUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+                android:orientation="vertical">
+                <!--设置主体内容-->
+
+                <!--修改成功提示-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="-12dp"
+                    android:layout_marginLeft="-12dp"
+                    android:background="#ffffff"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/element_margin_10"
+                    android:paddingRight="@dimen/element_margin_10">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/img_head"
+                            android:layout_width="@dimen/element_margin_45"
+                            android:layout_height="@dimen/element_margin_45"
+                            android:layout_marginLeft="@dimen/element_margin_7"
+                            android:onClick="@{handler.clickHandler}"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/no_login" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="26dp"
+                            android:layout_marginLeft="26dp"
+                            android:layout_toEndOf="@+id/img_head"
+                            android:layout_toRightOf="@+id/img_head"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="用户名 "
+                                    android:textColor="#000000"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:layout_marginLeft="10dp"
+                                    android:id="@+id/user_lv"
+                                    android:gravity="center"
+                                    android:text="Lv.0"
+                                    android:layout_centerVertical="true"
+                                    android:background="@drawable/user_top_lv_bg"
+                                    android:layout_width="45dp"
+                                    android:textSize="12sp"
+                                    android:textColor="#A10000"
+                                    android:layout_height="18dp"/>
+                            </LinearLayout>
+
+
+                            <TextView
+                                android:id="@+id/tv_score"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="@dimen/element_margin_5"
+                                android:text="我的积分：0 "
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+
+
+                        <TextView
+                            android:layout_marginRight="15dp"
+                            android:id="@+id/tv_edit_pass"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:onClick="@{handler.clickHandler}"
+                            android:padding="@dimen/element_margin_9"
+                            android:text="修改"
+                            android:textColor="#000000"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+
+
+
+                    <com.ws3dm.app.theme.ColorTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/element_margin_7"
+                        android:gravity="center"
+                        android:text="基本信息"
+                        android:textColor="@color/black_55"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:background="#ffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="left"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/element_margin_5"
+                            android:layout_marginTop="@dimen/element_margin_7"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_3"
+                                android:gravity="center"
+                                android:paddingLeft="@dimen/element_margin_25"
+                                android:text="账号："
+                                android:textColor="@color/gray_text"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <com.ws3dm.app.theme.ColorTextView
+                                android:id="@+id/tv_account"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@color/white"
+                                android:cursorVisible="true"
+                                android:gravity="start"
+                                android:hint="暂无账号，请绑定！"
+                                android:onClick="@{handler.clickHandler}"
+                                android:textColor="@color/blue"
+                                android:textCursorDrawable="@null"
+                                android:textSize="@dimen/text_size_14" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/element_margin_5"
+                            android:layout_marginTop="@dimen/element_margin_7"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_3"
+                                android:gravity="center"
+                                android:paddingLeft="@dimen/element_margin_25"
+                                android:text="昵称："
+                                android:textColor="@color/gray_text"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <EditText
+                                android:id="@+id/et_nickname"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@null"
+                                android:cursorVisible="true"
+                                android:gravity="start"
+                                android:hint="请输入新的昵称"
+                                android:textColor="@color/white_9c"
+                                android:textCursorDrawable="@null"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <TextView
+                                android:id="@+id/tv_nickedit"
+                                android:layout_width="40dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/element_margin_20"
+                                android:background="@drawable/bg_roundrect_fillgreen2"
+                                android:gravity="center"
+                                android:onClick="@{handler.clickHandler}"
+                                android:text="修改"
+                                android:textColor="@color/green_text_light"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/element_margin_7"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_5"
+                                android:gravity="center"
+                                android:text="初级头衔："
+                                android:textColor="@color/gray_text"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <com.ws3dm.app.view.FlowLayout
+                                android:id="@+id/level1_flowlayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/element_margin_3" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/element_margin_7"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_5"
+                                android:gravity="center"
+                                android:text="中级头衔："
+                                android:textColor="@color/gray_text"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <com.ws3dm.app.view.FlowLayout
+                                android:id="@+id/level2_flowlayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/element_margin_3" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/element_margin_7"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_5"
+                                android:gravity="center"
+                                android:text="高级头衔："
+                                android:textColor="@color/gray_text"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <com.ws3dm.app.view.FlowLayout
+                                android:id="@+id/level3_flowlayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/element_margin_3" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/element_margin_7"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_5"
+                                android:gravity="center"
+                                android:text="顶级头衔："
+                                android:textColor="@color/gray_text"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <com.ws3dm.app.view.FlowLayout
+                                android:id="@+id/level4_flowlayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/element_margin_3" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/element_margin_5"
+                            android:layout_marginTop="@dimen/element_margin_7"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_3"
+                                android:gravity="center"
+                                android:paddingLeft="@dimen/element_margin_25"
+                                android:text="  QQ："
+                                android:textColor="@color/gray_text"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <com.ws3dm.app.theme.ColorTextView
+                                android:id="@+id/tv_qq"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="start"
+                                android:onClick="@{handler.clickHandler}"
+                                android:text="解除绑定"
+                                android:textColor="@color/blue"
+                                android:textSize="@dimen/text_size_14" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/element_margin_5"
+                            android:layout_marginTop="@dimen/element_margin_7"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_3"
+                                android:gravity="center"
+                                android:paddingLeft="@dimen/element_margin_25"
+                                android:text="微信："
+                                android:textColor="@color/gray_text"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <com.ws3dm.app.theme.ColorTextView
+                                android:id="@+id/tv_weixin"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="start"
+                                android:onClick="@{handler.clickHandler}"
+                                android:text="解除绑定"
+                                android:textColor="@color/blue"
+                                android:textSize="@dimen/text_size_14" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/element_margin_5"
+                            android:layout_marginTop="@dimen/element_margin_7"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_3"
+                                android:gravity="center"
+                                android:paddingLeft="@dimen/element_margin_25"
+                                android:text="微博："
+                                android:textColor="@color/gray_text"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <com.ws3dm.app.theme.ColorTextView
+                                android:id="@+id/tv_sina"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="start"
+                                android:onClick="@{handler.clickHandler}"
+                                android:text="解除绑定"
+                                android:textColor="@color/blue"
+                                android:textSize="@dimen/text_size_14" />
+                        </LinearLayout>
+
+                        <View
+                            android:background="#FFEEEEEE"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/element_margin_15"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_3"
+                                android:gravity="center"
+                                android:text="性别："
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <RadioGroup
+                                android:id="@+id/dataedit_radiogroup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/element_margin_9"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/dataedit_man_radiobutton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/element_margin_30"
+                                    android:background="@null"
+                                    android:button="@null"
+                                    android:drawableLeft="@drawable/selector_check"
+                                    android:drawablePadding="@dimen/element_margin_5"
+                                    android:gravity="center_vertical"
+                                    android:text="男"
+                                    android:textColor="#000000"
+                                    android:textSize="12sp" />
+
+                                <RadioButton
+                                    android:id="@+id/dataedit_woman_radiobutton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:button="@null"
+                                    android:drawableLeft="@drawable/selector_check"
+                                    android:drawablePadding="@dimen/element_margin_5"
+                                    android:gravity="center_vertical"
+                                    android:text="女"
+                                    android:textColor="#000000"
+                                    android:textSize="12sp" />
+                            </RadioGroup>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_marginTop="15dp"
+                            android:background="#FFEEEEEE"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/element_margin_15"
+                            android:layout_marginTop="14dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_3"
+                                android:gravity="center"
+                                android:text="生日："
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <com.ws3dm.app.theme.ColorTextView
+                                android:id="@+id/et_birth"
+                                android:layout_weight="1"
+                                android:layout_marginRight="150dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:background="@color/white"
+                                android:cursorVisible="true"
+                                android:gravity="start"
+                                android:hint="格式:2018-03-24"
+                                android:onClick="@{handler.clickHandler}"
+                                android:textColor="#000000"
+                                android:textCursorDrawable="@null"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_marginRight="28dp"
+                                android:id="@+id/xiugai_birther"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:onClick="@{handler.clickHandler}"
+                                android:padding="@dimen/element_margin_9"
+                                android:text="修改"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/element_margin_15"
+                            android:layout_marginTop="@dimen/element_margin_10"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/element_margin_3"
+                                android:gravity="center"
+                                android:text="地址："
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <!--<com.ws3dm.app.theme.ColorEditText
+                                android:id="@+id/et_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@color/white"
+                                android:gravity="start"
+                                android:hint="填入您的地址！"
+                                android:cursorVisible="true"
+                                android:textCursorDrawable="@null"
+                                android:textColor="@color/gray_text"
+                                android:textSize="@dimen/text_size_14" />-->
+
+                            <com.ws3dm.app.theme.ColorTextView
+                                android:id="@+id/btn_select_area"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center_vertical"
+                                android:onClick="@{handler.clickHandler}"
+                                android:text="选择地址"
+                                android:layout_weight="1"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_marginRight="28dp"
+                                android:id="@+id/xiugai_address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:onClick="@{handler.clickHandler}"
+                                android:padding="@dimen/element_margin_9"
+                                android:text="修改"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/element_margin_15"
+                            android:layout_marginTop="@dimen/element_margin_20"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dp"
+                                android:gravity="center"
+                                android:text="游戏爱好："
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <com.ws3dm.app.theme.ColorTextView
+                                android:id="@+id/tv_hobby"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@color/white"
+                                android:cursorVisible="true"
+                                android:gravity="start"
+                                android:textColor="#000000"
+                                android:textCursorDrawable="@null"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_marginRight="28dp"
+                                android:id="@+id/tv_edit"
+                                android:layout_width="40dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/element_margin_20"
+                                android:gravity="center"
+                                android:onClick="@{handler.clickHandler}"
+                                android:text="修改"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingLeft="60dp">
+
+                            <com.ws3dm.app.view.FlowLayout
+                                android:visibility="gone"
+                                android:paddingTop="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingBottom="10dp"
+                                android:id="@+id/hobby_flowlayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginTop="16dp"
+                        android:background="#FFEEEEEE"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="24dp"
+                        android:gravity="center"
+                        android:text="可更换头像"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+
+                    <View
+                        android:layout_marginTop="13dp"
+                        android:background="#FFEEEEEE"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="18dp"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlChangeTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtHide"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.5"
+                        android:background="#000"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="@dimen/element_margin_25">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/img_weixin"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/element_margin_15"
+                            android:text="修改成功"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_14"/>
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </com.ws3dm.app.theme.ColorScrollView>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:paddingRight="2dp"
+            android:paddingTop="@dimen/element_margin_5"
+            android:paddingBottom="@dimen/element_margin_3"
+            android:layout_marginLeft="@dimen/element_margin_5"
+            android:src="@drawable/ic_time"/>
+        
+        <TextView
+            android:id="@+id/body_title"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/element_margin_40"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:paddingLeft="@dimen/element_margin_5"
+            android:text="看结果iuitioutgugkugyiuy"
+            />
+        
+        <ImageView
+            android:id="@+id/img_del"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/element_margin_40"
+            android:padding="@dimen/element_margin_5"
+            android:layout_marginRight="@dimen/element_margin_5"
+            android:src="@drawable/img_closed"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/element_margin_1"
+        android:layout_marginLeft="@dimen/element_margin_15"
+        android:layout_marginRight="@dimen/element_margin_15"
+        android:background="@color/white_d7"/>
+</LinearLayout>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.UserDetailActivity"/>
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rlHead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#323232">
+
+            <LinearLayout
+                android:id="@+id/img_back"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:onClick="@{handler.onClick}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/img_return" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="喜之郎的动态"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:background="@drawable/user_top_bg"
+            android:layout_width="match_parent"
+            android:layout_height="90dp">
+
+            <ImageView
+                android:onClick="@{handler.onClick}"
+                android:id="@+id/img_head"
+                android:background="@drawable/no_login"
+                android:layout_gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_width="68dp"
+                android:layout_height="68dp"/>
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_marginLeft="102dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/name"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:text="喜之郎"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/user_lv"
+                        android:layout_toRightOf="@+id/user_name"
+                        android:layout_marginLeft="12dp"
+                        android:gravity="center"
+                        android:text="Lv.1"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/user_top_lv_bg"
+                        android:layout_width="45dp"
+                        android:textSize="12sp"
+                        android:textColor="#A10000"
+                        android:layout_height="18dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:onClick="@{handler.onClick}"
+                        android:padding="5dp"
+                        android:id="@+id/follow_total"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:text="关注 999"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:onClick="@{handler.onClick}"
+                        android:padding="5dp"
+                        android:layout_marginLeft="7dp"
+                        android:textColor="#FFFFFF"
+                        android:id="@+id/fansi_total"
+                        android:textSize="14sp"
+                        android:text="粉丝 999"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/is_follow"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_cheng_2"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="#ffffff"
+                android:text="+关注"
+                android:layout_width="75dp"
+                android:layout_height="30dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="57dp">
+
+            <TextView
+                android:onClick="@{handler.onClick}"
+                android:id="@+id/replay"
+                android:padding="10dp"
+                android:layout_marginLeft="13dp"
+                android:layout_centerVertical="true"
+                android:text="TA的评论"
+                android:textColor="#F0412A"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/collect"
+                android:padding="10dp"
+                android:onClick="@{handler.onClick}"
+                android:layout_marginLeft="113dp"
+                android:layout_centerVertical="true"
+                android:text="TA的收藏"
+                android:textColor="#585858"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:id="@+id/replay_view"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="13dp"
+                android:background="#F0412A"
+                android:layout_width="67dp"
+                android:layout_height="2dp"/>
+
+            <View
+                android:id="@+id/collect_view"
+                android:visibility="invisible"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="113dp"
+                android:background="#F0412A"
+                android:layout_width="67dp"
+                android:layout_height="2dp"/>
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/fragment"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/recyclerview"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+
+
+
+</layout>

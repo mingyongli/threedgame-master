@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.LoginActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/bg_content">
+
+            <RelativeLayout
+                android:id="@+id/rlHead"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="?attr/bg_title">
+
+                <LinearLayout
+                    android:id="@+id/imgReturn"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:onClick="@{handler.clickHandler}"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/img_return"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="登录"
+                    android:textColor="?attr/txt_search"
+                    android:textSize="17sp"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/llContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlHead"
+                android:layout_toEndOf="@+id/loadView"
+                android:layout_toRightOf="@+id/loadView"
+                android:background="?attr/bg_content"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="@dimen/element_margin_9"
+                        android:src="@drawable/icon_launcher"/>
+                </LinearLayout>
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/element_margin_20"
+                    android:layout_marginLeft="@dimen/element_margin_20"
+                    android:layout_marginRight="@dimen/element_margin_20"
+                    android:background="@drawable/bg_roundrect_white2"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="@dimen/element_margin_5"
+                        android:src="@drawable/user_name"/>
+                    
+                    <View
+                        android:layout_width="@dimen/element_margin_0.5"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_white"
+                        android:layout_margin="@dimen/element_margin_5"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="14dp">
+
+                        <EditText
+                            android:id="@+id/etName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:hint="用户名"
+                            android:textColor="?attr/txt_content"
+                            android:textColorHint="?attr/txt_content"
+                            android:textSize="14sp"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_roundrect_white2"
+                    android:layout_marginLeft="@dimen/element_margin_20"
+                    android:layout_marginRight="@dimen/element_margin_20"
+                    android:layout_marginTop="@dimen/element_margin_9"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginRight="@dimen/element_margin_5"
+                        android:src="@drawable/user_password"/>
+
+                    <View
+                        android:layout_width="@dimen/element_margin_0.5"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_white"
+                        android:layout_margin="@dimen/element_margin_5"/>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="14dp"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="密码"
+                            android:paddingRight="30dp"
+                            android:password="true"
+                            android:textColor="?attr/txt_content"
+                            android:textColorHint="?attr/txt_content"
+                            android:textSize="14sp"/>
+
+                        <ImageView
+                            android:id="@+id/imgSee"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:onClick="@{handler.clickHandler}"
+                            android:src="@drawable/no_see"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtSafe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="33dp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="?attr/txt_title"
+                    android:textSize="15sp"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_roundrect_white"
+                    android:layout_marginLeft="@dimen/element_margin_20"
+                    android:layout_marginRight="@dimen/element_margin_20"
+                    android:layout_marginTop="@dimen/element_margin_9"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/user_safe"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="14dp">
+
+                        <EditText
+                            android:id="@+id/etSafe"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:hint="安全问题(未设置可以忽略)"
+                            android:paddingRight="50dp"
+                            android:textColor="?attr/txt_content"
+                            android:textColorHint="?attr/txt_content"
+                            android:textSize="14sp"/>
+
+                        <LinearLayout
+                            android:id="@+id/txtAnswer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="5dp"
+                            android:onClick="@{handler.clickHandler}"
+                            android:gravity="right|center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="选择问题"
+                                android:textColor="#e8433c"
+                                android:textSize="13sp"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="?attr/bg_line"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_roundrect_white2"
+                    android:layout_marginLeft="@dimen/element_margin_20"
+                    android:layout_marginRight="@dimen/element_margin_20"
+                    android:layout_marginTop="@dimen/element_margin_9"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/user_vertify"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="14dp">
+
+                        <EditText
+                            android:id="@+id/etVerify"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/llVerify"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_weight="1"
+                            android:background="@null"
+
+                            android:ellipsize="end"
+                            android:hint="验证码(点击输入)"
+                            android:maxLength="4"
+                            android:phoneNumber="true"
+                            android:textColor="?attr/txt_content"
+                            android:textColorHint="?attr/txt_content"
+                            android:textSize="14sp"/>
+
+                        <LinearLayout
+                            android:id="@+id/llVerify"
+                            android:layout_width="67dp"
+                            android:layout_height="25dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dp"
+                            android:layout_toLeftOf="@+id/imgRefresh"
+                            android:background="@drawable/vertify"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/txtVertifyOne"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="2"
+                                android:textColor="#ff004e"
+                                android:textSize="16sp"/>
+
+                            <TextView
+                                android:id="@+id/txtVertifyTwo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="5"
+                                android:textColor="#ff8700"
+                                android:textSize="13sp"/>
+
+                            <TextView
+                                android:id="@+id/txtVertifyThree"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="9"
+                                android:textColor="#000cff"
+                                android:textSize="16sp"/>
+
+                            <TextView
+                                android:id="@+id/txtVertifyFour"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="6"
+                                android:textColor="#ff8700"
+                                android:textSize="13sp"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/imgRefresh"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:onClick="@{handler.clickHandler}"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dp"
+                            android:src="@drawable/safe_refresh"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="?attr/bg_line"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/element_margin_35"
+                    android:layout_marginLeft="@dimen/element_margin_20"
+                    android:layout_marginRight="@dimen/element_margin_20">
+                    <TextView
+                        android:id="@+id/tv_forget"
+                        android:text="忘记密码"
+                        android:textColor="@color/skyblue"
+                        android:textSize="@dimen/text_size_12"
+                        android:onClick="@{handler.clickHandler}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:padding="@dimen/element_margin_9"/>
+
+                    <TextView
+                        android:id="@+id/txtRegister"
+                        android:text="注册"
+                        android:textColor="@color/skyblue"
+                        android:textSize="@dimen/text_size_12"
+                        android:onClick="@{handler.clickHandler}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/element_margin_9"
+                        android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_otherlogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtLogin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="1"
+                    android:background="@drawable/line_left"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="1"
+                    android:background="?attr/bg_line"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/llContent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="社交账号登录"
+                    android:textColor="?attr/txt_title"
+                    android:textSize="14sp"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="1"
+                    android:background="@drawable/line_right"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="1"
+                    android:background="?attr/bg_line"
+                    android:visibility="gone"/>
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal"
+                android:layout_below="@+id/ll_otherlogin"
+                android:gravity="bottom"
+                android:padding="@dimen/element_margin_15">
+
+                <ImageView
+                    android:id="@+id/qq_login"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:onClick="@{handler.clickHandler}"
+                    android:src="@drawable/img_qq"/>
+                
+                <ImageView
+                    android:id="@+id/weixin_login"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:onClick="@{handler.clickHandler}"
+                    android:src="@drawable/img_weixin"/>
+
+                <ImageView
+                    android:id="@+id/weibo_login"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:onClick="@{handler.clickHandler}"
+                    android:src="@drawable/img_weibo"/>
+
+            </LinearLayout>
+
+            
+
+            <TextView
+                android:id="@+id/txtLogin"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:onClick="@{handler.clickHandler}"
+                android:background="@drawable/bg_roundrect_fillred"
+                android:gravity="center"
+                android:layout_margin="@dimen/element_margin_35"
+                android:text="登录"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_below="@+id/llContent"/>
+
+            <RelativeLayout
+                android:id="@+id/loadView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.6"
+                android:background="#000000"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:id="@+id/mProgressBar"
+                    style="?android:progressBarStyle"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/mProgressBar"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="正在登录..."
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

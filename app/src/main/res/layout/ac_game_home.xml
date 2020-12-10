@@ -1,0 +1,221 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.GameHomeActivity"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/bg_app">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/mViewPager"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+        <RelativeLayout
+            android:id="@+id/rlHead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp">
+
+            <RelativeLayout
+                android:id="@+id/imgReturn"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:onClick="@{handler.clickHandler}"
+                android:orientation="vertical">
+                
+                <ImageView
+                    android:id="@+id/bg_img_back"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/img_back" />
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="@dimen/element_margin_7"
+                    android:src="@drawable/img_return" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:maxWidth="300dp"
+                android:textColor="?attr/txt_search"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:id="@+id/imgRefresh"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:onClick="@{handler.clickHandler}"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/click_refresh" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/imgChangeTxt"
+                android:layout_width="30dp"
+                android:visibility="gone"
+                android:onClick="@{handler.clickHandler}"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/imgRefresh">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/click_change_txt" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlChangeTxt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rlHead"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtHide"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="@{handler.clickHandler}"
+                android:alpha="0.5"
+                android:background="#000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_roundrect_white"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/element_margin_40"
+                android:paddingLeft="@dimen/element_margin_20"
+                android:paddingRight="@dimen/element_margin_20"
+                android:paddingTop="@dimen/element_margin_30">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="字体大小"
+                    android:textColor="@color/black_55"
+                    android:textSize="@dimen/text_size_14" />
+
+                <RelativeLayout
+                    android:id="@+id/rlSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/element_margin_35"
+                    android:onClick="@{handler.clickHandler}"
+                    android:layout_marginTop="@dimen/element_margin_15">
+
+                    <TextView
+                        android:id="@+id/txtSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{handler.clickHandler}"
+                        android:layout_centerVertical="true"
+                        android:text="小"
+                        android:textColor="@color/white_9c"
+                        android:textSize="@dimen/text_size_12" />
+
+                    <ImageView
+                        android:id="@+id/imgSmall"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:onClick="@{handler.clickHandler}"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/next" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/element_margin_35"
+                    android:onClick="@{handler.clickHandler}"
+                    android:layout_marginTop="@dimen/element_margin_15">
+
+                    <TextView
+                        android:id="@+id/txtNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="中"
+                        android:onClick="@{handler.clickHandler}"
+                        android:textColor="@color/white_9c"
+                        android:textSize="@dimen/text_size_12" />
+
+                    <ImageView
+                        android:id="@+id/imgNormal"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:onClick="@{handler.clickHandler}"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/next" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlBig"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/element_margin_35"
+                    android:onClick="@{handler.clickHandler}"
+                    android:layout_marginTop="@dimen/element_margin_15">
+
+                    <TextView
+                        android:id="@+id/txtBig"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="大"
+                        android:onClick="@{handler.clickHandler}"
+                        android:textColor="@color/white_9c"
+                        android:textSize="@dimen/text_size_12" />
+
+                    <ImageView
+                        android:id="@+id/imgBig"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:onClick="@{handler.clickHandler}"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/next" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txtCancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{handler.clickHandler}"
+                    android:layout_marginTop="@dimen/element_margin_30"
+                    android:gravity="right"
+                    android:text="取消"
+                    android:textColor="@color/red_e8"
+                    android:textSize="@dimen/text_size_12" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ws3dm.app">
+
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="26.0.0-alpha1" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.ws3dm.app.permission.MIPUSH_RECEIVE" /> <!-- <permission android:name="com.ws3dm.app.permission.MIPUSH_RECEIVE" android:protectionLevel="signatureOrSystem"/> -->
+    <!-- 启动前台服务权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 修改手机连接网路状态权限 -->
+    <uses-permission
+        android:name="android.permission.MODIFY_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" /> <!-- 查询网络状态权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" /> <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASK" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_INSTALL" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.READ_SETTINGS" /> <!-- VISIBILITY_HIDDEN表示不显示任何通知栏提示的权限 -->
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" /> <!-- DownloadManager -->
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup">
+        <!-- 友盟KEY -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="599e9c648630f54145000944" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="${UMENG_CHANNEL_VALUE}" />
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="d98dec10e8edd7cff97d6742054b4830" />
+        <meta-data
+            android:name="com.ws3dm.app.util.glide.MyGlideModule"
+            android:value="GlideModule"
+            tools:node="remove" />
+        <service
+            android:name=".service.JobHandleService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:name=".service.AliveJobService" />
+
+        <activity
+            android:name=".activity.SplashActivity"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:pathPrefix="/3dmgame" android:scheme="launchapp" />
+            </intent-filter>
+            -->
+        </activity> <!-- 基础 -->
+        <activity
+            android:name=".mvvm.view.activity.PlateSearchActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".mvvm.view.activity.SectionSearchActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".mvvm.view.activity.SectionPageActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".mvvm.view.activity.FollowForumActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".mvvm.view.activity.PostContentActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GuessNewsListActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.HomePreferenceActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.PsnCertification"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.PsnGameUserRankActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.SteamGameUserRankActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameAchievementActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.MyPSN_RankActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.BindPsnActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameCardActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.MySteamRankActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.BindSteamActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.PSN_ID_Activity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.STEAM_ID_Activity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameCardSettingActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.CollectActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.OptionActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.VersionActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.SetupActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.NewsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:hardwareAccelerated="true" /> <!-- <activity android:launchMode="singleTask" android:name=".activity.NewsActivity"/> -->
+        <activity
+            android:name=".activity.NewsPhotoActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.SearchActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GongTuJianActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.GonglueActivity" />
+        <activity
+            android:name=".activity.GonglueListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GongLabelActivity"
+            android:launchMode="singleTask" /> <!-- 游戏版块 -->
+        <!-- <activity android:launchMode="singleTask" android:name=".activity.NewSearchActivity"/> -->
+        <activity
+            android:name=".activity.GuessLikeActivity"
+            android:label=""
+            android:launchMode="singleTask" /> <!-- <activity android:launchMode="singleTask" android:name=".activity.DownListActivity"/> -->
+        <activity
+            android:name=".activity.HistoryActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ForgetPassActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.PublishActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.CommentActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ForumBoardListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ForumPostListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ForumDetailActivity"
+            android:launchMode="singleTask" /> <!-- 游戏版块 -->
+        <activity
+            android:name=".activity.GameHomeActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:hardwareAccelerated="true" />
+        <activity android:name=".activity.GameCategoryListActivity" />
+        <activity
+            android:name=".activity.GameRandListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameCategoryActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameChineseActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameSellActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameLabelActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameNewsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameVideoActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameSpecialActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameTestActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.DianJingActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameNetRandActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GameGiftActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.HotMGActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.SelectMGListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.GiftRelativeActivity"
+            android:launchMode="singleTask" /> <!-- 原创版块 -->
+        <activity
+            android:name=".activity.AuthorTeamActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ArticleListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.PingceListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.LastListActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.ProgramActivity" />
+        <activity android:name=".activity.ColumActivity" /> <!-- 其他 -->
+        <activity
+            android:name=".activity.MGCategoryListActivity"
+            android:launchMode="singleTask" /> <!-- <activity android:launchMode="singleTask" android:name=".activity.MGDetailActivity"/> -->
+        <activity
+            android:name=".activity.MGDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:hardwareAccelerated="false" />
+        <activity
+            android:name=".activity.GiftDetailActivity"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".activity.OriginalActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.RecommendActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.MGListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.SecurityActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.CloseAccountActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ChangePhoneActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.AddressActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.AddPlaceActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.InfoActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.SettingActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.DailyTaskActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.UserAttentionActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.UserFansActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.UserDetailActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.AuthorDetailActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.BindShareActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.ContinuousSignActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.MessageActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.LevelActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.MessageColActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.PushRecommendActivity"
+            android:label=""
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activity.SingleWebActivity"
+            android:launchMode="singleTask" /> <!-- 单个网页 -->
+        <activity
+            android:name=".activity.ImageActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".util.glide.PhotosWall"
+            android:launchMode="singleTask" /> <!-- 相册测试 基本上没用 -->
+        <meta-data
+            android:name="design_width"
+            android:value="720" />
+        <meta-data
+            android:name="design_height"
+            android:value="1280" /> <!-- 防止被小米华为清理 -->
+        <!--        <activity-->
+        <!--            android:name=".push.MipushTestActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:launchMode="singleTask" />-->
+
+        <!-- 微博 -->
+
+        <activity
+            android:name="com.umeng.socialize.media.WBShareCallBackActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:exported="false">
+
+        <!-- 微信 -->
+
+        </activity>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- qq -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent1106013937" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.ws3dm.app.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:exported">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+
+        <!-- 以下为基本配置信息，需要自行添加至您的AndroidManifest文件中 start-->
+        <service
+            android:name="com.taobao.accs.ChannelService"
+            android:exported="true"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.SERVICE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.ELECTION" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.taobao.accs.data.MsgDistributeService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.taobao.accs.EventReceiver"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.taobao.accs.ServiceReceiver"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.COMMAND" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.START_FROM_AGOO" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.taobao.accs.internal.AccsJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:process=":channel"/>
+
+        <service
+            android:name="com.taobao.accs.ChannelService$KernelService"
+            android:process=":channel" />
+
+        <service
+            android:name="org.android.agoo.accs.AgooService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.taobao.accs.intent.action.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.umeng.message.UmengIntentService"
+            android:exported="true"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.umeng.message.XiaomiIntentService"
+            android:exported="true"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.taobao.agoo.AgooCommondReceiver"
+            android:exported="true"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="${applicationId}.intent.action.COMMAND" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.umeng.message.UmengMessageIntentReceiverService"
+            android:exported="true"
+            android:process=":channel">
+            <intent-filter>
+                <action android:name="org.android.agoo.client.MessageReceiverService" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.umeng.message.NotificationProxyBroadcastReceiver"
+            android:exported="false" />
+
+        <service
+            android:name="com.umeng.message.UmengMessageCallbackHandlerService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.umeng.messge.registercallback.action" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.umeng.message.enablecallback.action" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.umeng.message.disablecallback.action" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.umeng.message.message.handler.action" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.umeng.message.message.sendmessage.action" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.umeng.message.UmengDownloadResourceService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false" />
+
+        <provider
+            android:name="com.umeng.message.provider.MessageProvider"
+            android:authorities="${applicationId}.umeng.message"
+            android:exported="false">
+            <grant-uri-permission android:pathPattern=".*" />
+        </provider>
+        <!-- 以下为基本配置信息，需要自行添加至您的AndroidManifest文件中 end-->
+    </application>
+
+</manifest>

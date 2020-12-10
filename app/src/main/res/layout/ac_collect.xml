@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.CollectActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_light"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:id="@+id/rlHead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="?attr/bg_title">
+
+            <LinearLayout
+                android:id="@+id/imgReturn"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:onClick="@{handler.clickHandler}"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/img_return"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="收藏"
+                android:textColor="?attr/txt_search"
+                android:textSize="17sp"/>
+        </RelativeLayout>
+
+        <com.ws3dm.app.theme.ColorRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/view_top"
+            android:background="?attr/bg_bar">
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/mTabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                app:tabIndicatorHeight="2dp"
+                app:tabMinWidth="55dp"
+                app:tabMode="scrollable"
+                app:tabPaddingEnd="0dp"
+                app:tabPaddingStart="0dp"
+                app:tabIndicatorColor="@color/red_e8"
+                app:tabSelectedTextColor="@color/red_e8"
+                app:tabTextAppearance="@style/TabLayoutTextStyle"
+                app:tabTextColor="?attr/txt_bar" />
+        </com.ws3dm.app.theme.ColorRelativeLayout>
+
+        <com.ws3dm.app.theme.ColorTextView
+            android:id="@+id/txtLine"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="?attr/bg_line"/>
+
+        <com.ws3dm.app.theme.ColorTextView
+            android:id="@+id/tv_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="?attr/bg_line"/>
+
+        <com.ws3dm.app.view.NoScrollViewPager
+            android:id="@+id/mViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_line"/>
+    </LinearLayout>
+</layout>

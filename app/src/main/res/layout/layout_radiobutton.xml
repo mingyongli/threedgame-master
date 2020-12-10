@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioButton xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:button="@null"
+             android:paddingLeft="@dimen/element_margin_7"
+             android:paddingRight="@dimen/element_margin_7"
+             android:paddingTop="@dimen/element_margin_4"
+             android:paddingBottom="@dimen/element_margin_2"
+             android:gravity="center"
+             android:text="看看技术的"
+             android:textColor="@drawable/bg_txt_checked"
+             android:textSize="@dimen/text_size_16"/>
+    <!--android:background="@drawable/btn_trans2white_checked"-->

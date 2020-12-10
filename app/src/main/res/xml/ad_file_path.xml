@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-path name="gdt_sdk_download_path" path="GDTDOWNLOAD" />
+    <files-path    name="ad" path = "ad/apk/DownLoadAPP" />
+    <external-path name="ad" path = "ad/apk/DownLoadAPP" />
+</paths>

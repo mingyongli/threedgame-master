@@ -1,0 +1,75 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.fragment.FragmentGonglueMix"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        >
+        <RelativeLayout
+            android:id="@+id/ll_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white_e7"/>
+            <TextView
+                android:id="@+id/tv_all"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="查看全部攻略"
+                android:layout_marginRight="@dimen/element_margin_35"
+                android:layout_marginLeft="@dimen/element_margin_35"
+                android:layout_marginTop="@dimen/element_margin_5"
+                android:layout_marginBottom="@dimen/element_margin_5"
+                android:textColor="@color/black_55"
+                android:background="@color/gray_light"
+                android:textSize="12sp"/>
+        </RelativeLayout>
+        
+        <com.jcodecraeer.xrecyclerview.XRecyclerView
+            android:id="@+id/recyclerview"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/ll_bottom"/>
+
+        <View
+            android:id="@+id/view_shade"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/ll_bottom"
+            android:visibility="gone"
+            android:background="@color/transparent_thirty_percent"/>
+
+        <TextView
+            android:id="@+id/tv_nodate"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:text="没有相关数据！"/>
+
+        <ImageView
+            android:id="@+id/img_search"
+            android:layout_width="@dimen/element_margin_35"
+            android:layout_height="@dimen/element_margin_35"
+            android:src="@drawable/img_gl_search"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/element_margin_60"/>
+    </RelativeLayout>
+</layout>
+

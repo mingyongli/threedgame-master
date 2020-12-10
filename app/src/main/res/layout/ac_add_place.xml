@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.AddPlaceActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/bg_content">
+
+            <RelativeLayout
+                android:id="@+id/rlHead"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="?attr/bg_title">
+
+                <LinearLayout
+                    android:id="@+id/imgReturn"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:onClick="@{handler.clickHandler}"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/img_return"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="新增"
+                    android:textColor="?attr/txt_search"
+                    android:textSize="17sp"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/llContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlHead"
+                android:layout_toEndOf="@+id/loadView"
+                android:layout_toRightOf="@+id/loadView"
+                android:background="?attr/bg_content"
+                android:orientation="vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/element_margin_7"
+                    android:layout_marginLeft="@dimen/element_margin_5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/element_margin_3"
+                        android:paddingLeft="@dimen/element_margin_5"
+                        android:gravity="center"
+                        android:text="地址备注："
+                        android:textColor="@color/gray_text"
+                        android:textSize="@dimen/text_size_14"/>
+
+                    <EditText
+                        android:id="@+id/tv_address_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:gravity="start"
+                        android:hint="请输入地址备注名称(选填)"
+                        android:cursorVisible="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:textCursorDrawable="@null"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="@dimen/element_margin_5"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white_e7" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/element_margin_7"
+                    android:layout_marginLeft="@dimen/element_margin_5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/element_margin_3"
+                        android:paddingLeft="@dimen/element_margin_5"
+                        android:gravity="center"
+                        android:text="收货人："
+                        android:textColor="@color/gray_text"
+                        android:textSize="@dimen/text_size_14"/>
+
+                    <EditText
+                        android:id="@+id/tv_concat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:gravity="start"
+                        android:layout_marginLeft="@dimen/element_margin_15"
+                        android:hint="请输入收货人姓名"
+                        android:cursorVisible="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:textCursorDrawable="@null"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="@dimen/element_margin_5"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white_e7" />
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/element_margin_7"
+                    android:layout_marginLeft="@dimen/element_margin_5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/element_margin_3"
+                        android:paddingLeft="@dimen/element_margin_5"
+                        android:gravity="center"
+                        android:text="手机号："
+                        android:textColor="@color/gray_text"
+                        android:textSize="@dimen/text_size_14"/>
+
+                    <EditText
+                        android:id="@+id/tv_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:gravity="start"
+                        android:layout_marginLeft="@dimen/element_margin_15"
+                        android:hint="请输入收货人手机号"
+                        android:cursorVisible="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:textCursorDrawable="@null"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="@dimen/element_margin_5"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white_e7" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/element_margin_5"
+                    android:layout_marginTop="@dimen/element_margin_7"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/element_margin_3"
+                        android:paddingLeft="@dimen/element_margin_5"
+                        android:gravity="center"
+                        android:text="所在地区："
+                        android:textColor="@color/gray_text"
+                        android:textSize="@dimen/text_size_14"/>
+
+                    <!--<com.ws3dm.app.theme.ColorEditText
+                        android:id="@+id/et_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:gravity="start"
+                        android:hint="填入您的地址！"
+                        android:cursorVisible="true"
+                        android:textCursorDrawable="@null"
+                        android:textColor="@color/gray_text"
+                        android:textSize="@dimen/text_size_14" />-->
+
+                    <com.ws3dm.app.theme.ColorTextView
+                        android:id="@+id/btn_select_area"
+                        android:text="请选择"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/element_margin_2"
+                        android:textColor="@color/white_9c"
+                        android:onClick="@{handler.clickHandler}"
+                        android:textSize="@dimen/text_size_14"/>
+                    
+                    <TextView
+                        android:id="@+id/tv_place"
+                        android:layout_width="0dp"
+                        android:onClick="@{handler.clickHandler}"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:id="@+id/iv_sec"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:onClick="@{handler.clickHandler}"
+                        android:src="@drawable/next" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="@dimen/element_margin_5"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white_e7" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/element_margin_5"
+                    android:layout_marginTop="@dimen/element_margin_7"
+                    android:orientation="horizontal">
+                    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/element_margin_3"
+                        android:paddingLeft="@dimen/element_margin_5"
+                        android:gravity="center"
+                        android:text="详细地址："
+                        android:textColor="@color/gray_text"
+                        android:textSize="@dimen/text_size_14"/>
+
+                    <EditText
+                        android:id="@+id/tv_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/element_margin_60"
+                        android:layout_gravity="center_vertical"
+                        android:maxLines="5"
+                        android:background="@color/white"
+                        android:padding="@dimen/element_margin_3"
+                        android:gravity="start"
+                        android:hint="请输入市区街道小区门牌等详细地址"
+                        android:cursorVisible="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:textCursorDrawable="@null"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="@dimen/element_margin_5"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white_e7" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/element_margin_7"
+                    android:layout_marginLeft="@dimen/element_margin_5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/element_margin_3"
+                        android:paddingLeft="@dimen/element_margin_5"
+                        android:gravity="center"
+                        android:text="邮政编码："
+                        android:textColor="@color/gray_text"
+                        android:textSize="@dimen/text_size_14"/>
+
+                    <EditText
+                        android:id="@+id/tv_postal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:gravity="start"
+                        android:hint="请输入邮政编码（选填）"
+                        android:cursorVisible="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:textCursorDrawable="@null"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="@dimen/element_margin_5"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white_e7" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/element_margin_7"
+                    android:layout_marginLeft="@dimen/element_margin_7"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/element_margin_3"
+                        android:paddingLeft="@dimen/element_margin_5"
+                        android:gravity="center"
+                        android:text="Stream好友连接："
+                        android:textColor="@color/gray_text"
+                        android:textSize="@dimen/text_size_14"/>
+
+                    <EditText
+                        android:id="@+id/tv_steam"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:gravity="start"
+                        android:hint="请输入Stream好友连接（选填）"
+                        android:cursorVisible="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:textCursorDrawable="@null"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+            </LinearLayout>
+            
+            <TextView
+                android:id="@+id/tv_submit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:onClick="@{handler.clickHandler}"
+                android:background="@drawable/bg_roundrect_fillred"
+                android:gravity="center"
+                android:layout_margin="@dimen/element_margin_45"
+                android:text="保存"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:layout_below="@+id/llContent"/>
+
+            <RelativeLayout
+                android:id="@+id/loadView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.6"
+                android:background="#000000"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:id="@+id/mProgressBar"
+                    style="?android:progressBarStyle"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/mProgressBar"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="正在登录..."
+                    android:textColor="@color/white"
+                    android:textSize="14sp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,111 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.fragment.FragmentNewsComment"/>
+    </data>
+
+    <com.ws3dm.app.view.IMMListenerRelativeLayout
+                    android:id="@+id/rlAllComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/bg_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/rlNoNet"
+            android:layout_toRightOf="@+id/rlNoNet"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <com.jcodecraeer.xrecyclerview.XRecyclerView
+                    android:id="@+id/mRecycleView"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/rlHead"/>
+
+                <TextView
+                    android:id="@+id/txtNoComment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_horizontal"
+                    android:text="没有评论内容"
+                    android:textColor="?attr/txt_content"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txtInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.35"
+                    android:background="#000000"
+                    android:orientation="vertical"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/imgLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="9dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/line_bottom" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/llInPut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/bg_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/etComment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="7dp"
+                    android:minHeight="27dp"
+                    android:maxLines="5"
+                    android:layout_toLeftOf="@+id/llComment"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_comment"
+                    android:gravity="center_vertical"
+                    android:hint="说点什么..."
+                    android:textColor="?attr/txt_content"
+                    android:textColorHint="?attr/txt_content"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtSend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:text="发送"
+                        android:textColor="@color/white_9c"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </com.ws3dm.app.view.IMMListenerRelativeLayout>
+</layout>

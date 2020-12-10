@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/notification"
+        android:icon="@drawable/notification"
+        android:title="通知"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/search"
+        android:iconTint="#E87E7E7E"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="搜索"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/setting"
+        android:title="设置"
+        app:showAsAction="always" />
+</menu>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/bg_card"
+                                    android:layout_width="120dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="3dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="3dp"
+                                    app:contentPadding="@dimen/element_margin_5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_head"
+            android:layout_width="@dimen/element_margin_80"
+            android:layout_height="@dimen/element_margin_80"
+            android:scaleType="fitXY"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/img_more"
+            android:layout_width="@dimen/element_margin_80"
+            android:layout_height="120dp"
+            android:scaleType="centerInside"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/next"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/element_margin_7"
+            android:layout_marginTop="@dimen/element_margin_7"
+            android:gravity="center"
+            android:layout_below="@+id/img_head"
+            android:text="作者"
+            android:textColor="@color/black_2a"/>
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:layout_below="@+id/tv_name"
+            android:textSize="@dimen/text_size_10"
+            android:singleLine="true"
+            />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/element_margin_115"
+                android:background="@drawable/itembg_dwon"
+                android:orientation="vertical">
+
+    <Button
+        android:id="@+id/bt_handle"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/element_margin_25"
+        android:background="@drawable/bg_roundrect_fillgreen2"
+        android:textColor="@color/green_text_light"
+        android:textSize="@dimen/text_size_10"
+        android:text="开始"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:text="测试"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/bt_handle"
+        android:layout_toRightOf="@+id/img_game"
+        android:layout_marginLeft="@dimen/element_margin_10"
+        android:layout_marginTop="@dimen/element_margin_20"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_16"/>
+    <!-- 下载状态 -->
+    <TextView
+        android:id="@+id/tv_state"
+        android:text="准备中"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_12"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginTop="@dimen/element_margin_9"
+        android:layout_alignLeft="@+id/tv_name"/>
+    <!-- 下载开始时间 -->
+    <TextView
+        android:id="@+id/tv_down_start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/tv_state"
+        android:gravity="left"
+        android:visibility="gone"
+        />
+    <!-- 完成时间 -->
+    <TextView
+        android:id="@+id/tv_down_finish_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/tv_down_start_time"
+        android:gravity="left"
+        android:visibility="gone"
+        />
+
+    <ProgressBar
+        android:id="@+id/prb_down"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_height="@dimen/element_margin_15"
+        android:secondaryProgress="100"
+        android:progressDrawable="@drawable/progressbar_down"
+        android:layout_below="@+id/bt_handle"
+        android:layout_marginTop="@dimen/element_margin_3"
+        android:layout_alignLeft="@+id/tv_state"
+        android:layout_alignStart="@+id/tv_state"/>
+
+    <!-- 下载大小 -->
+    <TextView
+        android:id="@+id/tv_down_length"
+        android:text="25M/75M"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_10"
+        android:layout_alignTop="@+id/prb_down"
+        android:layout_alignLeft="@+id/prb_down"
+        android:layout_alignStart="@+id/prb_down"
+        android:layout_alignRight="@+id/prb_down"
+        android:layout_alignEnd="@+id/prb_down"
+        android:layout_alignBottom="@+id/prb_down"
+        />
+
+    <ImageView
+        android:id="@+id/img_game"
+        android:layout_width="@dimen/element_margin_70"
+        android:layout_height="@dimen/element_margin_70"
+        android:layout_marginLeft="28dp"
+        android:scaleType="centerCrop"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/tv_down_start_time"
+        android:layout_toEndOf="@+id/tv_down_start_time"
+        android:layout_marginStart="28dp"/>
+
+    <ImageView
+        android:id="@+id/img_down_del"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/click_bad_red"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="14dp"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/element_margin_5"
+       />
+</RelativeLayout>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width1" format="dimension"/>
+        <attr name="border_color1" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="MultiShapeView">
+        <attr name="shape" format="enum">
+            <enum name="rect" value="1"/>
+            <enum name="circle" value="2"/>
+        </attr>
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+        <attr name="clickable" format="boolean"/>
+        <attr name="cover_color" format="color"/>
+        <attr name="round_radius" format="dimension"/>
+    </declare-styleable>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference"/>
+        <attr name="metaButtonBarButtonStyle" format="reference"/>
+    </declare-styleable>
+
+    <!--夜间模式-->
+    <attr name="txt_bar" format="reference|color" />
+    <attr name="txt_title" format="reference|color" />
+    <attr name="txt_banner" format="reference|color" />
+    <attr name="txt_search" format="reference|color" />
+    <attr name="txt_content" format="reference|color" />
+
+    <attr name="bg_app" format="reference|color" />
+    <attr name="bg_bar" format="reference|color" />
+    <attr name="bg_line" format="reference|color" />
+    <attr name="bg_more" format="reference|color" />
+    <attr name="bg_title" format="reference|color" />
+    <attr name="bg_search" format="reference|color" />
+    <attr name="bg_content" format="reference|color" />
+    <attr name="bg_comment" format="reference|color" />
+    <attr name="bg_progress" format="reference|color" />
+
+    <!--拖动控件-->
+    <declare-styleable name="DragDropGirdView">
+        <attr name="fixed_type" format="boolean" />
+        <attr name="anim_duration" format="integer" />
+    </declare-styleable>
+
+    <!--滑动控件-->
+    <declare-styleable name="StickNavLayout">
+        <!--默认是否悬停tab-->
+        <attr name="isStickNav" format="boolean" />
+        <!--距离悬浮的位置-->
+        <attr name="stickOffset" format="dimension" />
+    </declare-styleable>
+
+    <attr name="text" format="string" />
+    <attr name="text_size" format="dimension" />
+    <attr name="text_origin_color" format="color|reference" />
+    <attr name="text_change_color" format="color|reference" />
+    <attr name="progress" format="float" />
+    <attr name="direction">
+        <enum name="left" value="0" />
+        <enum name="right" value="1" />
+        <enum name="top" value="2" />
+        <enum name="bottom" value="3" />
+    </attr>
+
+    <declare-styleable name="DragTopLayout">
+        <!--Set the collapse panel offset-->
+        <attr name="dtlCollapseOffset" format="dimension"/>
+        <!--Set enable drag over.The default value is true.-->
+        <attr name="dtlOverDrag" format="boolean"/>
+        <!--Open the top view after the drag layout is created. The default value is false.-->
+        <attr name="dtlOpen" format="boolean"/>
+        <!-- The id of the top view (which will be dragged) -->
+        <attr name="dtlTopView" format="reference" />
+        <!-- The content view which will be dragged together with "dtlTopView" -->
+        <attr name="dtlDragContentView" format="reference" />
+        <!-- True the top view can be dragged -->
+        <attr name="dtlCaptureTop" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleProgress">
+        <attr name="circleStrokeWidth" format="dimension" />
+        <attr name="roundColor" format="color" />
+        <attr name="roundProgressColor" format="color" />
+        <attr name="valueText" format="string" />
+        <attr name="valueTextColor" format="color" />
+        <attr name="valueTextSize" format="dimension" />
+        <attr name="despText" format="string" />
+        <attr name="despTextColor" format="color" />
+        <attr name="despTextSize" format="dimension" />
+        <attr name="valueTextIsDisplayable" format="boolean" />
+        <attr name="despTextIsDisplayable" format="boolean" />
+        <attr name="style">
+            <enum name="STROKE" value="0" />
+            <enum name="FILL" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="RoundCornerProgressBar">
+        <attr name="round_corner_width" format="dimension" />
+        <attr name="round_corner_background_color" format="color"/>
+        <attr name="round_corner_progress_color" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="EnterAnimLayout">
+        <attr name="isVisibleAtFirst" format="boolean"/>
+    </declare-styleable>
+
+    <!--CoverFlowView-->
+    <declare-styleable name="ImageCoverFlowView">
+        <attr name="visibleImage" format="integer"/>
+        <attr name="reflectionHeight" format="fraction"/>
+        <attr name="reflectionGap" format="dimension"/>
+        <attr name="reflectionShaderEnable" format="boolean"/>
+        <attr name="topImageClickEnable" format="boolean"/>
+        <attr name="coverflowGravity" format="enum">
+            <enum name="top" value="0"/>
+            <enum name="bottom" value="1"/>
+            <enum name="center_vertical" value="2"/>
+        </attr>
+        <attr name="coverflowLayoutMode" format="enum">
+            <enum name="match_parent" value="0"/>
+            <enum name="wrap_content" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="riv_corner_radius" format="dimension" />
+        <attr name="riv_corner_radius_top_left" format="dimension" />
+        <attr name="riv_corner_radius_top_right" format="dimension" />
+        <attr name="riv_corner_radius_bottom_left" format="dimension" />
+        <attr name="riv_corner_radius_bottom_right" format="dimension" />
+        <attr name="riv_border_width" format="dimension" />
+        <attr name="riv_border_color" format="color" />
+        <attr name="riv_mutate_background" format="boolean" />
+        <attr name="riv_oval" format="boolean" />
+        <attr name="android:scaleType" />
+        <attr name="riv_tile_mode">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="riv_tile_mode_x">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+        <attr name="riv_tile_mode_y">
+            <enum name="clamp" value="0" />
+            <enum name="repeat" value="1" />
+            <enum name="mirror" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

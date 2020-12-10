@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="7dp"
+                                    android:layout_marginLeft="7dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="2dp"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="3dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_head"
+            android:layout_width="@dimen/element_margin_40"
+            android:layout_height="@dimen/element_margin_40"
+            android:layout_margin="@dimen/element_margin_15"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@color/black_2a"
+            android:layout_toRightOf="@+id/img_head"
+            android:layout_marginTop="@dimen/element_margin_15"
+            android:text="DQueen"/>
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/img_head"
+            android:layout_marginTop="@dimen/element_margin_5"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_below="@+id/tv_name"
+            android:text="作者简介"/>
+
+        <View
+            android:id="@+id/line_author"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginRight="@dimen/element_margin_15"
+            android:layout_marginLeft="@dimen/element_margin_15"
+            android:background="@color/white_e7"
+            android:layout_below="@+id/img_head"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="12.5dp"
+            android:paddingLeft="@dimen/element_margin_10"
+            android:paddingRight="@dimen/element_margin_10"
+            android:paddingTop="12.5dp"
+            android:layout_below="@+id/line_author"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/img_news"
+                android:layout_width="@dimen/element_margin_115"
+                android:layout_height="85dp"
+                android:padding="@dimen/element_margin_1"
+                android:scaleType="fitXY"
+                android:layout_marginRight="@dimen/element_margin_5"
+                android:src="@color/grey"/>
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:lineSpacingExtra="3dp"
+                android:layout_toRightOf="@+id/img_news"
+                android:textColor="@color/black_2a"
+                android:textSize="@dimen/text_size_14"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@+id/img_news"
+                android:layout_alignBottom="@+id/img_news"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:text="20：45"
+                    android:textSize="@dimen/text_size_12"/>
+
+                <ImageView
+                    android:id="@+id/imgComment"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_news_msg"/>
+
+                <TextView
+                    android:id="@+id/txtComment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="0"
+                    android:paddingBottom="@dimen/element_margin_1"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

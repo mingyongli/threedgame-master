@@ -1,0 +1,106 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_theme</item>
+        <item name="colorPrimaryDark">@color/color_theme</item>
+        <item name="colorAccent">@color/color_theme</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+    </style>
+
+    <style name="steamTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#1F2A38</item>
+        <item name="colorPrimaryDark">#1F2A38</item>
+        <item name="colorAccent">#1F2A38</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:statusBarColor">#1F2A38</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+    </style>
+    <!-- 加载动画样式 -->
+    <style name="progressDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">@dimen/text_size_18</item>
+    </style>
+
+    <!-- 日间主题 -->
+    <style name="DayTheme" parent="AppTheme">
+        <item name="txt_bar">@color/black_55</item>
+        <item name="txt_title">@color/black_55</item>
+        <item name="txt_banner">@color/white_ff</item>
+        <item name="txt_search">@color/white_ff</item>
+        <item name="txt_content">@color/white_9c</item>
+
+        <item name="bg_app">@color/white_f3</item>
+        <item name="bg_bar">@color/white_ff</item>
+        <item name="bg_title">@color/color_theme</item>
+        <item name="bg_more">@color/white_e7</item>
+        <item name="bg_line">@color/white_e7</item>
+        <item name="bg_search">@color/white_ff</item>
+        <item name="bg_progress">@color/red_ab</item>
+        <item name="bg_content">@color/white_ff</item>
+        <item name="bg_comment">#dedede</item>
+    </style>
+
+    <!-- 夜间主题 -->
+    <style name="NightTheme" parent="AppTheme">
+        <item name="txt_bar">@color/black_55</item>
+        <item name="txt_title">@color/white_9c</item>
+        <item name="txt_banner">@color/white_9c</item>
+        <item name="txt_search">@color/white_d7</item>
+        <item name="txt_content">@color/black_55</item>
+        <item name="bg_app">@color/black_3a</item>
+        <item name="bg_bar">@color/black_2a</item>
+        <item name="bg_title">@color/red_ab</item>
+        <item name="bg_search">@color/red_aa</item>
+        <item name="bg_more">@color/black_00</item>
+        <item name="bg_line">@color/black_66</item>
+        <item name="bg_progress">@color/red_e8</item>
+        <item name="bg_content">@color/black_2a</item>
+        <item name="bg_comment">#676767</item>
+    </style>
+
+    <!-- 底部弹出窗口 -->
+    <style name="AnimBottom" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
+    </style><!--在Android 4.4之前的版本上运行，直接跟随系统主题-->
+    <style name="TranslucentTheme" parent="AppTheme" />
+
+    <!-- 自定义仿IOS的AlertDialog的样式 -->
+    <style name="AlertDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!-- activity进入退出动画 -->
+    <style name="AnimationActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/in_from_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/out_to_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/in_from_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/out_to_right</item>
+    </style>
+
+    <!-- activity淡入淡出动画  -->
+    <style name="AnimationAlpha" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/pop_exit_anim</item>
+    </style>
+
+
+</resources>

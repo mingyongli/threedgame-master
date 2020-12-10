@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.ChangePhoneActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="?attr/bg_content">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rlHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/color_theme">
+
+                    <LinearLayout
+                        android:id="@+id/imgReturn"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:onClick="@{handler.clickHandler}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
+                            android:layout_marginLeft="15dp"
+                            android:src="@drawable/img_return" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="更换手机号"
+                        android:textColor="@color/white_ff"
+                        android:textSize="17sp" />
+                </RelativeLayout>
+                
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:paddingLeft="@dimen/element_margin_25"
+                    android:text="当前手机号为："/>
+                
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="@dimen/element_margin_25"
+                    android:text="+86 158****6917"/>
+                
+                <TextView
+                    android:id="@+id/label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="@dimen/element_margin_25"
+                    android:text="更换手机号前，请验证原手机号！"/>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/element_margin_20"
+                    android:layout_marginRight="@dimen/element_margin_20"
+                    android:background="@drawable/bg_roundrect_security"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/element_margin_5"
+                        android:text=" +86"/>
+
+                    <View
+                        android:layout_width="@dimen/element_margin_0.5"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray_white"
+                        android:layout_margin="@dimen/element_margin_5"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/et_phonenum"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:hint="请输入新手机号"
+                            android:paddingRight="30dp"
+                            android:textColor="?attr/txt_content"
+                            android:textColorHint="?attr/txt_content"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/element_margin_20"
+                    android:layout_marginRight="@dimen/element_margin_20"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:focusable="true"
+                        android:layout_weight="0.7"
+                        android:background="@drawable/bg_roundrect_security"
+                        android:orientation="horizontal"
+                        android:focusableInTouchMode="true">
+
+                        <EditText
+                            android:id="@+id/et_sms"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:hint="  请输入手机验证码"
+                            android:maxLength="6"
+                            android:phoneNumber="true"
+                            android:textColor="?attr/txt_content"
+                            android:textColorHint="?attr/txt_content"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:focusable="true"
+                        android:layout_weight="0.3"
+                        android:orientation="horizontal"
+                        android:focusableInTouchMode="true">
+
+                        <TextView
+                            android:id="@+id/tv_getsms"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="获取验证码"
+                            android:onClick="@{handler.clickHandler}"
+                            android:textColor="@color/darkblue"
+                            android:gravity="center"
+                            android:layout_marginLeft="@dimen/element_margin_9"
+                            android:background="@drawable/bg_roundrect_security"
+                            android:layout_alignParentRight="true"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                
+                <Button
+                    android:id="@+id/tv_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/element_margin_40"
+                    android:padding="@dimen/element_margin_9"
+                    android:onClick="@{handler.clickHandler}"
+                    android:background="@drawable/bg_roundrect_fillred"
+                    android:layout_marginLeft="@dimen/element_margin_20"
+                    android:layout_marginRight="@dimen/element_margin_20"
+                    android:layout_marginTop="20dp"
+                    android:text="下一步"/>
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/loadView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.6"
+            android:background="#000000"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/mProgressBar"
+                style="?android:progressBarStyle"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mProgressBar"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:text="注册中..."
+                android:textColor="?attr/txt_title"
+                android:textSize="13sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

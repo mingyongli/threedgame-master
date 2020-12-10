@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.OptionActivity"/>
+    </data>
+
+    <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/bg_app">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rlHead"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="?attr/bg_title">
+
+                <LinearLayout
+                    android:id="@+id/imgReturn"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:onClick="@{handler.clickHandler}"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/img_return" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="意见反馈"
+                    android:textColor="?attr/txt_search"
+                    android:textSize="17sp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <RelativeLayout
+                    android:onClick="@{handler.clickHandler}"
+                    android:id="@+id/jianyi"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    
+                    <TextView
+                        android:id="@+id/jianyi_tx"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:textStyle="bold"
+                        android:textColor="#FF4500"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:text="App建议"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+                    
+                    <View
+                        android:id="@+id/jianyi_v"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:background="#FF4500"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:onClick="@{handler.clickHandler}"
+                    android:id="@+id/error"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/cuowu_tx"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:textStyle="bold"
+                        android:textColor="#333333"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:text="错误反馈"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <View
+                        android:id="@+id/cuowu_v"
+                        android:visibility="gone"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:background="#FF4500"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:onClick="@{handler.clickHandler}"
+                    android:id="@+id/qita"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/qita_tx"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:textStyle="bold"
+                        android:textColor="#333333"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:text="其他投诉"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <View
+                        android:id="@+id/qita_v"
+                        android:visibility="gone"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:background="#FF4500"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_opinion_editor"
+                android:hint="请输入标题(必填)"
+                android:visibility="visible"
+                android:lines="1"
+                android:padding="4dp"
+                android:textColor="@color/black_55"
+                android:textColorHint="@color/white_9c"
+                android:textSize="12sp" />
+
+
+
+            <EditText
+                android:id="@+id/etForum"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/shape_opinion_editor"
+                android:hint="论坛用户名"
+                android:lines="1"
+                android:visibility="gone"
+                android:paddingLeft="4dp"
+                android:textColor="@color/black_55"
+                android:textColorHint="@color/white_9c"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/shape_opinion_editor"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="25dp"
+                >
+                <EditText
+                    android:id="@+id/etContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:gravity="top|left"
+                    android:hint="详细内容 (必填)"
+                    android:maxLines="7"
+                    android:padding="4dp"
+                    android:textColor="@color/black_55"
+                    android:textColorHint="@color/white_9c"
+                    android:background="@null"
+                    android:textSize="12sp" />
+
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_opinion_editor"
+                android:hint="留下你的联系方式"
+                android:lines="1"
+                android:visibility="visible"
+                android:paddingLeft="4dp"
+                android:textColor="@color/black_55"
+                android:textColorHint="@color/white_9c"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txtSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_margin="25dp"
+                    android:background="@drawable/bg_roundrect_fillred"
+                    android:gravity="center"
+                    android:text="提交"
+                    android:onClick="@{handler.clickHandler}"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

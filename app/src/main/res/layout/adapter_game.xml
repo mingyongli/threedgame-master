@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/element_margin_5"
+        android:padding="5dp">
+
+        <!--<ImageView
+            android:layout_width="99dp"
+            android:layout_height="127dp"
+            android:src="@drawable/bg_roundrect_white2"
+            android:layout_marginTop="@dimen/element_margin_2"/>-->
+
+        <com.ws3dm.app.view.roundimage.RoundedImageView
+            android:id="@+id/imgCover"
+            android:layout_width="97dp"
+            android:layout_height="125dp"
+            android:scaleType="centerCrop"
+            android:padding="@dimen/element_margin_1"
+            android:layout_marginTop="@dimen/element_margin_2"
+            android:layout_marginLeft="@dimen/element_margin_1"
+            app:riv_corner_radius="5dp"
+            app:riv_border_width="1dp"
+            app:riv_oval="false"
+            app:riv_border_color="@color/grey"
+            />
+
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_margin="@dimen/element_margin_5"
+            android:textStyle="italic|bold"
+            android:background="@drawable/bg_roundrect_fillred_light"
+            android:layout_alignRight="@+id/imgCover"
+            android:layout_alignBottom="@+id/imgCover"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imgCover"
+            android:paddingBottom="@dimen/element_margin_7"
+            android:paddingLeft="@dimen/element_margin_9"
+            android:paddingTop="@dimen/element_margin_7"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="鬼泣5"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="@color/black_2a"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/element_margin_9"
+                android:layout_marginTop="@dimen/element_margin_13"
+                android:ellipsize="end"
+                android:text="类型："
+                android:maxLines="1"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_label"
+                android:layout_width="match_parent"
+                android:layout_height="17dp"
+                android:layout_marginTop="@dimen/element_margin_5"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="平台："
+                    android:maxLines="1"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txt_label1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_roundrect_gray"
+                    android:text="PC"
+                    android:visibility="gone"
+                    android:textSize="10sp"
+                    android:paddingLeft="@dimen/element_margin_5"
+                    android:paddingRight="@dimen/element_margin_5"
+                    android:paddingTop="@dimen/element_margin_1"
+                    android:paddingBottom="@dimen/element_margin_1"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_label2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/bg_roundrect_gray"
+                    android:text="PC"
+                    android:textSize="10sp"
+                    android:visibility="gone"
+                    android:paddingLeft="@dimen/element_margin_5"
+                    android:paddingRight="@dimen/element_margin_5"
+                    android:paddingTop="@dimen/element_margin_1"
+                    android:paddingBottom="@dimen/element_margin_1"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_label3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/bg_roundrect_gray"
+                    android:text="PC"
+                    android:textSize="10sp"
+                    android:visibility="gone"
+                    android:paddingLeft="@dimen/element_margin_5"
+                    android:paddingRight="@dimen/element_margin_5"
+                    android:paddingTop="@dimen/element_margin_1"
+                    android:paddingBottom="@dimen/element_margin_1"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_label4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/bg_roundrect_gray"
+                    android:text="PC"
+                    android:textSize="10sp"
+                    android:visibility="gone"
+                    android:paddingLeft="@dimen/element_margin_5"
+                    android:paddingRight="@dimen/element_margin_5"
+                    android:paddingTop="@dimen/element_margin_1"
+                    android:paddingBottom="@dimen/element_margin_1"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_label5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/bg_roundrect_gray"
+                    android:text="..."
+                    android:textSize="10sp"
+                    android:visibility="gone"
+                    android:paddingTop="@dimen/element_margin_1"
+                    android:paddingBottom="@dimen/element_margin_1"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="@dimen/element_margin_9"
+                android:ellipsize="end"
+                android:text="发售："
+                android:maxLines="1"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:drawablePadding="@dimen/element_margin_9"
+                android:maxLines="1"
+                android:text="标签："
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtLine"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/white_e7"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
+</LinearLayout>

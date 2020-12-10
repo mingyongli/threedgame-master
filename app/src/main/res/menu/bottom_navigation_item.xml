@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/tab0"
+        android:icon="@drawable/good"
+        android:title="推荐"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/tab1"
+        android:icon="@drawable/game"
+        android:title="推荐"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/tab2"
+        android:icon="@drawable/lt"
+        android:title="推荐"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/tab3"
+        android:icon="@drawable/yc2"
+        android:title="推荐"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/tab4"
+        android:icon="@drawable/me"
+        android:title="推荐"
+        app:showAsAction="always" />
+</menu>

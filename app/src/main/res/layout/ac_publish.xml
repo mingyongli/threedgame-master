@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.PublishActivity"/>
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:background="?attr/bg_app"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rlHead"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="?attr/bg_title">
+
+                <LinearLayout
+                    android:id="@+id/imgReturn"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:onClick="@{handler.clickHandler}"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/img_return" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="发新帖"
+                    android:textColor="?attr/txt_search"
+                    android:textSize="17sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/shape_opinion_editor"
+                android:hint="分类-自动获取"
+                android:lines="1"
+                android:paddingLeft="4dp"
+                android:textColor="@color/black_55"
+                android:textColorHint="@color/white_9c"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_label"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="选择标签"
+                android:gravity="center_vertical"
+                android:background="@drawable/shape_opinion_editor"
+                android:lines="1"
+                android:onClick="@{handler.clickHandler}"
+                android:paddingLeft="4dp"
+                android:textColor="@color/black_55"
+                android:textColorHint="@color/white_9c"
+                android:textSize="14sp" />
+            
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_opinion_editor"
+                android:hint="标题"
+                android:lines="1"
+                android:paddingLeft="4dp"
+                android:textColor="@color/black_55"
+                android:textColorHint="@color/white_9c"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/shape_opinion_editor"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                >
+                <EditText
+                    android:id="@+id/etContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp"
+                    android:gravity="top|left"
+                    android:hint="正文内容"
+                    android:maxLines="7"
+                    android:padding="4dp"
+                    android:textColor="@color/black_55"
+                    android:textColorHint="@color/white_9c"
+                    android:background="@null"
+                    android:textSize="14sp" />
+
+                <!--<LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/etContent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="@dimen/element_margin_9"
+                    android:layout_alignParentStart="true">
+    
+                </LinearLayout>-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/etContent"
+                    android:padding="@dimen/m5" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txtSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_margin="30dp"
+                android:background="@drawable/bg_roundrect_fillred"
+                android:gravity="center"
+                android:text="提交"
+                android:onClick="@{handler.clickHandler}"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

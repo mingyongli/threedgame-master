@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 浅红色 -->
+    <color name="red_light">#de2827</color>
+    <!-- 灰色(项目背景) -->
+    <color name="grey_bg">#e8e8e8</color>
+    <!-- 灰色(项目) -->
+    <color name="grey">#c8c7c7</color>
+    <!-- 灰色(文字变色) -->
+    <color name="gray_text">#666666</color>
+    <!-- 灰色(浅灰色) -->
+    <color name="gray_light">#eee</color>
+    <!-- 灰色(浅灰色) -->
+    <color name="gray_white">#FFBBBBBB</color>
+    <!-- 暗红色 -->
+    <color name="red_dark">#ff6666</color>
+    <!-- 灰色(文字变色) -->
+    <color name="gray_text_light">#666</color>
+    <!-- 绿色(文字变色) -->
+    <color name="green_text_light">#26a897</color>
+    <!-- 小标题颜色 -->
+    <color name="title_text">#2d2d2d</color>
+    <!-- 淡红色 -->
+    <color name="red_lights">#ffb2b2</color>
+    <!-- 红色 -->
+    <color name="red">#d02b29</color>
+    <!-- 紫色 -->
+    <color name="purple">#f95ee0</color>
+    <!-- 咖啡色 -->
+    <color name="coffee">#c6966a</color>
+    <!-- 红色2 -->
+    <color name="red_two">#ff4d4d</color>
+    <!-- 绿色 -->
+    <color name="green">#2dbc9a</color>
+    <!-- 黄色 -->
+    <color name="yellow">#ff8e1b</color>
+    <!-- 粉红色 -->
+    <color name="pink">#f069a7</color>
+    <!-- 天蓝色 -->
+    <color name="skyblue">#50B2FF</color>
+    <!-- 暗蓝色 -->
+    <color name="darkblue">#5191d2</color>
+
+    <!-- 布局背景 -->
+    <color name="layout_background">#fff2eeed</color>
+    <!-- 图片背景粉 -->
+    <color name="back_pink">#f47a7e</color>
+
+    <!-- 图片背景红 -->
+    <color name="back_red">#ce2d30</color>
+
+    <!-- 透明色 -->
+    <color name="transparent">#00000000</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <!-- 浅黑色 -->
+    <color name="shallowBlack">#aab0b1</color>
+    <color name="shallowBlack2">#362f51</color>
+    <!-- 亮黑色 -->
+    <color name="lightBlack">#8b939a</color>
+    <!-- 白色 -->
+    <color name="white">#ffffff</color>
+    <!-- 灰色（线条） -->
+    <color name="gray_bg">#F5F5F5</color>
+    <!-- 50%透明 -->
+    <color name="transparent_fifty_percent">#80000000</color>
+    <!-- 30%透明 -->
+    <color name="transparent_thirty_percent">#4d000000</color>
+    <!-- 20%透明 -->
+    <color name="transparent_twenty_percent">#33000000</color>
+    <!-- 10%透明 -->
+    <color name="transparent_ten_percent">#10000000</color>
+    <!-- 10%透明 -->
+    <color name="transparent_ten_percent2">#10ffffff</color>
+    <!-- 50%透明 (白) -->
+    <color name="transparent_fifty_percent_white">#80ffffff</color>
+    <!-- 蓝色 -->
+    <color name="blue">#5fb8ff</color>
+    <!-- 浅蓝色 -->
+    <color name="lightblue">#CEEDFF</color>
+    <!-- 透明白 -->
+    <color name="aawhite">#aaaaaaaa</color>
+
+    <!-- 背景色 -->
+    <color name="back_gray">#E8E8E8</color>
+    <!-- 橘黄色 -->
+    <color name="orange">#ffaa3d</color>
+    <!-- 亮橘黄色 -->
+    <color name="orange_light">#ffcc00</color>
+    <!-- 亮灰色 -->
+    <color name="lightgray">#d3d3d3</color>
+    <color name="province_line_border">#C7C7C7</color>
+
+    <!-- 相册调用 -->
+    <color name="albumback">#E1E0DE</color>
+    <color name="none_color">#00000000</color>
+    <color name="plugin_camera_black">#000000</color>
+
+    <!--主题设置-->
+    <!--字体颜色-->
+    <color name="red_e8">#e8433c</color>
+    <color name="red_ab">#a84a48</color>
+    <color name="white_9c">#9c9c9c</color>
+    <color name="black_55">#555555</color>
+    <!--背景颜色-->
+    <color name="red_aa">#aa524f</color>
+    <color name="black_00">#000000</color>
+    <color name="black_66">#666666</color>
+    <color name="black_2a">#2a2a2a</color>
+    <color name="black_3a">#3a3a3a</color>
+    <color name="white_d7">#d7d7d7</color>
+    <color name="white_e7">#e7e7e7</color>
+    <color name="white_f1">#f1f4fb</color>
+    <color name="white_f8">#f8f8f8</color>
+    <color name="white_f3">#f3f3f3</color>
+    <color name="white_ff">#ffffff</color>
+    <color name="white_99">#999999</color>
+
+    <!--3DMGAME-->
+    <color name="color_theme">#323232</color>
+    <color name="trans">#00000000</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
+    <color name="mygameRank">#3462FA</color>
+    <!--Steam-->
+    <color name="steam_text">#87C6F9</color>
+    <color name="steam_message_text">#7C7C7C</color>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="75dp"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:paddingTop="3dp"
+              android:paddingBottom="@dimen/element_margin_5"
+              android:orientation="vertical">
+    <ImageView
+        android:id="@+id/img_top"
+        android:layout_width="@dimen/element_margin_50"
+        android:layout_height="@dimen/element_margin_50"
+        android:padding="@dimen/element_margin_3"
+        android:scaleType="centerCrop"
+        android:src="@drawable/no_login" />
+    
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="标题"
+        android:textColor="@color/black_2a"
+        />
+</LinearLayout>

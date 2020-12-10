@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.SearchActivity"/>
+    </data>
+
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="@color/color_theme">
+            <LinearLayout
+                android:id="@+id/imgReturn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:onClick="@{handler.clickHandler}"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="11dp"
+                    android:src="@drawable/img_return"/>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="0dp"
+                android:layout_height="27dp"
+                android:layout_weight="1"
+                android:layout_toRightOf="@+id/imgReturn"
+                android:layout_toLeftOf="@+id/txtSearch"
+                android:background="@drawable/bg_roundrect_white"
+                android:hint="请输入搜索内容"
+                android:layout_centerVertical="true"
+                android:paddingLeft="5dp"
+                android:textColor="?attr/txt_title"
+                android:textColorHint="@color/white_9c"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:textSize="14sp"/>
+
+            <ImageView
+                android:id="@+id/imgClean"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/etSearch"
+                android:layout_centerVertical="true"
+                android:paddingRight="@dimen/element_margin_5"
+                android:onClick="@{handler.clickHandler}"
+                android:src="@drawable/search_explore_search_close"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/txtSearch"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="搜索"
+                android:onClick="@{handler.clickHandler}"
+                android:textColor="@color/white_ff"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/white_e7"/>
+    
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/rl_history"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white_ff">
+
+                <TextView
+                    android:id="@+id/tv_hot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="热门搜索"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="15dp"
+                    android:textColor="@color/black_2a"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <com.ws3dm.app.view.FlowLayout
+                    android:id="@+id/fl_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_hot"
+                    android:paddingBottom="5dp"/>
+                
+                <ImageView
+                    android:id="@+id/img_more"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="8dp"
+                    android:src="@drawable/img_search_down"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/fl_label"/>
+
+                <View
+                    android:id="@+id/line_hot"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:background="@color/white_e7"
+                    android:layout_below="@+id/img_more"/>
+                
+                <TextView
+                    android:id="@+id/tv_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="搜索记录"
+                    android:gravity="bottom"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="15dp"
+                    android:layout_below="@+id/line_hot"
+                    android:textColor="@color/black_2a"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_del"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    android:text="   清除记录  "
+                    android:layout_below="@+id/line_hot"
+                    android:textSize="12sp"
+                    android:paddingRight="@dimen/element_margin_5"
+                    android:layout_alignParentRight="true"/>
+
+                <com.jcodecraeer.xrecyclerview.XRecyclerView
+                    android:id="@+id/mRecycleView"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_history"/>
+                
+                <TextView
+                    android:id="@+id/tv_nodate"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="没有历史记录"
+                    android:layout_below="@+id/tv_history"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/mTabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    app:tabIndicatorHeight="2dp"
+                    app:tabMinWidth="55dp"
+                    app:tabMode="scrollable"
+                    app:tabPaddingEnd="0dp"
+                    app:tabPaddingStart="0dp"
+                    app:tabIndicatorColor="@color/red_e8"
+                    app:tabSelectedTextColor="@color/red_e8"
+                    app:tabTextAppearance="@style/TabLayoutTextStyle"
+                    app:tabTextColor="?attr/txt_bar" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/mViewPager"
+                    android:layout_below="@+id/mTabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </RelativeLayout>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

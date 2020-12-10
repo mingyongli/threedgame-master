@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/llUpdate"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/transparent_twenty_percent"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_roundrect_white"
+        android:layout_margin="@dimen/element_margin_50"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal|bottom"
+            android:text="礼包信息"
+            android:textColor="@color/black_00"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/id_gift"
+                android:text="卡号：1234545"
+                android:layout_marginTop="@dimen/element_margin_10"
+                android:textSize="@dimen/text_size_14"
+                android:padding="@dimen/element_margin_5"
+                android:gravity="center"
+                android:background="@color/gray_light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="使用方法"
+                android:gravity="center"
+                android:layout_margin="@dimen/element_margin_15"
+                android:textSize="@dimen/text_size_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="进入游戏-主界面-游戏大厅-礼包兑换"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white_e7"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_copy"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="复制卡号"
+                android:layout_marginTop="@dimen/element_margin_5"
+                android:layout_marginBottom="@dimen/element_margin_5"
+                android:textColor="@color/green_text_light"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="取消"
+                android:layout_marginTop="@dimen/element_margin_5"
+                android:layout_marginBottom="@dimen/element_margin_5"
+                android:textColor="@color/gray_text"
+                android:textSize="16sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

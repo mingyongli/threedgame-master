@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="?attr/bg_content"
+              android:orientation="vertical"
+              android:paddingLeft="12dp"
+              android:paddingRight="12dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="15.sadlgkjljk"
+        android:layout_marginTop="@dimen/element_margin_3"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:padding="@dimen/element_margin_4"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/element_margin_25"
+        android:padding="@dimen/element_margin_4"
+        android:text="今天有雨哦！"
+        android:textColor="@color/gray_text"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:id="@+id/llIsShow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/element_margin_9"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:text="2015-02-05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_time"
+            android:layout_marginLeft="@dimen/element_margin_20"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:text="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_msg"
+            android:layout_marginRight="@dimen/element_margin_10"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/grey" />
+</LinearLayout>

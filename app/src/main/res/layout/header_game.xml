@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/rl_top_slide"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                >
+
+    <ImageView
+        android:id="@+id/img_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:background="#4f000000"
+        />
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/news_shape"/>
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/element_margin_10"
+        android:text="3.5"
+        android:textColor="@color/pink"
+        android:textSize="12sp"
+        android:textStyle="italic"/>
+
+    <LinearLayout
+        android:layout_width="75dp"
+        android:layout_height="20dp"
+        android:layout_toLeftOf="@+id/tv_score"
+        android:layout_toStartOf="@+id/tv_score"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/element_margin_7"
+        android:background="@drawable/grey_score">
+
+        <ImageView
+            android:id="@+id/img_score"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/clip"
+            android:contentDescription="@string/app_name"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_stage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/element_margin_5"
+        android:layout_marginLeft="@dimen/element_margin_10"
+        android:text="平台:PC,PSP"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_12"/>
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_stage"
+        android:layout_alignLeft="@+id/tv_stage"
+        android:layout_alignStart="@+id/tv_stage"
+        android:layout_marginBottom="@dimen/element_margin_2"
+        android:text="发售:2017-08-05"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_12"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_time"
+        android:layout_alignLeft="@+id/tv_time"
+        android:layout_alignStart="@+id/tv_time"
+        android:layout_marginBottom="@dimen/element_margin_5"
+        android:text="三国志12：统一战争"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_14"/>
+
+</RelativeLayout>

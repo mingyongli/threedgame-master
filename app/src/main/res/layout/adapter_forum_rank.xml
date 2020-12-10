@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/imgArrayOne"
+            android:layout_width="@dimen/element_margin_115"
+            android:layout_height="@dimen/element_margin_80"
+            android:scaleType="fitXY"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/element_margin_80"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/imgArrayOne"
+            android:padding="@dimen/element_margin_5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:text="分类标题"
+                android:lineSpacingExtra="3dp"
+                android:maxLines="2"
+                android:textSize="@dimen/text_size_14"/>
+
+            <ImageView
+                android:id="@+id/img_collect"
+                android:layout_width="33dp"
+                android:layout_height="31dp"
+                android:src="@drawable/click_collect"
+                android:layout_alignParentBottom="true"
+                android:padding="@dimen/element_margin_5"
+                android:visibility="gone"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+
+            <TextView
+                android:id="@+id/tv_readnum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="今日：3012"
+                android:textSize="@dimen/text_size_12"
+                android:layout_alignParentBottom="true"
+                android:paddingBottom="@dimen/element_margin_7"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtLine"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/white_e7"/>
+</LinearLayout>

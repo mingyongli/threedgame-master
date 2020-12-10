@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:text="PS5发布会汇总：光驱版499刀，新
+《战神》公开！"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="2020-02-02"
+                android:textColor="#5D5D5D" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/news_img"
+            android:layout_width="180dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <View
+        android:background="#EEEEEE"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+</LinearLayout>

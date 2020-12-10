@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/item_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:background="#eeeeee"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:background="#ffffff"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:background="@drawable/no_login"
+            android:layout_marginLeft="12dp"
+            android:layout_gravity="center"
+            android:id="@+id/user_img"
+            android:layout_width="44dp"
+            android:layout_height="44dp"/>
+
+        <LinearLayout
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical"
+            android:paddingBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:gravity="center"
+                    android:text="头铁小王子"
+                    android:textSize="16sp"
+                    android:textColor="#010101"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/type"
+                    android:gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:text="评论"
+                    android:textSize="13sp"
+                    android:textColor="#747474"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/content_type"
+                    android:gravity="center"
+                    android:background="@drawable/bg_hongse"
+                    android:layout_marginLeft="13dp"
+                    android:textSize="12sp"
+                    android:textColor="#A83232"
+                    android:layout_width="44dp"
+                    android:layout_height="20dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_marginTop="12dp"
+                android:text="头铁小王子的快乐生活！"
+                android:textSize="13sp"
+                android:textColor="#747474"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:background="@drawable/bg_gray"
+                android:text="《赛博朋克2077》载具有电台 开车听音乐好惬意..."
+                android:textSize="12sp"
+                android:textColor="#313131"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+            <RelativeLayout
+                android:layout_marginTop="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/time"
+                    android:text="22:55"
+                    android:textSize="12sp"
+                    android:textColor="#313131"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:layout_marginRight="13dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:background="@drawable/goods"
+                        android:layout_width="15dp"
+                        android:layout_height="16dp"/>
+
+                    <TextView
+                        android:id="@+id/good_number"
+                        android:layout_marginLeft="7dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="9999"
+                        android:textSize="12sp"
+                        android:textColor="#313131"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

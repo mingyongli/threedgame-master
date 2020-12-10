@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="7dp"
+                                    android:layout_marginRight="7dp"
+                                    android:layout_marginTop="5dp"
+                                    app:cardCornerRadius="10dp"
+                                    app:cardElevation="3dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="225dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_marginBottom="@dimen/element_margin_5"
+            android:paddingLeft="@dimen/element_margin_7">
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/element_margin_7"
+                android:text="策略游戏"
+                android:textSize="@dimen/text_size_12"/>
+
+            <TextView
+                android:id="@+id/tv_plat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/element_margin_9"
+                android:text="pc、ps4"
+                android:textSize="@dimen/text_size_12"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/img_game"
+            android:paddingBottom="@dimen/element_margin_5"
+            android:paddingLeft="@dimen/element_margin_13"
+            android:paddingTop="@dimen/element_margin_5"
+            android:text="鬼泣5"
+            android:textColor="@color/black_2a"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/img_game"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="fitXY"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

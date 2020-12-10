@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.NewsActivity" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/bg_app">
+
+        <RelativeLayout
+            android:id="@+id/rlHead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="?attr/bg_title">
+
+            <LinearLayout
+                android:id="@+id/imgReturn"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:onClick="@{handler.clickHandler}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/img_return" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/imgChangeTxt"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:onClick="@{handler.clickHandler}">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/click_change_txt" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/imgRefresh"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/imgChangeTxt"
+                android:gravity="center"
+                android:onClick="@{handler.clickHandler}"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/click_refresh" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/news_table"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:tabGravity="center"
+            app:tabIndicatorColor="#FF8F8E93"
+            app:tabIndicatorHeight="6dp"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/white" />
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/mViewPager"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rlHead" />
+
+        <RelativeLayout
+            android:id="@+id/rlChangeTxt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rlHead"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtHide"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.5"
+                android:background="#000"
+                android:onClick="@{handler.clickHandler}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/element_margin_40"
+                android:background="@drawable/bg_roundrect_white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/element_margin_20"
+                android:paddingTop="@dimen/element_margin_30"
+                android:paddingRight="@dimen/element_margin_20">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="字体大小"
+                    android:textColor="@color/black_55"
+                    android:textSize="@dimen/text_size_14" />
+
+                <RelativeLayout
+                    android:id="@+id/rlSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/element_margin_35"
+                    android:layout_marginTop="@dimen/element_margin_15"
+                    android:onClick="@{handler.clickHandler}">
+
+                    <TextView
+                        android:id="@+id/txtSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:text="小"
+                        android:textColor="@color/white_9c"
+                        android:textSize="@dimen/text_size_12" />
+
+                    <ImageView
+                        android:id="@+id/imgSmall"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:src="@drawable/next" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/element_margin_35"
+                    android:layout_marginTop="@dimen/element_margin_15"
+                    android:onClick="@{handler.clickHandler}">
+
+                    <TextView
+                        android:id="@+id/txtNormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:text="中"
+                        android:textColor="@color/white_9c"
+                        android:textSize="@dimen/text_size_12" />
+
+                    <ImageView
+                        android:id="@+id/imgNormal"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:src="@drawable/next" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlBig"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/element_margin_35"
+                    android:layout_marginTop="@dimen/element_margin_15"
+                    android:onClick="@{handler.clickHandler}">
+
+                    <TextView
+                        android:id="@+id/txtBig"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:text="大"
+                        android:textColor="@color/white_9c"
+                        android:textSize="@dimen/text_size_12" />
+
+                    <ImageView
+                        android:id="@+id/imgBig"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:onClick="@{handler.clickHandler}"
+                        android:src="@drawable/next" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txtCancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/element_margin_30"
+                    android:gravity="right"
+                    android:onClick="@{handler.clickHandler}"
+                    android:text="取消"
+                    android:textColor="@color/red_e8"
+                    android:textSize="@dimen/text_size_12" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

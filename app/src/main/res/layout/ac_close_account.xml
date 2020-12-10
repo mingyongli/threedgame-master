@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+        <variable
+            name="handler"
+            type="com.ws3dm.app.activity.CloseAccountActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="?attr/bg_content">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rlHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/color_theme">
+
+                    <LinearLayout
+                        android:id="@+id/imgReturn"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:onClick="@{handler.clickHandler}"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
+                            android:layout_marginLeft="15dp"
+                            android:src="@drawable/img_return" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="注销账号"
+                        android:textColor="@color/white_ff"
+                        android:textSize="17sp" />
+                </RelativeLayout>
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_theme"
+                    android:paddingRight="@dimen/element_margin_20"
+                    android:paddingLeft="@dimen/element_margin_20"
+                    android:paddingBottom="@dimen/element_margin_15">
+                    <TextView
+                        android:id="@+id/tv_label_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="账号注销"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_20"/>
+
+                    <TextView
+                        android:id="@+id/tv_label_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="永久注销，无法恢复，谨慎操作！"
+                        android:layout_below="@id/tv_label_0"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="@dimen/element_margin_7"
+                        android:textSize="@dimen/text_size_14"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/img_close"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:id="@+id/imageView2"/>
+                </RelativeLayout>
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/element_margin_15"
+                    android:paddingRight="@dimen/element_margin_15"
+                    android:visibility="visible">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="| 账号注销后将放弃以下权利："
+                        android:paddingTop="@dimen/element_margin_5"
+                        android:paddingBottom="@dimen/element_margin_2"
+                        android:textColor="@color/black"
+                        android:background="@color/white"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="1、账号信息，身份信息，第三方授权信息将清空且无法恢复。"
+                        android:padding="@dimen/element_margin_5"
+                        android:textColor="@color/black_55"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2、账号使用之后的信息也将清空且无法恢复。"
+                        android:padding="@dimen/element_margin_5"
+                        android:textColor="@color/black_55"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="3、账户积分，账户头衔将清空且无法恢复。"
+                        android:padding="@dimen/element_margin_5"
+                        android:textColor="@color/black_55"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="4、账户地址记录将被清空且无法恢复。"
+                        android:padding="@dimen/element_margin_5"
+                        android:textColor="@color/black_55"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5、账号绑定的手机号和第三方绑定微信、微博将清空绑定信息将自动取消绑定。"
+                        android:padding="@dimen/element_margin_5"
+                        android:textColor="@color/black_55"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="*注销账号之后第三方微信、微博可以再次绑定新的账号信息，手机号将24小时之后可注册绑定 。"
+                        android:padding="@dimen/element_margin_5"
+                        android:textColor="@color/back_pink"/>
+                </LinearLayout>
+                
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="@dimen/element_margin_25"
+                    android:text="当前手机号："/>
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/element_margin_20"
+                    android:layout_marginRight="@dimen/element_margin_20"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:focusable="true"
+                        android:layout_weight="0.7"
+                        android:background="@drawable/bg_roundrect_security"
+                        android:orientation="horizontal"
+                        android:focusableInTouchMode="true">
+
+                        <EditText
+                            android:id="@+id/et_phone_pass"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:hint="  请输入手机验证码"
+                            android:maxLength="6"
+                            android:phoneNumber="true"
+                            android:textColor="?attr/txt_content"
+                            android:textColorHint="?attr/txt_content"
+                            android:textSize="14sp" />
+                        </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:focusable="true"
+                        android:layout_weight="0.3"
+                        android:orientation="horizontal"
+                        android:focusableInTouchMode="true">
+
+                        <TextView
+                            android:id="@+id/tv_getsms"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="获取验证码"
+                            android:onClick="@{handler.clickHandler}"
+                            android:textColor="@color/darkblue"
+                            android:gravity="center"
+                            android:layout_marginLeft="@dimen/element_margin_9"
+                            android:background="@drawable/bg_roundrect_security"
+                            android:layout_alignParentRight="true"/>
+                        </LinearLayout>
+                    
+                </LinearLayout>
+
+                
+                <Button
+                    android:id="@+id/tv_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/element_margin_40"
+                    android:padding="@dimen/element_margin_9"
+                    android:onClick="@{handler.clickHandler}"
+                    android:background="@drawable/bg_roundrect_fillred"
+                    android:layout_marginLeft="@dimen/element_margin_20"
+                    android:layout_marginRight="@dimen/element_margin_20"
+                    android:layout_marginTop="20dp"
+                    android:text="自愿放弃，确定注销！"/>
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/loadView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.6"
+            android:background="#000000"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/mProgressBar"
+                style="?android:progressBarStyle"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mProgressBar"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:text="注册中..."
+                android:textColor="?attr/txt_title"
+                android:textSize="13sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:background="@drawable/selector_view_press"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp">
+
+            <ImageView
+                android:id="@+id/forum_img"
+                android:layout_width="53dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="11dp" />
+
+            <TextView
+                android:id="@+id/forum_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="13dp"
+                android:layout_toRightOf="@id/forum_img"
+                android:text="黑手党:最终版"
+                android:textColor="#626675" />
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/forum_title"
+                android:padding="2dp"
+                android:id="@+id/topicLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:layout_marginStart="11dp"
+                android:background="@drawable/shape_bule_button"
+                android:backgroundTint="#7FB8FF"
+                android:gravity="center"
+                android:text="攻略"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+            <TextView
+                android:gravity="center"
+                android:id="@+id/author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="11dp"
+                android:textColor="#9195A3"
+                android:textSize="10sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/author_img"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="fitXY"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="6dp"
+                android:layout_toStartOf="@id/author_name" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+
+                android:id="@+id/article"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="11dp"
+                android:textSize="14sp"
+                android:text="【3DM攻略站】《黑荆棘角斗场》图文攻略，全技能流派详解（含“系统解析”“上手指南”“流派/技能/属性详解”）。【完结】"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/forum_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#9195A3"
+            android:text="以下内容由【3DM攻略站】上古晨风原创,转载请注明出处。你还可以通过3DM攻略站，来更直观的浏览本篇《黑荆棘角斗场》细分了内容的图文全攻略!"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="23dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/time_icon"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginLeft="6dp"
+                android:src="@mipmap/forum_time" />
+
+            <TextView
+                android:id="@+id/forum_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="#9195A3"
+                android:layout_toRightOf="@id/time_icon"
+                android:gravity="center_vertical"
+                android:text="2020-05-20  21:21:21" />
+
+            <TextView
+                android:textColor="#9195A3"
+                android:id="@+id/forum_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:text="0" />
+
+            <ImageView
+                android:id="@+id/forum_amount_icon"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_toStartOf="@id/forum_amount"
+                android:src="@mipmap/forum_amount" />
+
+            <TextView
+                android:id="@+id/forum_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="#9195A3"
+                android:layout_toLeftOf="@id/forum_amount_icon"
+                android:text="0" />
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_toLeftOf="@id/forum_comments"
+                android:src="@mipmap/forum_commont" />
+        </RelativeLayout>
+        <View
+            android:background="#EFEFF4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+    </LinearLayout>
+</LinearLayout>

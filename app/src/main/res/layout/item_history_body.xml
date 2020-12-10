@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+    android:background="@drawable/selector_view_press"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/element_margin_3"
+        android:weightSum="1">
+        
+        <TextView
+            android:id="@+id/label"
+            android:text="游戏"
+            android:textSize="@dimen/text_size_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/element_margin_9"
+            android:background="@drawable/bg_roundrect_gray"
+            android:gravity="center_vertical"
+            />
+        
+        <TextView
+            android:id="@+id/body_title"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/element_margin_35"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/element_margin_15"
+            android:singleLine="true"
+            android:text="看结果iuitioutgugkugyiuy"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/element_margin_1"
+        android:layout_marginLeft="@dimen/element_margin_15"
+        android:layout_marginRight="@dimen/element_margin_15"
+        android:background="@color/white_d7"/>
+</LinearLayout>
