@@ -76,7 +76,7 @@
                             android:layout_below="@+id/toolbar"
                             tools:ignore="NotSibling">
 
-                            <de.hdodenhof.circleimageview.CircleImageView
+                            <ImageView
                                 android:id="@+id/img_head"
                                 android:layout_width="75dp"
                                 android:layout_height="75dp"

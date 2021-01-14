@@ -22,9 +22,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SectionPageViewModel extends ViewModel implements LifecycleObserver {
-    public MutableLiveData<BaseViewModel.State> state = new MutableLiveData<>();
-    public MutableLiveData<BaseViewModel.State> FollowState = new MutableLiveData<>();
-    public MutableLiveData<PlateListHeadBean.DataBean> headData = new MutableLiveData<>();
+    private MutableLiveData<BaseViewModel.State> state = new MutableLiveData<>();
+    private MutableLiveData<BaseViewModel.State> FollowState = new MutableLiveData<>();
+    private MutableLiveData<PlateListHeadBean.DataBean> headData = new MutableLiveData<>();
+
+    public MutableLiveData<BaseViewModel.State> getState() {
+        return state;
+    }
+
+    public MutableLiveData<BaseViewModel.State> getFollowState() {
+        return FollowState;
+    }
+
+    public MutableLiveData<PlateListHeadBean.DataBean> getHeadData() {
+        return headData;
+    }
 
     public void getPlateListHead(int plateId) {
         String uid = "";
@@ -64,7 +76,7 @@ public class SectionPageViewModel extends ViewModel implements LifecycleObserver
     //关注和取消关注
     public void plateFollow(Context context, int plateId, int type) {
         String uid;
-        if (MyApplication.getUserData() != null) {
+        if (MyApplication.getUserData() != null && MyApplication.getUserData().loginStatue ) {
             uid = MyApplication.getUserData().uid;
         } else {
             ToastUtil.showToast(context, "请登录app");

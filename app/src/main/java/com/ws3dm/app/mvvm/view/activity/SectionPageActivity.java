@@ -104,18 +104,17 @@ public class SectionPageActivity extends BaseActivity {
                 }
             }
         });
-        viewModel.FollowState.observe(this, new Observer<BaseViewModel.State>() {
+        viewModel.getFollowState().observe(this, new Observer<BaseViewModel.State>() {
             @Override
             public void onChanged(BaseViewModel.State state) {
                 if (state == BaseViewModel.State.SUCCESS) {
                     viewModel.getPlateListHead(Integer.parseInt(plateId));
-                    ToastUtil.showToast(mContext, "success");
                 } else {
                     ToastUtil.showToast(mContext, "失败");
                 }
             }
         });
-        viewModel.headData.observe(this, new Observer<PlateListHeadBean.DataBean>() {
+        viewModel.getHeadData().observe(this, new Observer<PlateListHeadBean.DataBean>() {
             @Override
             public void onChanged(PlateListHeadBean.DataBean dataBean) {
                 initView(dataBean);

@@ -20,8 +20,16 @@ import java.util.Map;
 
 public class SectionSearchViewModel extends ViewModel {
     private static final int pageSize = 10;
-    public MutableLiveData<BaseViewModel.State> state = new MutableLiveData<>();
-    public MutableLiveData<List<PlateListSearchBean.DataBean.ListBean>> searchBean = new MutableLiveData<>();
+    private MutableLiveData<BaseViewModel.State> state = new MutableLiveData<>();
+    private MutableLiveData<List<PlateListSearchBean.DataBean.ListBean>> searchBean = new MutableLiveData<>();
+
+    public MutableLiveData<BaseViewModel.State> getState() {
+        return state;
+    }
+
+    public MutableLiveData<List<PlateListSearchBean.DataBean.ListBean>> getSearchBean() {
+        return searchBean;
+    }
 
     public void searchPlate(String plateName, int page) {
         state.postValue(BaseViewModel.State.LOADING);

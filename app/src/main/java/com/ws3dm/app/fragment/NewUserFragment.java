@@ -425,6 +425,6 @@ public class NewUserFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         setLogin();
-        initTable();
+        //initTable();
     }
 }

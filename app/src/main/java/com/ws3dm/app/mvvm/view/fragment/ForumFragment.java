@@ -9,20 +9,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.tabs.TabLayout;
 import com.ws3dm.app.R;
 import com.ws3dm.app.databinding.FragmentForumBinding;
 import com.ws3dm.app.fragment.BaseFragment;
 import com.ws3dm.app.mvvm.adapter.ForumViewPageAdapter;
-import com.ws3dm.app.mvvm.messageEvent.ConstantEvent;
-import com.ws3dm.app.mvvm.messageEvent.MessageEvent;
 import com.ws3dm.app.mvvm.view.activity.SectionSearchActivity;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;

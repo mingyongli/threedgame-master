@@ -84,7 +84,7 @@ public class FollowForumActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
-        viewModel.dataState.observe(this, new Observer<BaseViewModel.State>() {
+        viewModel.getDataState().observe(this, new Observer<BaseViewModel.State>() {
             @Override
             public void onChanged(BaseViewModel.State state) {
                 if (state == ERR) {
@@ -97,7 +97,7 @@ public class FollowForumActivity extends BaseActivity {
                 }
             }
         });
-        viewModel.myFollowData.observe(this, new Observer<List<MyFollowBean.DataBean.FollowPlateBean>>() {
+        viewModel.getMyFollowData().observe(this, new Observer<List<MyFollowBean.DataBean.FollowPlateBean>>() {
             @Override
             public void onChanged(List<MyFollowBean.DataBean.FollowPlateBean> myFollowBeans) {
                 if (page == 1) {

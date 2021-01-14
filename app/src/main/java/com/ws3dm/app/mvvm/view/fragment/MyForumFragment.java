@@ -20,22 +20,18 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ws3dm.app.MyApplication;
 import com.ws3dm.app.R;
-import com.ws3dm.app.adapter.BaseRecyclerAdapter;
+import com.ws3dm.app.activity.BaseActivity;
+import com.ws3dm.app.activity.LoginActivity;
 import com.ws3dm.app.databinding.FgMyForumBinding;
 import com.ws3dm.app.databinding.HeadMyForumBinding;
 import com.ws3dm.app.fragment.BaseFragment;
 import com.ws3dm.app.mvvm.adapter.FocusAdapter;
 import com.ws3dm.app.mvvm.adapter.RecentAdapter;
 import com.ws3dm.app.mvvm.bean.MyIndexBean;
-import com.ws3dm.app.mvvm.messageEvent.MessageEvent;
 import com.ws3dm.app.mvvm.view.activity.FollowForumActivity;
 import com.ws3dm.app.mvvm.view.activity.SectionPageActivity;
 import com.ws3dm.app.mvvm.viewmodel.BaseViewModel;
 import com.ws3dm.app.mvvm.viewmodel.MyForumViewModel;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -66,14 +62,25 @@ public class MyForumFragment extends BaseFragment {
         //判断用户是否登录
         if (MyApplication.getUserData() == null || !MyApplication.getUserData().loginStatue) {
             mBind.prompt.setVisibility(View.VISIBLE);
+            mBind.loginBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(mContext, LoginActivity.class));
+                }
+            });
         } else {
-            mBind.prompt.setVisibility(View.GONE);
-            initView();
-            initData();
-            initListener();
-            mBind.FocusSection.setRefreshing(true);
+            userLogin();
         }
         return mBind.getRoot();
+    }
+
+    private void userLogin() {
+        mBind.prompt.setVisibility(View.GONE);
+        mBind.FocusSection.setVisibility(View.VISIBLE);
+        initView();
+        initData();
+        initListener();
+        mBind.FocusSection.setRefreshing(true);
     }
 
     private void initView() {
@@ -120,40 +127,21 @@ public class MyForumFragment extends BaseFragment {
 
             }
         });
-        viewModel.dataState.observe(this, new Observer<BaseViewModel.State>() {
+        viewModel.getDataState().observe(this, new Observer<BaseViewModel.State>() {
             @Override
             public void onChanged(MyForumViewModel.State recentState) {
                 //不管什么状态都要停止刷新
                 mBind.FocusSection.refreshComplete();
             }
         });
-//        //两个地方判断数据状态
-//        viewModel.lateState.observe(this, new Observer<BaseViewModel.State>() {
-//            @Override
-//            public void onChanged(MyForumViewModel.State recentState) {
-//                if (recentState == MyForumViewModel.State.EMPTY) {
-//                    mBindHead.RecentSection.setVisibility(View.GONE);
-//                    mBindHead.prompt.setVisibility(View.VISIBLE);
-//                } else if (recentState == MyForumViewModel.State.SUCCESS) {
-//                    mBindHead.RecentSection.setVisibility(View.VISIBLE);
-//                    mBindHead.prompt.setVisibility(View.GONE);
-//                }
-//            }
-//        });
-//        viewModel.followState.observe(this, new Observer<BaseViewModel.State>() {
-//            @Override
-//            public void onChanged(MyForumViewModel.State recentState) {
-//
-//            }
-//        });
         //当数据发生改变时
-        viewModel.lateLiveData.observe(this, new Observer<List<MyIndexBean.DataBean.LatelyPlateBean>>() {
+        viewModel.getLateLiveData().observe(this, new Observer<List<MyIndexBean.DataBean.LatelyPlateBean>>() {
             @Override
             public void onChanged(List<MyIndexBean.DataBean.LatelyPlateBean> latelyPlateBeans) {
                 recentAdapter.clearAndAddList(latelyPlateBeans);
             }
         });
-        viewModel.followLiveData.observe(this, new Observer<List<MyIndexBean.DataBean.FollowPlateBean>>() {
+        viewModel.getFollowLiveData().observe(this, new Observer<List<MyIndexBean.DataBean.FollowPlateBean>>() {
             @Override
             public void onChanged(List<MyIndexBean.DataBean.FollowPlateBean> followPlateBeans) {
                 focusAdapter.clearAndAddList(followPlateBeans);
@@ -178,7 +166,6 @@ public class MyForumFragment extends BaseFragment {
             }
         });
     }
-
     @Override
     public void onDestroy() {
         super.onDestroy();

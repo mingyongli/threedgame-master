@@ -1,5 +1,6 @@
 package com.ws3dm.app.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,12 +23,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
 import com.hwangjr.rxbus.thread.EventThread;
+import com.sina.weibo.sdk.utils.LogUtil;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+import com.umeng.commonsdk.statistics.common.DeviceConfig;
+import com.umeng.socialize.ShareAction;
 import com.ws3dm.app.Constant;
 import com.ws3dm.app.MyApplication;
 import com.ws3dm.app.NewUrl;
@@ -36,13 +41,14 @@ import com.ws3dm.app.bean.NewUserInfo;
 import com.ws3dm.app.bean.NewsBean;
 import com.ws3dm.app.bean.UserDataBean;
 import com.ws3dm.app.databinding.AcMainBinding;
+import com.ws3dm.app.fragment.ForumFragment;
 import com.ws3dm.app.fragment.GameFragment;
 import com.ws3dm.app.fragment.NewUserFragment;
 import com.ws3dm.app.fragment.NewsFragment;
 import com.ws3dm.app.fragment.OriginalFragment;
 import com.ws3dm.app.mvp.model.RespBean.VersionRespBean;
 import com.ws3dm.app.mvp.presenter.UserPresenter;
-import com.ws3dm.app.mvvm.view.fragment.ForumFragment;
+
 import com.ws3dm.app.service.JobHandleService;
 import com.ws3dm.app.util.AppUtil;
 import com.ws3dm.app.util.DialogHelper;
@@ -60,6 +66,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -77,8 +84,8 @@ public class MainActivity extends BaseActivity {
     private GameFragment mGameFragment;//游戏
     private OriginalFragment mOriginalFragment;//手游页
     //	private MGFragment mMGFragment;//手游页
-    //private ForumFragment mForumFragment;//论坛
-    private ForumFragment forumFragment;//新版论坛
+    private ForumFragment mForumFragment;//论坛
+    //private ForumFragment forumFragment;//新版论坛
     private NewUserFragment userFragment;
     //    private UserFragment mUserFragment;//用户
     private Fragment mCurrentFragment, mOldFragment;
@@ -105,6 +112,7 @@ public class MainActivity extends BaseActivity {
         getUserData();
         //startService(new Intent(this, LocalService.class));
         //startService(new Intent(this, RemoteService.class));
+
         mBinding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,25 +159,25 @@ public class MainActivity extends BaseActivity {
             }
 
         });
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Intent intent = new Intent();
-            intent.setClass(MainActivity.this, JobHandleService.class);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-               startForegroundService(intent);
-            } else {
-                startService(intent);
-            }
-        } else {
-			//startService(new Intent(this, LocalService.class));
-			//startService(new Intent(this, RemoteService.class));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                //startForegroundService(new Intent(this, LocalService.class));
-                //startForegroundService(new Intent(this, RemoteService.class));
-            } else {
-                //startService(new Intent(this, LocalService.class));
-                //startService(new Intent(this, RemoteService.class));
-            }
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Intent intent = new Intent();
+//            intent.setClass(MainActivity.this, JobHandleService.class);
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//               startForegroundService(intent);
+//            } else {
+//                startService(intent);
+//            }
+//        } else {
+//			//startService(new Intent(this, LocalService.class));
+//			//startService(new Intent(this, RemoteService.class));
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                //startForegroundService(new Intent(this, LocalService.class));
+//                //startForegroundService(new Intent(this, RemoteService.class));
+//            } else {
+//                //startService(new Intent(this, LocalService.class));
+//                //startService(new Intent(this, RemoteService.class));
+//            }
+//        }
 
         mUserPresenter = UserPresenter.getInstance();
         mHandler = new Handler() {
@@ -203,7 +211,17 @@ public class MainActivity extends BaseActivity {
 
         EventBus.getDefault().register(this);
     }
-
+    public static String[] getTestDeviceInfo(Context context){
+        String[] deviceInfo = new String[2];
+        try {
+            if(context != null){
+                deviceInfo[0] = DeviceConfig.getDeviceIdForGeneral(context);
+                deviceInfo[1] = DeviceConfig.getMac(context);
+            }
+        } catch (Exception e){
+        }
+        return deviceInfo;
+    }
     public void UpDateLogic() {
 //		if("1".equals(SharedUtil.getSharedPreferencesData("noUp"))){
 //			return;
@@ -291,7 +309,7 @@ public class MainActivity extends BaseActivity {
         mGameFragment = new GameFragment();
         mOriginalFragment = new OriginalFragment();
 //		mMGFragment = new MGFragment();
-        forumFragment = new ForumFragment();
+        mForumFragment = new ForumFragment();
         //  mUserFragment = new UserFragment();
         userFragment = new NewUserFragment();
         mCurrentFragment = mNewsFragment;
@@ -425,7 +443,7 @@ public class MainActivity extends BaseActivity {
                     mBinding.img2.setBackgroundResource(R.drawable.lt2);
                     break;
                 case R.id.tab_3:
-                    mCurrentFragment = forumFragment;
+                    mCurrentFragment = mForumFragment;
                     mBinding.img3.setBackgroundResource(R.drawable.yc1);
                     break;
                 case R.id.tab_4:
@@ -453,7 +471,7 @@ public class MainActivity extends BaseActivity {
                     mBinding.img2.setBackgroundResource(R.drawable.lt2);
                     break;
                 case R.id.tab_3:
-                    mCurrentFragment = forumFragment;
+                    mCurrentFragment = mForumFragment;
                     mBinding.img3.setBackgroundResource(R.drawable.yc1);
                     break;
                 case R.id.tab_4:
@@ -512,7 +530,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         EventBus.getDefault().unregister(this);
-        stopService(new Intent(this,JobHandleService.class));
+        stopService(new Intent(this, JobHandleService.class));
         super.onDestroy();
     }
 

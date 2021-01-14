@@ -1,6 +1,5 @@
 package com.ws3dm.app.mvp.model.RespBean;
 
-import com.google.gson.annotations.SerializedName;
 import com.ws3dm.app.bean.ForumGidBean;
 
 import java.util.List;

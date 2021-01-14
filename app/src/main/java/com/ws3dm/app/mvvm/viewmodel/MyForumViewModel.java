@@ -25,19 +25,39 @@ import static com.ws3dm.app.mvvm.viewmodel.BaseViewModel.State.SUCCESS;
 
 public class MyForumViewModel extends BaseViewModel implements LifecycleObserver {
 
-    public MutableLiveData<State> dataState = new MutableLiveData<>();
+    private MutableLiveData<State> dataState = new MutableLiveData<>();
     //recycleView的显示状态(有无数据)
-    public MutableLiveData<State> lateState = new MutableLiveData<>();
-    public MutableLiveData<State> followState = new MutableLiveData<>();
+    private MutableLiveData<State> lateState = new MutableLiveData<>();
+    private MutableLiveData<State> followState = new MutableLiveData<>();
     //两个RecycleView的数据
     /**
      * 最近浏览的版块数据
      */
-    public MutableLiveData<List<MyIndexBean.DataBean.LatelyPlateBean>> lateLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<MyIndexBean.DataBean.LatelyPlateBean>> lateLiveData = new MutableLiveData<>();
     /**
      * 关注的版块数据
      */
-    public MutableLiveData<List<MyIndexBean.DataBean.FollowPlateBean>> followLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<MyIndexBean.DataBean.FollowPlateBean>> followLiveData = new MutableLiveData<>();
+
+    public MutableLiveData<State> getDataState() {
+        return dataState;
+    }
+
+    public MutableLiveData<State> getLateState() {
+        return lateState;
+    }
+
+    public MutableLiveData<State> getFollowState() {
+        return followState;
+    }
+
+    public MutableLiveData<List<MyIndexBean.DataBean.LatelyPlateBean>> getLateLiveData() {
+        return lateLiveData;
+    }
+
+    public MutableLiveData<List<MyIndexBean.DataBean.FollowPlateBean>> getFollowLiveData() {
+        return followLiveData;
+    }
 
     /**
      * 获取数据

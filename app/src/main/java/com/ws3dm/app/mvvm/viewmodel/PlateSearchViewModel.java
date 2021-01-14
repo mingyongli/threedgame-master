@@ -20,8 +20,16 @@ import java.util.Map;
 
 public class PlateSearchViewModel extends ViewModel {
     private final int pageSize = 10;
-    public MutableLiveData<BaseViewModel.State> state = new MutableLiveData<>();
-    public MutableLiveData<List<ForumPlateBean.DataBean.ListBean>> plateBean = new MutableLiveData<>();
+    private MutableLiveData<BaseViewModel.State> state = new MutableLiveData<>();
+    private MutableLiveData<List<ForumPlateBean.DataBean.ListBean>> plateBean = new MutableLiveData<>();
+
+    public MutableLiveData<BaseViewModel.State> getState() {
+        return state;
+    }
+
+    public MutableLiveData<List<ForumPlateBean.DataBean.ListBean>> getPlateBean() {
+        return plateBean;
+    }
 
     public void SearchPlate(String PlateId, String PlateName, int Page) {
         String uid = "";

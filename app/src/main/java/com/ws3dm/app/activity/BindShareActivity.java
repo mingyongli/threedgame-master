@@ -305,6 +305,7 @@ public class BindShareActivity extends BaseActivity{
         });
     }
 
+
     public class BindStatus{
         private int code;
         private Data data;

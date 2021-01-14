@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
@@ -134,7 +135,6 @@ public class STEAM_ID_Activity extends BaseActivity {
 
 
     private void initData() {
-        showLoading();
         //获取用户的uuid
         userData = MyApplication.getUserData();
         long time = System.currentTimeMillis();
@@ -217,7 +217,7 @@ public class STEAM_ID_Activity extends BaseActivity {
 
     private void updateView(MySteamInfoBean response) {
         MySteamInfoBean.DataBean data = response.getData();
-        GlideUtil.loadImage(mContext, data.getSt_avatarstr(), mBinding.imgHead);
+        GlideUtil.loadCircleImage(mContext, data.getSt_avatarstr(), mBinding.imgHead);
         mBinding.steamUserName.setText(data.getSt_nickname());
         mBinding.steamGameprice.setText("￥" + data.getGameprice());
         mBinding.steamGamecount.setText(data.getGamecount() + "款");
@@ -226,7 +226,6 @@ public class STEAM_ID_Activity extends BaseActivity {
         mBinding.steamPricepercent.setText(data.getPricepercent() + "%");
         mBinding.steamCountpercent.setText(data.getCountpercent() + "%");
         mBinding.steamHourpercent.setText(data.getHourpercent() + "%");
-        closeLoading();
     }
 
     @Override
@@ -271,4 +270,9 @@ public class STEAM_ID_Activity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Glide.with(getApplicationContext()).pauseRequests();
+    }
 }

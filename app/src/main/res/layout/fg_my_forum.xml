@@ -6,16 +6,35 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <TextView
+        <LinearLayout
             android:id="@+id/prompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="还没有登录"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:visibility="gone" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="还没有登录"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/loginBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_bule_button"
+                android:backgroundTint="@color/black"
+                android:text="点我登陆" />
+
+        </LinearLayout>
+
 
         <com.jcodecraeer.xrecyclerview.XRecyclerView
             android:id="@+id/Focus_section"

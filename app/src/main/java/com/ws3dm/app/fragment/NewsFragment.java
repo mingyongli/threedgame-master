@@ -198,11 +198,6 @@ public class NewsFragment extends BaseFragment {
 
     public void initView(HomeTabsDBBean response) {
         tabs = response.getData();
-        for (int i = 0; i < tabs.size(); i++) {
-            //打印出来服务器上的所有title
-            LogUtils.d(tabs.get(i).getTitle());
-        }
-
         /*Fragment mFragmentNewsHot = new FragmentNewsHot();//热点新闻
         fragments.add(mFragmentNewsHot);
 

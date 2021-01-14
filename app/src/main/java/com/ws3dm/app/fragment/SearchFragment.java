@@ -204,13 +204,13 @@ public class SearchFragment extends BaseFragment {
 						}
 						break;
 					case 4:
-//						intent = new Intent(mContext, ForumPostListActivity.class);
-//						intent.putExtra("title",clickBean.getTitle());
-//						intent.putExtra("fid",clickBean.getFid());
-//						startActivity(intent);
-						intent = new Intent(mContext, SectionPageActivity.class);
-						intent.putExtra("plateId",String.valueOf(clickBean.getFid()));
+						intent = new Intent(mContext, ForumPostListActivity.class);
+						intent.putExtra("title",clickBean.getTitle());
+						intent.putExtra("fid",clickBean.getFid());
 						startActivity(intent);
+//						intent = new Intent(mContext, SectionPageActivity.class);
+//						intent.putExtra("plateId",String.valueOf(clickBean.getFid()));
+//						startActivity(intent);
 						break;
 				}
 			}

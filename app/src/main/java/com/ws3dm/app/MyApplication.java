@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.util.Log;
 
 import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
 
 import com.alibaba.fastjson.JSON;
 import com.umeng.analytics.MobclickAgent;
@@ -27,18 +28,11 @@ import com.ws3dm.app.util.SharedUtil;
 import com.ws3dm.app.util.StringUtil;
 import com.ws3dm.app.util.glide.GlideUtil;
 
-public class MyApplication extends Application {
+public class MyApplication extends MultiDexApplication {
     public static PushAgent mPushAgent;
     private static MyApplication mInstance = null;
     private static UserDataBean mUserDataBean = null;//存储用户信息
     private int num_badge = 0;
-
-
-//    private int NoWifiPic=0;//无wifi不加载图片，0关闭 1开启
-//    private int OnPush=0;//推送开关，0关闭 1开启
-//    private int DelApk=0;//安装后删除安装包，0关闭 1开启
-//    private int FontSize=0;//字体大小，0，小，1中，2大
-
     public static MyApplication getInstance() {
         return mInstance;
     }
@@ -184,14 +178,6 @@ public class MyApplication extends Application {
         super.onLowMemory();
         GlideUtil.GuideClearMemory(this);
         DataCleanManager.cleanInternalCache(this);
-        DataCleanManager.cleanExternalCache(this);
-        System.gc();
     }
 
-    //分包
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        MultiDex.install(base);
-    }
 }

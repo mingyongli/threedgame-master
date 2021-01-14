@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
@@ -48,9 +51,9 @@ public class PSN_ID_Activity extends BaseActivity {
 
     @Override
     protected void init() {
-        Window window=getWindow();
+        Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(Color.TRANSPARENT);
         mBinding = bindView(R.layout.psn_id_layout);
@@ -62,7 +65,7 @@ public class PSN_ID_Activity extends BaseActivity {
     }
 
     private void initView() {
-        GlideUtil.loadImage(mContext,R.drawable.psn_card_bg,mBinding.psnCardBg);
+        GlideUtil.loadImage(mContext, R.drawable.psn_card_bg, mBinding.psnCardBg);
         mBinding.recyclerview.setLayoutManager(new LinearLayoutManager(mContext));
         mBinding.recyclerview.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         mBinding.recyclerview.setLoadingMoreProgressStyle(ProgressStyle.LineSpinFadeLoader);
@@ -204,7 +207,7 @@ public class PSN_ID_Activity extends BaseActivity {
             public void onResponse(MyPsnCardListBean response) {
                 mBinding.recyclerview.refreshComplete();
                 mBinding.recyclerview.loadMoreComplete();
-                if (response.getCode() == 1) {
+                if (response.getCode() == 1 && response.getData().getList().size() != 0) {
                     updateList(response.getData());
                 }
             }
@@ -213,6 +216,25 @@ public class PSN_ID_Activity extends BaseActivity {
 
 
     private void updateCardInfo(MyPsnInfoBean.DataBean data) {
+        GlideUtil.loadCircleImage(mContext, data.getPsn_avatarstr(), mBinding.psnUserImg);
+        if (data.getIsauth() == 1) {
+            //已认证
+            mBinding.toCertification.setVisibility(View.GONE);
+            GlideUtil.loadImage(mContext, R.drawable.psn_certification, mBinding.psnUserCertification);
+        } else {
+            //未认证
+            GlideUtil.loadImage(mContext, R.drawable.psn_uncertification, mBinding.psnUserCertification);
+            mBinding.toCertification.setVisibility(View.VISIBLE);
+            mBinding.toCertification.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, PsnCertification.class);
+                    intent.putExtra("psnid", data.getPsn_nickname());
+                    startActivity(intent);
+                }
+            });
+
+        }
         mBinding.psnUserName.setText(data.getPsn_nickname());
         mBinding.psnPrice.setText(data.getGameprice() + "");
         mBinding.psnCount.setText(data.getGamecount() + "");
@@ -225,25 +247,6 @@ public class PSN_ID_Activity extends BaseActivity {
         mBinding.gold.setText(data.getGold() + "");
         mBinding.copper.setText(data.getBronze() + "");
         mBinding.psnUserLevel.setText(data.getLevel() + "");
-        GlideUtil.loadImage(mContext, data.getPsn_avatarstr(), mBinding.psnUserImg);
-
-        if (data.getIsauth() == 1) {
-            //已认证
-            mBinding.toCertification.setVisibility(View.GONE);
-            GlideUtil.loadImage(mContext, R.drawable.psn_certification, mBinding.psnUserCertification);
-        } else {
-            //未认证
-            mBinding.toCertification.setVisibility(View.VISIBLE);
-            mBinding.toCertification.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(mContext, PsnCertification.class);
-                    intent.putExtra("psnid", data.getPsn_nickname());
-                    startActivity(intent);
-                }
-            });
-            GlideUtil.loadImage(mContext, R.drawable.psn_uncertification, mBinding.psnUserCertification);
-        }
 
     }
 
@@ -265,6 +268,7 @@ public class PSN_ID_Activity extends BaseActivity {
 
         @Override
         public void bindData(RecyclerViewHolder holder, int position, MyPsnCardListBean.DataBean.ListBean item) {
+            GlideUtil.loadImage(mContext, item.getLitpic(), holder.itemView.findViewById(R.id.psn_game_img));
             TextView title = holder.itemView.findViewById(R.id.psn_game_title);
             TextView masonry = holder.itemView.findViewById(R.id.masonry);
             TextView gold = holder.itemView.findViewById(R.id.gold);
@@ -272,8 +276,6 @@ public class PSN_ID_Activity extends BaseActivity {
             TextView copper = holder.itemView.findViewById(R.id.copper);
             TextView achieve = holder.itemView.findViewById(R.id.psn_achieve);
             ProgressBar progressBar = holder.itemView.findViewById(R.id.psn_achieve_progress);
-
-            GlideUtil.loadImage(mContext, item.getLitpic(), holder.itemView.findViewById(R.id.psn_game_img));
             title.setText(item.getTitle());
             masonry.setText(item.getPlatinum() + "");
             gold.setText(item.getGold() + "");

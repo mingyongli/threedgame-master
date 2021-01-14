@@ -22,9 +22,17 @@ import java.util.Map;
 public class ForumFollowViewModel extends BaseViewModel implements LifecycleObserver {
     private static final int pageSize = 10;
     //请求的数据
-    public MutableLiveData<List<MyFollowBean.DataBean.FollowPlateBean>> myFollowData = new MutableLiveData<>();
+    private MutableLiveData<List<MyFollowBean.DataBean.FollowPlateBean>> myFollowData = new MutableLiveData<>();
     //请求时的状态
-    public MutableLiveData<State> dataState = new MutableLiveData<>();
+    private MutableLiveData<State> dataState = new MutableLiveData<>();
+
+    public MutableLiveData<List<MyFollowBean.DataBean.FollowPlateBean>> getMyFollowData() {
+        return myFollowData;
+    }
+
+    public MutableLiveData<State> getDataState() {
+        return dataState;
+    }
 
     public void getFollowList(int page) {
         String uid = MyApplication.getUserData().uid;

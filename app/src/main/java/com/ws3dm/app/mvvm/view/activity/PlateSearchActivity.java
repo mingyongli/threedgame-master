@@ -99,7 +99,7 @@ public class PlateSearchActivity extends BaseActivity {
             }
         });
 
-        viewModel.state.observe(this, new Observer<BaseViewModel.State>() {
+        viewModel.getState().observe(this, new Observer<BaseViewModel.State>() {
             @Override
             public void onChanged(BaseViewModel.State state) {
                 if (state == BaseViewModel.State.LOADING) {
@@ -128,7 +128,7 @@ public class PlateSearchActivity extends BaseActivity {
                 mBind.refreshLayout.finishLoadMore();
             }
         });
-        viewModel.plateBean.observe(this, new Observer<List<ForumPlateBean.DataBean.ListBean>>() {
+        viewModel.getPlateBean().observe(this, new Observer<List<ForumPlateBean.DataBean.ListBean>>() {
             @Override
             public void onChanged(List<ForumPlateBean.DataBean.ListBean> listBeans) {
                 if (page == 1) {

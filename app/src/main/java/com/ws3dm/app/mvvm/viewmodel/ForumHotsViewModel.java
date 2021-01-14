@@ -20,8 +20,16 @@ import java.util.List;
 import java.util.Map;
 
 public class ForumHotsViewModel extends ViewModel implements LifecycleObserver {
-    public MutableLiveData<BaseViewModel.State> state = new MutableLiveData<>();
-    public MutableLiveData<List<PlateContentBean.DataBean.ListBean>> hotListData = new MutableLiveData<>();
+    private MutableLiveData<BaseViewModel.State> state = new MutableLiveData<>();
+    private MutableLiveData<List<PlateContentBean.DataBean.ListBean>> hotListData = new MutableLiveData<>();
+
+    public MutableLiveData<BaseViewModel.State> getState() {
+        return state;
+    }
+
+    public MutableLiveData<List<PlateContentBean.DataBean.ListBean>> getHotListData() {
+        return hotListData;
+    }
 
     public void getHotsList(int page) {
         String uid = "";

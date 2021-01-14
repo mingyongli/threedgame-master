@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,14 +25,8 @@ import com.ws3dm.app.databinding.FgHotForumBinding;
 import com.ws3dm.app.fragment.BaseFragment;
 import com.ws3dm.app.mvvm.adapter.ForumHotAdapter;
 import com.ws3dm.app.mvvm.bean.PlateContentBean;
-import com.ws3dm.app.mvvm.messageEvent.ConstantEvent;
-import com.ws3dm.app.mvvm.messageEvent.MessageEvent;
 import com.ws3dm.app.mvvm.viewmodel.BaseViewModel;
 import com.ws3dm.app.mvvm.viewmodel.ForumHotsViewModel;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -80,14 +73,14 @@ public class ForumHotsFragment extends BaseFragment {
     }
 
     private void initListener() {
-        viewModel.state.observe(this, new Observer<BaseViewModel.State>() {
+        viewModel.getState().observe(this, new Observer<BaseViewModel.State>() {
             @Override
             public void onChanged(BaseViewModel.State state) {
                 mBind.recyclerview.loadMoreComplete();
                 mBind.recyclerview.refreshComplete();
             }
         });
-        viewModel.hotListData.observe(this, new Observer<List<PlateContentBean.DataBean.ListBean>>() {
+        viewModel.getHotListData().observe(this, new Observer<List<PlateContentBean.DataBean.ListBean>>() {
             @Override
             public void onChanged(List<PlateContentBean.DataBean.ListBean> listBeans) {
                 if (page == 1) {

@@ -19,8 +19,16 @@ import java.util.Map;
 
 public class ForumPlateViewModel extends BaseViewModel {
 
-    public MutableLiveData<State> state = new MutableLiveData<>();
-    public MutableLiveData<List<ForumPlateBean.DataBean.ListBean>> plateBean = new MutableLiveData<>();
+    private MutableLiveData<State> state = new MutableLiveData<>();
+    private MutableLiveData<List<ForumPlateBean.DataBean.ListBean>> plateBean = new MutableLiveData<>();
+
+    public MutableLiveData<State> getState() {
+        return state;
+    }
+
+    public MutableLiveData<List<ForumPlateBean.DataBean.ListBean>> getPlateBean() {
+        return plateBean;
+    }
 
     public void getPlateContentList(String plateId, int type, int page) {
         String uid;

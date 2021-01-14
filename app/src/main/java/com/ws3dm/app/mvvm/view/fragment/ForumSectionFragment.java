@@ -23,14 +23,9 @@ import com.ws3dm.app.fragment.BaseFragment;
 import com.ws3dm.app.mvvm.adapter.ForumTabAdapter;
 import com.ws3dm.app.mvvm.adapter.ForumTabContentAdapter;
 import com.ws3dm.app.mvvm.bean.ForumListBean;
-import com.ws3dm.app.mvvm.messageEvent.MessageEvent;
 import com.ws3dm.app.mvvm.view.activity.SectionPageActivity;
 import com.ws3dm.app.mvvm.viewmodel.BaseViewModel;
 import com.ws3dm.app.mvvm.viewmodel.ForumSectionViewModel;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 import java.util.Map;
@@ -85,7 +80,7 @@ public class ForumSectionFragment extends BaseFragment {
     }
 
     private void initListener() {
-        viewModel.state.observe(this, new Observer<BaseViewModel.State>() {
+        viewModel.getState().observe(this, new Observer<BaseViewModel.State>() {
             @Override
             public void onChanged(BaseViewModel.State state) {
             mBind.content.refreshComplete();
@@ -93,21 +88,21 @@ public class ForumSectionFragment extends BaseFragment {
             }
         });
         //tab数据
-        viewModel.forumSection.observe(this, new Observer<List<ForumListBean.DataBean.ListBean>>() {
+        viewModel.getForumSection().observe(this, new Observer<List<ForumListBean.DataBean.ListBean>>() {
             @Override
             public void onChanged(List<ForumListBean.DataBean.ListBean> listBeans) {
                 tabAdapter.clearAndAddList(listBeans);
             }
         });
         //拿到真实的platetypeId
-        viewModel.plateTypeId.observe(this, new Observer<Integer>() {
+        viewModel.getPlateTypeId().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {
                 plateTypeId = integer;
             }
         });
         //tab对应的content数据
-        viewModel.forumBean.observe(this, new Observer<Map<Integer, ForumListBean.DataBean.ListBean>>() {
+        viewModel.getForumBean().observe(this, new Observer<Map<Integer, ForumListBean.DataBean.ListBean>>() {
             @Override
             public void onChanged(Map<Integer, ForumListBean.DataBean.ListBean> integerObjectMap) {
                 List<ForumListBean.DataBean.ListBean.PlateTypeListBean> plateTypeList = integerObjectMap.get(plateTypeId).getPlateTypeList();

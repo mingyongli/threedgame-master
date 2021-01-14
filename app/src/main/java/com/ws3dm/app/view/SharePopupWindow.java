@@ -208,29 +208,21 @@ public class SharePopupWindow implements OnClickListener {
                         .setCallback(umShareListener).share();
                 break;
             case R.id.ll_qq_space:
-                //判断是否安装了qq
-                if (!AppUtil.checkApkExist((Activity) context, "com.tencent.mobileqq")) {
-                    ToastUtil.showToast((Activity) context, "未安装QQ");
-                } else {
-                    new ShareAction((Activity) context)
-                            .withMedia(web)
-                            .setPlatform(SHARE_MEDIA.QZONE)
-                            .setCallback(umShareListener).share();
-                    llShow.startAnimation(mHideAnimation);
-                }
+                new ShareAction((Activity) context)
+                        .withMedia(web)
+                        .setPlatform(SHARE_MEDIA.QZONE)
+                        .setCallback(umShareListener).share();
+                llShow.startAnimation(mHideAnimation);
+
 
                 break;
 
             case R.id.ll_qq_friends:
-                if (!AppUtil.checkApkExist((Activity) context, "com.tencent.mobileqq")) {
-                    ToastUtil.showToast((Activity) context, "未安装QQ");
-                } else {
-                    new ShareAction((Activity) context)
-                            .withMedia(web)
-                            .setPlatform(SHARE_MEDIA.QQ)
-                            .setCallback(umShareListener).share();
-                    llShow.startAnimation(mHideAnimation);
-                }
+                new ShareAction((Activity) context)
+                        .withMedia(web)
+                        .setPlatform(SHARE_MEDIA.QQ)
+                        .setCallback(umShareListener).share();
+                llShow.startAnimation(mHideAnimation);
                 break;
             case R.id.ll_wechat_friends:
                 new ShareAction((Activity) context)

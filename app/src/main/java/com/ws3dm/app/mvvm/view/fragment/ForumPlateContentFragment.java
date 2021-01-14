@@ -83,14 +83,14 @@ public class ForumPlateContentFragment extends BaseFragment {
     }
 
     private void initListener() {
-        viewModel.state.observe(this, new Observer<BaseViewModel.State>() {
+        viewModel.getState().observe(this, new Observer<BaseViewModel.State>() {
             @Override
             public void onChanged(BaseViewModel.State state) {
                 refreshLayout.finishLoadMore();
                 refreshLayout.finishRefresh();
             }
         });
-        viewModel.plateBean.observe(this, new Observer<List<ForumPlateBean.DataBean.ListBean>>() {
+        viewModel.getPlateBean().observe(this, new Observer<List<ForumPlateBean.DataBean.ListBean>>() {
             @Override
             public void onChanged(List<ForumPlateBean.DataBean.ListBean> listBeans) {
                 if (page == 1) {

@@ -22,11 +22,27 @@ import java.util.List;
 import java.util.Map;
 
 public class ForumSectionViewModel extends ViewModel implements LifecycleObserver {
-    public MutableLiveData<BaseViewModel.State> state = new MutableLiveData<>();
-    public MutableLiveData<List<ForumListBean.DataBean.ListBean>> forumSection = new MutableLiveData<>();
-    public MutableLiveData<Map<Integer, ForumListBean.DataBean.ListBean>> forumBean = new MutableLiveData<>();
+    private MutableLiveData<BaseViewModel.State> state = new MutableLiveData<>();
+    private MutableLiveData<List<ForumListBean.DataBean.ListBean>> forumSection = new MutableLiveData<>();
+    private MutableLiveData<Map<Integer, ForumListBean.DataBean.ListBean>> forumBean = new MutableLiveData<>();
     //用来记录当前界面的plateType的id
-    public MutableLiveData<Integer> plateTypeId = new MutableLiveData<>();
+    private MutableLiveData<Integer> plateTypeId = new MutableLiveData<>();
+
+    public MutableLiveData<BaseViewModel.State> getState() {
+        return state;
+    }
+
+    public MutableLiveData<List<ForumListBean.DataBean.ListBean>> getForumSection() {
+        return forumSection;
+    }
+
+    public MutableLiveData<Map<Integer, ForumListBean.DataBean.ListBean>> getForumBean() {
+        return forumBean;
+    }
+
+    public MutableLiveData<Integer> getPlateTypeId() {
+        return plateTypeId;
+    }
 
     public void getInitList() {
         String uid = MyApplication.getUserData().uid;
@@ -53,12 +69,6 @@ public class ForumSectionViewModel extends ViewModel implements LifecycleObserve
                     state.postValue(BaseViewModel.State.SUCCESS);
                     forumSection.postValue(response.getData().getList());
                     plateTypeId.postValue(response.getData().getList().get(0).getPlateTypeId());
-                    //根据id插入对应的数据
-//                    Map<Integer, ForumListBean.DataBean.ListBean> beanMap = new HashMap<>();
-//                    for (ForumListBean.DataBean.ListBean listBean : response.getData().getList()) {
-//                        beanMap.put(listBean.getPlateTypeId(), listBean);
-//                    }
-//                    forumBean.postValue(beanMap);
                 } else {
 
                 }
@@ -90,7 +100,6 @@ public class ForumSectionViewModel extends ViewModel implements LifecycleObserve
             public void onResponse(ForumListBean response) {
                 if (response.getCode() == 1) {
                     state.postValue(BaseViewModel.State.SUCCESS);
-                    //forumSection.postValue(response.getData().getList());
                     //判断是否为初始化数据返回真实的id
                     if (platetypeid == 0) {
                         plateTypeId.postValue(response.getData().getList().get(0).getPlateTypeId());

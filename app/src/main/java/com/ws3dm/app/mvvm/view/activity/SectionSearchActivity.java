@@ -93,7 +93,7 @@ public class SectionSearchActivity extends BaseActivity {
                 return false;
             }
         });
-        viewModel.state.observe(this, new Observer<BaseViewModel.State>() {
+        viewModel.getState().observe(this, new Observer<BaseViewModel.State>() {
             @Override
             public void onChanged(BaseViewModel.State state) {
                 if (state == BaseViewModel.State.LOADING) {
@@ -124,7 +124,7 @@ public class SectionSearchActivity extends BaseActivity {
                 mBind.refreshLayout.finishLoadMore();
             }
         });
-        viewModel.searchBean.observe(this, new Observer<List<PlateListSearchBean.DataBean.ListBean>>() {
+        viewModel.getSearchBean().observe(this, new Observer<List<PlateListSearchBean.DataBean.ListBean>>() {
             @Override
             public void onChanged(List<PlateListSearchBean.DataBean.ListBean> listBeans) {
                 if (page == 1) {
