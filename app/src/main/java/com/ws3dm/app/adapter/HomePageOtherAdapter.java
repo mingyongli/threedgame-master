@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.NewsActivity;
 import com.ws3dm.app.bean.NewsBean;
@@ -105,6 +106,7 @@ public class HomePageOtherAdapter extends MultiItemRecyclerAdapter<TopTabDetailB
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MobclickAgent.onEvent(mContext,"03");
                 NewsFile newsCollectFile = new NewsFile(mContext);
                 NewsBean newsBean = new NewsBean();
                 newsBean.setWebviewurl(item.getWebviewurl());

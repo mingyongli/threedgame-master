@@ -27,6 +27,7 @@ import com.jcodecraeer.demo.MyAdapter;
 import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.DianJingActivity;
 import com.ws3dm.app.activity.GameGiftActivity;
@@ -560,6 +561,7 @@ public class GameNETFragment extends BaseFragment implements View.OnClickListene
 	@Override
 	public void onClick(View view) {
 		Intent intent;
+		MobclickAgent.onEvent(mContext,"05");
 		switch (view.getId()) {
 			case R.id.tv_more_hot://热门网游
 				intent = new Intent(mContext, GameSpecialActivity.class);

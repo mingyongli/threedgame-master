@@ -18,6 +18,7 @@ import com.jcodecraeer.demo.MyAdapter;
 import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.Constant;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.GameNewsActivity;
@@ -312,6 +313,7 @@ public class FragmentGonglue extends BaseFragment implements View.OnClickListene
 		switch (view.getId()) {//17单机18手游19网游
 			case R.id.top_img0://单机
 			case R.id.tv_more_pc:
+				MobclickAgent.onEvent(mContext,"04");
 				intent = new Intent(mContext, GonglueListActivity.class);
 				intent.putExtra("showtype",17);
 				intent.putExtra("title","单机攻略");
@@ -319,6 +321,7 @@ public class FragmentGonglue extends BaseFragment implements View.OnClickListene
 				break;
 			case R.id.top_img1://网游
 			case R.id.tv_more_net:
+				MobclickAgent.onEvent(mContext,"05");
 				intent = new Intent(mContext, GonglueListActivity.class);
 				intent.putExtra("showtype",19);
 				intent.putExtra("title","网游攻略");
@@ -326,6 +329,7 @@ public class FragmentGonglue extends BaseFragment implements View.OnClickListene
 				break;
 			case R.id.top_img2://手游
 			case R.id.tv_more_mg:
+				MobclickAgent.onEvent(mContext,"06");
 				intent = new Intent(mContext, GonglueListActivity.class);
 				intent.putExtra("showtype",18);
 				intent.putExtra("title","手游攻略");

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.NewsActivity;
 import com.ws3dm.app.adapter.BaseRecyclerAdapter;
@@ -109,6 +110,7 @@ public class FragmentNewsENT extends BaseFragment {
 		mAdapter.setOnClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
 			@Override
 			public void onItemClick(View itemView, int position) {
+				MobclickAgent.onEvent(mContext,"03");
 				mAdapter.getDataByPosition(position).setHavesee(1);
 				NewsBean news = mAdapter.getDataByPosition(position);
 				if(!StringUtil.isEmpty(news.getTitle())){

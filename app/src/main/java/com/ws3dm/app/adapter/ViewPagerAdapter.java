@@ -13,6 +13,7 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.MGDetailActivity;
 import com.ws3dm.app.activity.NewsActivity;
@@ -111,6 +112,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
 			@Override
 			public void onClick(View v) {//:1新闻2攻略3游戏4手游5杂谈6评测7原创8安利9礼包10视频11专栏
+				MobclickAgent.onEvent(mContext,"01");
 				Intent intent = null;
 				SlidesBean slidesBean=mBannerList.get(p);
 				switch(slidesBean.getShowtype()) {

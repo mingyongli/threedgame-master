@@ -29,6 +29,7 @@ import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.squareup.okhttp.Request;
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.NewUrl;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.NewsActivity;
@@ -91,7 +92,7 @@ public class FragmentHomePage extends BaseFragment {
     private ViewPager mSlideViewPager;
     private Handler mSlideMessager = null;
     private boolean mSlideRunning = true;
-    private List<View> pointList;//存放View的List
+    private List<ImageView> pointList;//存放View的List
     private int index;//當前廣告下标
     private TextView titleBanner;
 
@@ -150,6 +151,7 @@ public class FragmentHomePage extends BaseFragment {
         mAdapter.setOnClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
+                MobclickAgent.onEvent(mContext,"03");
                 mAdapter.getDataByPosition(position).setHavesee(1);
                 NewsBean news = mAdapter.getDataByPosition(position);
                 if (news.getArcurl() == null) {
@@ -373,7 +375,7 @@ public class FragmentHomePage extends BaseFragment {
     private void initHeadView(NewsListRespBean bean) {
         mBinding.recyclerview.refreshComplete();
         final List<SlidesBean> bannerList = bean.getData().getSlides();
-        pointList = new ArrayList<View>();
+        pointList = new ArrayList<>();
         mSlideViewPager = (ViewPager) header.findViewById(R.id.top_slide);
         titleBanner = (TextView) header.findViewById(R.id.tv_info);
         titleBanner.setText(bannerList.get(0).getTitle());
@@ -384,11 +386,11 @@ public class FragmentHomePage extends BaseFragment {
             ll_points.removeAllViews();
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         for (int i = 0; i < mSlideCount; i++) {
-            ImageView imageView = new ImageView(getActivity());
+            ImageView imageView = new ImageView(mContext);
             if (i == 0) {
-                imageView.setBackgroundResource(R.drawable.red_point);
+                imageView.setImageResource(R.drawable.red_point);
             } else {
-                imageView.setBackgroundResource(R.drawable.white_point);
+                imageView.setImageResource(R.drawable.white_point);
             }
             params.leftMargin = 5;
             params.rightMargin = 5;
@@ -431,10 +433,10 @@ public class FragmentHomePage extends BaseFragment {
             public void onPageSelected(int position) {
                 for (int i = 0; i < mSlideCount; i++) {
                     if (i == (position % mSlideCount)) {
-                        pointList.get(i).setBackgroundResource(R.drawable.red_point);
+                        pointList.get(i).setImageResource(R.drawable.red_point);
                     } else {
                         //设置非当前显示页圆点
-                        pointList.get(i).setBackgroundResource(R.drawable.white_point);
+                        pointList.get(i).setImageResource(R.drawable.white_point);
                     }
                 }
                 index = position;
@@ -476,6 +478,7 @@ public class FragmentHomePage extends BaseFragment {
             header.findViewById(R.id.ll_vote).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    MobclickAgent.onEvent(mContext,"02");
                     NewsBean news = voteDate;
                     if (news.getShowtype() == 1 || news.getShowtype() == 13) {
                         Intent intent = new Intent(mContext, NewsActivity.class);

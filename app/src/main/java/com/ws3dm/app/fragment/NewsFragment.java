@@ -1,12 +1,16 @@
 package com.ws3dm.app.fragment;
 
 import android.content.Intent;
+
 import androidx.databinding.DataBindingUtil;
+
 import android.graphics.Color;
 import android.os.Bundle;
+
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +21,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.squareup.okhttp.Request;
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.NewUrl;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.HomePreferenceActivity;
@@ -38,6 +43,7 @@ import java.util.List;
 import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
+import static androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
 
 /**
  * Describution :新闻（底部标签）
@@ -221,7 +227,7 @@ public class NewsFragment extends BaseFragment {
 //        adapter.setData(tabs);
 
         mBinding.mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        TabAdapters mTabAdapter = new TabAdapters(getChildFragmentManager());
+        TabAdapters mTabAdapter = new TabAdapters(getChildFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mBinding.mViewPager.setAdapter(mTabAdapter);
         mBinding.mViewPager.setOffscreenPageLimit(3);
         mBinding.mTabLayout.setupWithViewPager(mBinding.mViewPager);
@@ -262,7 +268,7 @@ public class NewsFragment extends BaseFragment {
             }
         }
         mBinding.mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        TabAdapters mTabAdapter = new TabAdapters(getChildFragmentManager());
+        TabAdapters mTabAdapter = new TabAdapters(getChildFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mBinding.mViewPager.setAdapter(mTabAdapter);
         mBinding.mViewPager.setOffscreenPageLimit(3);
         mBinding.mTabLayout.setupWithViewPager(mBinding.mViewPager);
@@ -293,6 +299,7 @@ public class NewsFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        MobclickAgent.onPageStart("NewsFragment");
 //		if(MyApplication.getUserData().loginStatue){
 //			GlideUtil.loadCircleImage(mContext, MyApplication.getUserData().avatarstr, (ImageView) mBinding.viewTop.findViewById(R.id.img_head));
 //		}else{

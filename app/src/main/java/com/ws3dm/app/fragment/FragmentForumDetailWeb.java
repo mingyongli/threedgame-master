@@ -36,6 +36,7 @@ import com.ws3dm.app.R;
 import com.ws3dm.app.activity.ForgetPassActivity;
 import com.ws3dm.app.activity.ForumDetailActivity;
 import com.ws3dm.app.activity.LoginActivity;
+import com.ws3dm.app.activity.NewsActivity;
 import com.ws3dm.app.activity.PublishActivity;
 import com.ws3dm.app.adapter.BaseRecyclerAdapter;
 import com.ws3dm.app.adapter.CommonRecyclerAdapter;
@@ -334,10 +335,11 @@ public class FragmentForumDetailWeb extends BaseFragment {
 		bundle.putBoolean(EmotionMainFragment.HIDE_BAR_EDITTEXT_AND_BTN,true);
 		//替换fragment
 		//创建修改实例
-		emotionMainFragment =EmotionMainFragment.newInstance(EmotionMainFragment.class,bundle);
-		emotionMainFragment.bindToContentView(mBinding.llInPut);
-		emotionMainFragment.bindToEditView(mBinding.etComment);
-		emotionMainFragment.bindToImageView(mBinding.ivEmoj);
+//		emotionMainFragment =EmotionMainFragment.newInstance(EmotionMainFragment.class,bundle);
+		emotionMainFragment = EmotionMainFragment.newInstance(mBinding.llInPut, mBinding.etComment, mBinding.ivEmoj, bundle);
+//		emotionMainFragment.bindToContentView(mBinding.llInPut);
+//		emotionMainFragment.bindToEditView(mBinding.etComment);
+//		emotionMainFragment.bindToImageView(mBinding.ivEmoj);
 		FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
 		// Replace whatever is in thefragment_container view with this fragment,
 		// and add the transaction to the backstack

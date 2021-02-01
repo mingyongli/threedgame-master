@@ -2,7 +2,9 @@ package com.ws3dm.app.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+
 import androidx.databinding.DataBindingUtil;
+
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
@@ -10,11 +12,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -453,10 +457,11 @@ public class FragmentNewsWeb extends BaseFragment {
         bundle.putBoolean(EmotionMainFragment.HIDE_BAR_EDITTEXT_AND_BTN, true);
         //替换fragment
         //创建修改实例
-        NewsActivity.emotionMainFragment = EmotionMainFragment.newInstance(EmotionMainFragment.class, bundle);
-        NewsActivity.emotionMainFragment.bindToContentView(mBinding.llInPut);
-        NewsActivity.emotionMainFragment.bindToEditView(mBinding.etComment);
-        NewsActivity.emotionMainFragment.bindToImageView(mBinding.ivEmoj);
+//        NewsActivity.emotionMainFragment = EmotionMainFragment.newInstance(EmotionMainFragment.class, bundle);
+        NewsActivity.emotionMainFragment = EmotionMainFragment.newInstance(mBinding.llInPut, mBinding.etComment, mBinding.ivEmoj, bundle);
+//        NewsActivity.emotionMainFragment.bindToContentView(mBinding.llInPut);
+//        NewsActivity.emotionMainFragment.bindToEditView(mBinding.etComment);
+//        NewsActivity.emotionMainFragment.bindToImageView(mBinding.ivEmoj);
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         // Replace whatever is in thefragment_container view with this fragment,
         // and add the transaction to the backstack
@@ -491,7 +496,7 @@ public class FragmentNewsWeb extends BaseFragment {
             @Override
             public void onResponse(Call<NewsAboutRespBean> call, Response<NewsAboutRespBean> response) {
                 Log.e("requestSuccess", "%-----------------------" + response.body());
-                if (getActivity() != null && response.body().getData() != null){
+                if (getActivity() != null && response.body().getData() != null) {
                     mBinding.commentsBg.setVisibility(View.VISIBLE);
                     initNewsAbout(response.body());
                 }

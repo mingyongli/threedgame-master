@@ -24,6 +24,7 @@ import com.jcodecraeer.demo.MyAdapter;
 import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.GameCategoryActivity;
 import com.ws3dm.app.activity.GameChineseActivity;
@@ -552,6 +553,7 @@ public class GamePCFragment extends BaseFragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         Intent intent;
+        MobclickAgent.onEvent(mContext,"04");
         switch (view.getId()) {
             case R.id.img0://游戏库
                 intent = new Intent(mContext, GameCategoryActivity.class);

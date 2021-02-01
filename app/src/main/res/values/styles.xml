@@ -6,17 +6,6 @@
         <item name="colorPrimary">@color/color_theme</item>
         <item name="colorPrimaryDark">@color/color_theme</item>
         <item name="colorAccent">@color/color_theme</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
-    </style>
-
-    <style name="steamTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">#1F2A38</item>
-        <item name="colorPrimaryDark">#1F2A38</item>
-        <item name="colorAccent">#1F2A38</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:statusBarColor">#1F2A38</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
     </style>
     <!-- 加载动画样式 -->

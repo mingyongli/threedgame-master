@@ -1,12 +1,10 @@
 package com.ws3dm.app;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 
-import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
 import com.alibaba.fastjson.JSON;
@@ -33,6 +31,7 @@ public class MyApplication extends MultiDexApplication {
     private static MyApplication mInstance = null;
     private static UserDataBean mUserDataBean = null;//存储用户信息
     private int num_badge = 0;
+
     public static MyApplication getInstance() {
         return mInstance;
     }
@@ -47,10 +46,11 @@ public class MyApplication extends MultiDexApplication {
         // 初始化友盟登录和分享
         UMShareAPI.get(this);
         // 初始化友盟推送
-       // UMConfigure.init(this, "599e9c648630f54145000944", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "d98dec10e8edd7cff97d6742054b4830");
+        // UMConfigure.init(this, "599e9c648630f54145000944", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "d98dec10e8edd7cff97d6742054b4830");
         UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "d98dec10e8edd7cff97d6742054b4830");
         // 初始化友盟统计
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
+        UMConfigure.setProcessEvent(true);
         mPushAgent = PushAgent.getInstance(this);
         //注册推送服务，每次调用register方法都会回调该接口
         mPushAgent.register(new IUmengRegisterCallback() {

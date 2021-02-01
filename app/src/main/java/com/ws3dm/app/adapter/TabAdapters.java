@@ -1,8 +1,10 @@
 package com.ws3dm.app.adapter;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
 import android.view.ViewGroup;
 
 import com.ws3dm.app.bean.HomeTabsDBBean;
@@ -24,8 +26,8 @@ public class TabAdapters extends FragmentPagerAdapter {
     private List<HomeTabsDBBean.HomeTabsData> tabsData = new ArrayList<>();
     public Fragment currentFragment;
 
-    public TabAdapters(FragmentManager fm) {
-        super(fm);
+    public TabAdapters(@NonNull FragmentManager fm, int behavior) {
+        super(fm, behavior);
     }
 
 

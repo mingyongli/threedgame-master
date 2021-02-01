@@ -1,9 +1,11 @@
 package com.ws3dm.app.emoj.fragment;
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ import com.ws3dm.app.emoj.emotionkeyboardview.NoHorizontalScrollerViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by zejian
@@ -33,42 +36,44 @@ import java.util.List;
 public class EmotionMainFragment extends EmojBaseFragment {
 
     //是否绑定当前Bar的编辑框的flag
-    public static final String BIND_TO_EDITTEXT="bind_to_edittext";
+    public static final String BIND_TO_EDITTEXT = "bind_to_edittext";
     //是否隐藏bar上的编辑框和发生按钮
-    public static final String HIDE_BAR_EDITTEXT_AND_BTN="hide bar's editText and btn";
+    public static final String HIDE_BAR_EDITTEXT_AND_BTN = "hide bar's editText and btn";
 
     //当前被选中底部tab
-    private static final String CURRENT_POSITION_FLAG="CURRENT_POSITION_FLAG";
-    private int CurrentPosition=0;
+    private static final String CURRENT_POSITION_FLAG = "CURRENT_POSITION_FLAG";
+
+    private int CurrentPosition = 0;
     //底部水平tab
     private RecyclerView recyclerview_horizontal;
     private HorizontalRecyclerviewAdapter horizontalRecyclerviewAdapter;
     //表情面板
     private EmotionKeyboard mEmotionKeyboard;
 
-    private EditText bar_edit_text;
-    private ImageView bar_image_add_btn;
+    private static EditText bar_edit_text;
+    private static ImageView bar_image_add_btn;
     private Button bar_btn_send;
     private LinearLayout rl_editbar_bg;
 
     //需要绑定的内容view
-    private View contentView;
+    private static View contentView;
 
     //不可横向滚动的ViewPager
     private NoHorizontalScrollerViewPager viewPager;
 
     //是否绑定当前Bar的编辑框,默认true,即绑定。
     //false,则表示绑定contentView,此时外部提供的contentView必定也是EditText
-    private boolean isBindToBarEditText=true;
+    private boolean isBindToBarEditText = true;
 
     //是否隐藏bar上的编辑框和发生按钮,默认不隐藏
-    private boolean isHidenBarEditTextAndBtn=false;
+    private boolean isHidenBarEditTextAndBtn = false;
 
-    List<Fragment> fragments=new ArrayList<>();
+    List<Fragment> fragments = new ArrayList<>();
 
 
     /**
      * 创建与Fragment对象关联的View视图时调用
+     *
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -77,11 +82,11 @@ public class EmotionMainFragment extends EmojBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main_emotion, container, false);
-        isHidenBarEditTextAndBtn= args.getBoolean(EmotionMainFragment.HIDE_BAR_EDITTEXT_AND_BTN);
+        isHidenBarEditTextAndBtn = args.getBoolean(EmotionMainFragment.HIDE_BAR_EDITTEXT_AND_BTN);
         //获取判断绑定对象的参数
-        isBindToBarEditText=args.getBoolean(EmotionMainFragment.BIND_TO_EDITTEXT);
+        isBindToBarEditText = args.getBoolean(EmotionMainFragment.BIND_TO_EDITTEXT);
         initView(rootView);
-        mEmotionKeyboard = EmotionKeyboard.with(getActivity())
+        mEmotionKeyboard = EmotionKeyboard.with(Objects.requireNonNull(getActivity()))
                 .setEmotionView(rootView.findViewById(R.id.ll_emotion_layout))//绑定表情面板
                 .bindToContent(contentView)//绑定内容view
                 .bindToEditText(bar_edit_text)//判断绑定那种EditView
@@ -90,13 +95,13 @@ public class EmotionMainFragment extends EmojBaseFragment {
         initListener();
         initDatas();
         //创建全局监听
-        GlobalOnItemClickManagerUtils globalOnItemClickManager= GlobalOnItemClickManagerUtils.getInstance(getActivity());
+        GlobalOnItemClickManagerUtils globalOnItemClickManager = GlobalOnItemClickManagerUtils.getInstance(getActivity());
 
-        if(isBindToBarEditText){
+        if (isBindToBarEditText) {
             //绑定当前Bar的编辑框
             globalOnItemClickManager.attachToEditText(bar_edit_text);
 
-        }else{
+        } else {
             // false,则表示绑定contentView,此时外部提供的contentView必定也是EditText
             globalOnItemClickManager.attachToEditText(bar_edit_text);
             mEmotionKeyboard.bindToEditText(bar_edit_text);
@@ -104,27 +109,30 @@ public class EmotionMainFragment extends EmojBaseFragment {
         return rootView;
     }
 
-    /**
-     * 绑定内容view
-     * @param contentView
-     * @return
-     */
-    public void bindToContentView(View contentView){
-        this.contentView=contentView;
-    }
-    public void bindToEditView(EditText editText){
-        this.bar_edit_text=editText;
-    }
-    public void bindToImageView(ImageView image){
-        this.bar_image_add_btn=image;
-    }
+//    /**
+//     * 绑定内容view
+//     *
+//     * @param contentView
+//     * @return
+//     */
+//    public void bindToContentView(View contentView) {
+//        this.contentView = contentView;
+//    }
+//
+//    public void bindToEditView(EditText editText) {
+//        this.bar_edit_text = editText;
+//    }
+//
+//    public void bindToImageView(ImageView image) {
+//        this.bar_image_add_btn = image;
+//    }
 
     /**
      * 初始化view控件
      */
-    protected void initView(View rootView){
-        viewPager= (NoHorizontalScrollerViewPager) rootView.findViewById(R.id.vp_emotionview_layout);
-        recyclerview_horizontal= (RecyclerView) rootView.findViewById(R.id.recyclerview_horizontal);
+    protected void initView(View rootView) {
+        viewPager = (NoHorizontalScrollerViewPager) rootView.findViewById(R.id.vp_emotionview_layout);
+        recyclerview_horizontal = (RecyclerView) rootView.findViewById(R.id.recyclerview_horizontal);
 //        bar_edit_text= (EditText) rootView.findViewById(R.id.etComment);
 //        bar_image_add_btn= (ImageView) rootView.findViewById(R.id.bar_image_add_btn);
 //        bar_btn_send= (Button) rootView.findViewById(R.id.bar_btn_send);
@@ -145,24 +153,24 @@ public class EmotionMainFragment extends EmojBaseFragment {
     /**
      * 初始化监听器
      */
-    protected void initListener(){
+    protected void initListener() {
 
     }
 
     /**
      * 数据操作,这里是测试数据，请自行更换数据
      */
-    protected void initDatas(){
+    protected void initDatas() {
         replaceFragment();
         List<ImageModel> list = new ArrayList<>();
-        for (int i=0 ; i<fragments.size(); i++){
-            if(i==0){
-                ImageModel model1=new ImageModel();
-                model1.icon= getResources().getDrawable(R.drawable.ic_emotion);
-                model1.flag="经典笑脸";
-                model1.isSelected=true;
+        for (int i = 0; i < fragments.size(); i++) {
+            if (i == 0) {
+                ImageModel model1 = new ImageModel();
+                model1.icon = getResources().getDrawable(R.drawable.ic_emotion);
+                model1.flag = "经典笑脸";
+                model1.isSelected = true;
                 list.add(model1);
-            }else {
+            } else {
 //                ImageModel model = new ImageModel();
 //                model.icon = getResources().getDrawable(R.drawable.ic_plus);
 //                model.flag = "其他笑脸" + i;
@@ -172,11 +180,11 @@ public class EmotionMainFragment extends EmojBaseFragment {
         }
 
         //记录底部默认选中第一个
-        CurrentPosition=0;
+        CurrentPosition = 0;
 //        SharedPreferencedUtils.setInteger(getActivity(), CURRENT_POSITION_FLAG, CurrentPosition);
 
         //底部tab
-        horizontalRecyclerviewAdapter = new HorizontalRecyclerviewAdapter(getActivity(),list);
+        horizontalRecyclerviewAdapter = new HorizontalRecyclerviewAdapter(getActivity(), list);
         recyclerview_horizontal.setHasFixedSize(true);//使RecyclerView保持固定的大小,这样会提高RecyclerView的性能
         recyclerview_horizontal.setAdapter(horizontalRecyclerviewAdapter);
         recyclerview_horizontal.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.HORIZONTAL, false));
@@ -185,7 +193,7 @@ public class EmotionMainFragment extends EmojBaseFragment {
             @Override
             public void onItemClick(View view, int position, List<ImageModel> datas) {
                 //获取先前被点击tab
-                int oldPosition =0;
+                int oldPosition = 0;
                 //修改背景颜色的标记
                 datas.get(oldPosition).isSelected = false;
                 //记录当前被选中tab下标
@@ -196,7 +204,7 @@ public class EmotionMainFragment extends EmojBaseFragment {
                 horizontalRecyclerviewAdapter.notifyItemChanged(oldPosition);
                 horizontalRecyclerviewAdapter.notifyItemChanged(CurrentPosition);
                 //viewpager界面切换
-                viewPager.setCurrentItem(position,false);
+                viewPager.setCurrentItem(position, false);
             }
 
             @Override
@@ -205,14 +213,13 @@ public class EmotionMainFragment extends EmojBaseFragment {
         });
 
 
-
     }
 
-    private void replaceFragment(){
+    private void replaceFragment() {
         //创建fragment的工厂类
-        FragmentFactory factory=FragmentFactory.getSingleFactoryInstance();
+        FragmentFactory factory = FragmentFactory.getSingleFactoryInstance();
         //创建修改实例
-        EmotiomComplateFragment f1= (EmotiomComplateFragment) factory.getFragment(EmotionUtils.EMOTION_CLASSIC_TYPE);
+        EmotiomComplateFragment f1 = (EmotiomComplateFragment) factory.getFragment(EmotionUtils.EMOTION_CLASSIC_TYPE);
         fragments.add(f1);
 //        Bundle b=null;
 //        for (int i=0;i<7;i++){
@@ -222,18 +229,29 @@ public class EmotionMainFragment extends EmojBaseFragment {
 //            fragments.add(fg);
 //        }
 
-        NoHorizontalScrollerVPAdapter adapter =new NoHorizontalScrollerVPAdapter(getActivity().getSupportFragmentManager(),fragments);
+        NoHorizontalScrollerVPAdapter adapter = new NoHorizontalScrollerVPAdapter(getActivity().getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
     }
 
 
     /**
      * 是否拦截返回键操作，如果此时表情布局未隐藏，先隐藏表情布局
+     *
      * @return true则隐藏表情布局，拦截返回键操作
-     *         false 则不拦截返回键操作
+     * false 则不拦截返回键操作
      */
-    public boolean isInterceptBackPress(){
+    public boolean isInterceptBackPress() {
         return mEmotionKeyboard.interceptBackPress();
+    }
+
+    public static EmotionMainFragment newInstance(View View, EditText editText, ImageView imageView ,Bundle args) {
+
+        contentView = View;
+        bar_edit_text = editText;
+        bar_image_add_btn = imageView;
+        EmotionMainFragment fragment = new EmotionMainFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 }
 

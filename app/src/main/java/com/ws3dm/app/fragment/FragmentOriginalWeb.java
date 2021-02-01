@@ -419,10 +419,11 @@ public class FragmentOriginalWeb extends BaseFragment {
 		bundle.putBoolean(EmotionMainFragment.HIDE_BAR_EDITTEXT_AND_BTN,true);
 		//替换fragment
 		//创建修改实例
-		OriginalActivity.emotionMainFragment =EmotionMainFragment.newInstance(EmotionMainFragment.class,bundle);
-		OriginalActivity.emotionMainFragment.bindToContentView(mBinding.llInPut);
-		OriginalActivity.emotionMainFragment.bindToEditView(mBinding.etComment);
-		OriginalActivity.emotionMainFragment.bindToImageView(mBinding.ivEmoj);
+//		OriginalActivity.emotionMainFragment =EmotionMainFragment.newInstance(EmotionMainFragment.class,bundle);
+		OriginalActivity.emotionMainFragment =EmotionMainFragment.newInstance(mBinding.llInPut,mBinding.etComment,mBinding.ivEmoj,bundle);
+//		OriginalActivity.emotionMainFragment.bindToContentView(mBinding.llInPut);
+//		OriginalActivity.emotionMainFragment.bindToEditView(mBinding.etComment);
+//		OriginalActivity.emotionMainFragment.bindToImageView(mBinding.ivEmoj);
 		FragmentTransaction transaction =getActivity().getSupportFragmentManager().beginTransaction();
 		// Replace whatever is in thefragment_container view with this fragment,
 		// and add the transaction to the backstack

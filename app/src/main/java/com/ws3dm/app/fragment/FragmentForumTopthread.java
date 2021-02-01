@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.ForumDetailActivity;
 import com.ws3dm.app.adapter.CommonRecyclerAdapter;
@@ -112,6 +113,7 @@ public class FragmentForumTopthread extends BaseFragment {
         mAdapter.setOnClickListener(new CommonRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
+                MobclickAgent.onEvent(mContext,"11");
                 Intent intent = new Intent(mContext, ForumDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("forumDetailBean", mAdapter.getDataByPosition(position));

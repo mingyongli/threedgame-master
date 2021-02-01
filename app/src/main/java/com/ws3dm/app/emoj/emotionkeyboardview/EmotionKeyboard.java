@@ -66,8 +66,9 @@ public class EmotionKeyboard {
 	     * @return
 	     */
 	    public EmotionKeyboard bindToEditText(EditText editText) {
+	    	//TODO:editText 为空
 	        mEditText = editText;
-	        mEditText.requestFocus();
+			mEditText.requestFocus();
 	        mEditText.setOnTouchListener(new View.OnTouchListener() {
 	            @Override
 	            public boolean onTouch(View v, MotionEvent event) {
@@ -86,6 +87,7 @@ public class EmotionKeyboard {
 	                return false;
 	            }
 	        });
+
 	        return this;
 	    }
 	    

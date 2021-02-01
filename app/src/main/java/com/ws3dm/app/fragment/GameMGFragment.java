@@ -2,7 +2,9 @@ package com.ws3dm.app.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+
 import androidx.databinding.DataBindingUtil;
+
 import android.graphics.drawable.ClipDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +28,7 @@ import com.jcodecraeer.demo.MyAdapter;
 import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.GameGiftActivity;
 import com.ws3dm.app.activity.GameHomeActivity;
@@ -451,6 +455,7 @@ public class GameMGFragment extends BaseFragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         Intent intent;
+        MobclickAgent.onEvent(mContext, "06");
         switch (view.getId()) {
             case R.id.tv_more_hotmg://热门手游
                 intent = new Intent(mContext, HotMGActivity.class);

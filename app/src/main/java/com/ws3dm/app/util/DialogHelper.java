@@ -223,10 +223,10 @@ public class DialogHelper {
 
 			@Override
 			public void onDismiss() {
-//				WindowManager.LayoutParams params = context.getWindow()
-//						.getAttributes();
-//				params.alpha = 1f;
-//				context.getWindow().setAttributes(params);
+				WindowManager.LayoutParams params = context.getWindow()
+						.getAttributes();
+				params.alpha = 1f;
+				context.getWindow().setAttributes(params);
 			}
 		});
 		return pop;

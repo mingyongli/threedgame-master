@@ -250,10 +250,11 @@ public class FragmentGameWeb extends BaseFragment {
 		bundle.putBoolean(EmotionMainFragment.HIDE_BAR_EDITTEXT_AND_BTN, true);
 		//替换fragment
 		//创建修改实例
-		emotionMainFragment = EmotionMainFragment.newInstance(EmotionMainFragment.class, bundle);
-		emotionMainFragment.bindToContentView(mBinding.llInPut);
-		emotionMainFragment.bindToEditView(mBinding.etComment);
-		emotionMainFragment.bindToImageView(mBinding.ivEmoj);
+//		emotionMainFragment = EmotionMainFragment.newInstance(EmotionMainFragment.class, bundle);
+		emotionMainFragment = EmotionMainFragment.newInstance(mBinding.llInPut, mBinding.etComment, mBinding.ivEmoj, bundle);
+//		emotionMainFragment.bindToContentView(mBinding.llInPut);
+//		emotionMainFragment.bindToEditView(mBinding.etComment);
+//		emotionMainFragment.bindToImageView(mBinding.ivEmoj);
 		FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 		// Replace whatever is in thefragment_container view with this fragment,
 		// and add the transaction to the backstack

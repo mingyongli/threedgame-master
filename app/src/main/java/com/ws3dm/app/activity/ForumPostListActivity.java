@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.R;
 import com.ws3dm.app.adapter.CommonRecyclerAdapter;
 import com.ws3dm.app.adapter.RecyclerViewHolder;
@@ -144,6 +145,7 @@ public class ForumPostListActivity extends BaseActivity{
 		mAdapter.setOnClickListener(new CommonRecyclerAdapter.OnItemClickListener() {
 			@Override
 			public void onItemClick(View itemView, int position) {
+				MobclickAgent.onEvent(mContext,"11");
                 Intent intent = new Intent(mContext, ForumDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("forumDetailBean", mAdapter.getDataByPosition(position));

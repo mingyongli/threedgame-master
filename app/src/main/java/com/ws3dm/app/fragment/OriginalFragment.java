@@ -27,6 +27,7 @@ import com.jcodecraeer.demo.MyAdapter;
 import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.Constant;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.ArticleListActivity;
@@ -539,6 +540,7 @@ public class OriginalFragment extends BaseFragment implements View.OnClickListen
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        MobclickAgent.onEvent(mContext,"07");
                         addHistory(originalBean);
                         Intent intent = new Intent(mContext, OriginalActivity.class);
                         Bundle bundle = new Bundle();
@@ -615,6 +617,7 @@ public class OriginalFragment extends BaseFragment implements View.OnClickListen
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    MobclickAgent.onEvent(mContext,"08");
                     addHistory(originalBean);
                     Intent intent = new Intent(mContext, OriginalActivity.class);
                     Bundle bundle = new Bundle();
@@ -753,19 +756,23 @@ public class OriginalFragment extends BaseFragment implements View.OnClickListen
         Intent intent;
         switch (view.getId()) {
             case R.id.tv_more_last://更多最新原创
+                MobclickAgent.onEvent(mContext,"07");
                 intent = new Intent(mContext, LastListActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tv_more_program://更多节目
+                MobclickAgent.onEvent(mContext,"08");
                 intent = new Intent(mContext, ProgramActivity.class);
                 intent.putExtra("tag", 1);//0不显示顶部  1显示顶部
                 startActivity(intent);
                 break;
             case R.id.tv_more_pince://更多评测
+                MobclickAgent.onEvent(mContext,"09");
                 intent = new Intent(mContext, PingceListActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tv_more_column://更多专栏
+                MobclickAgent.onEvent(mContext,"10");
                 intent = new Intent(mContext, ColumActivity.class);
                 intent.putExtra("tag", 1);//0不显示顶部  1显示顶部
                 startActivity(intent);
