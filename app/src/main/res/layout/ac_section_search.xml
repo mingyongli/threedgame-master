@@ -29,6 +29,7 @@
                 android:background="@drawable/shape_edit_bg">
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:textColor="@color/white"
                     android:id="@+id/search"
                     android:layout_width="220dp"
                     android:layout_height="29dp"

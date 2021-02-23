@@ -82,5 +82,9 @@ public class NewUrl {
     public static final String PLATEFOLLOW = BASE_URL + "plateFollow";
     //版块内搜索
     public static final String PLATESO = BASE_URL + "plateSo";
+    //获取板块内标签
+    public static final String GET_FORUM_TID_TYPE = "https://my.3dmgame.com/app/" + "getforumtidtype";
+    //发布新主题
+    public static final String NEW_THREAD = BASE_URL + "newThread";
 
 }

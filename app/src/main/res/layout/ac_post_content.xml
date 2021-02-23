@@ -17,8 +17,9 @@
                 app:navigationIcon="@drawable/ic_arrow_back_24" />
 
             <TextView
-                android:id="@+id/forum"
+                android:id="@+id/forum_title"
                 android:layout_width="180dp"
+                android:gravity="center"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:maxLines="1"
@@ -32,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_toStartOf="@id/forum"
+                android:layout_toStartOf="@id/forum_title"
                 android:text="发布到"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -41,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_toEndOf="@+id/forum"
+                android:layout_toEndOf="@+id/forum_title"
                 android:text="版块"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -62,6 +63,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/label"
                     android:layout_width="73dp"
                     android:layout_height="28dp"
                     android:background="@drawable/shape_button_bg"
@@ -111,7 +113,7 @@
                 android:backgroundTint="@color/white"
                 android:hint="添加标题" />
 
-            <jp.wasabeef.richeditor.RichEditor
+            <com.ws3dm.app.view.CustomRichEditor
                 android:layout_marginTop="10dp"
                 android:id="@+id/RichEditor"
                 android:layout_width="match_parent"

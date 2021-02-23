@@ -38,7 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 //        if (SharedUtil.getSharedPreferencesData("isNight").equals("0"))
         setTheme(R.style.DayTheme);
 //        else
-//            setTheme(R.style.NightTheme);
+//            setTheme(R.style.NightTheme); 
         TAG = this.getClass().getSimpleName();
         mContext = this;
 

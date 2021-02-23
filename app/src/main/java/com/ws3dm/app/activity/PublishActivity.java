@@ -205,11 +205,11 @@ public class PublishActivity extends BaseActivity {
 	public void obtainFid() {
 		//获取数据  {"fid":"2331","time":"1522378864907","sign":"e3ee1ad68c23951cee4b4c1237e0bc62"}
 		long time = System.currentTimeMillis();
-		String validate = "" + fid + time;
+		String validate = "" + 2341 + time;
 		String sign = StringUtil.MD5(validate);
 		JSONObject obj = new JSONObject();
 		try {
-			obj.put("fid", fid);
+			obj.put("fid", 2341);
 			obj.put("time", time);
 			obj.put("sign", sign);
 		} catch (JSONException e) {

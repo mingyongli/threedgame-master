@@ -25,7 +25,7 @@ import static androidx.fragment.app.FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CU
 /**
  * 论坛的主界面,里面有3个ViewPage
  */
-public class ForumFragment extends BaseFragment {
+public class NewForumFragment extends BaseFragment {
     private FragmentForumBinding mBind;
     private ForumViewPageAdapter adapter;
 

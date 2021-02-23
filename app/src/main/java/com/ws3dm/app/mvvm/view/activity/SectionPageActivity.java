@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.BaseActivity;
+import com.ws3dm.app.activity.PublishActivity;
 import com.ws3dm.app.databinding.AcSectionPageBinding;
 import com.ws3dm.app.mvvm.adapter.ForumPlateViewPageAdapter;
 import com.ws3dm.app.mvvm.adapter.NoticeAdapter;
@@ -34,6 +35,7 @@ public class SectionPageActivity extends BaseActivity {
     private String plateId;
     private ForumPlateViewPageAdapter viewPageAdapter;
     private int isFollow;
+    private String plateTitle;
 
 
     @Override
@@ -117,14 +119,17 @@ public class SectionPageActivity extends BaseActivity {
         viewModel.getHeadData().observe(this, new Observer<PlateListHeadBean.DataBean>() {
             @Override
             public void onChanged(PlateListHeadBean.DataBean dataBean) {
+                plateTitle = dataBean.getHead().getPlateTitle();
                 initView(dataBean);
             }
         });
         mBind.postBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtil.showToast(mContext, "功能建设中,敬请期待!");
-                // startActivity(new Intent(mContext,PostContentActivity.class));
+                Intent intent = new Intent(mContext, PostContentActivity.class);
+                intent.putExtra("plateId", plateId);
+                intent.putExtra("plateTitle", plateTitle);
+                startActivity(intent);
             }
         });
     }
