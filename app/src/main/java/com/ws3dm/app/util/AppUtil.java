@@ -3,6 +3,7 @@ package com.ws3dm.app.util;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -17,9 +18,12 @@ import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+
 import com.google.android.material.tabs.TabLayout;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
+
 import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
 import android.util.Log;
@@ -61,6 +65,7 @@ public class AppUtil {
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
     public static void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission  
         int permission = ActivityCompat.checkSelfPermission(activity,
@@ -73,12 +78,17 @@ public class AppUtil {
         }
     }
 
+    public static boolean CheckStoragePermissions(Activity activity) {
+        int readPermission = activity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE);
+        int writePermission = activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        return readPermission == PackageManager.PERMISSION_GRANTED && writePermission == PackageManager.PERMISSION_GRANTED;
+    }
+
     /**
      * 根据pacagename判断应用有无安装
      *
      * @param context
      * @param uri
-     *
      * @return
      */
     public static boolean isAppInstalled(Context context, String uri) {
@@ -140,7 +150,7 @@ public class AppUtil {
                 ApplicationInfo appInfo = info.applicationInfo;
                 String packageName = appInfo.packageName;  //得到安装包名称
                 if (checkApkExist(context, packageName)) {
-                    openOtherApp(context,packageName);
+                    openOtherApp(context, packageName);
                 } else {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -164,9 +174,10 @@ public class AppUtil {
 
     /**
      * 复制文件到SD卡
+     *
      * @param context
      * @param fileName 复制的文件名
-     * @param path  保存的目录路径
+     * @param path     保存的目录路径
      * @return
      */
     public static boolean copyAssetsFile(Context context, String fileName, String path) {
@@ -179,12 +190,12 @@ public class AppUtil {
                 file.mkdir();
             }
             File mFile = new File(path + fileName);
-            if(!mFile.exists())
+            if (!mFile.exists())
                 mFile.createNewFile();
             FileOutputStream mFileOutputStream = new FileOutputStream(mFile);
             byte[] mbyte = new byte[1024];
             int i = 0;
-            while((i = mInputStream.read(mbyte)) > 0){
+            while ((i = mInputStream.read(mbyte)) > 0) {
                 mFileOutputStream.write(mbyte, 0, i);
             }
             mInputStream.close();
@@ -212,24 +223,12 @@ public class AppUtil {
         if (context == null || StringUtil.isEmpty(packageName))
             return;
         PackageManager packageManager = context.getPackageManager();
-        Intent intent         = packageManager.getLaunchIntentForPackage(packageName);
+        Intent intent = packageManager.getLaunchIntentForPackage(packageName);
         if (intent != null)
             context.startActivity(intent);
 
     }
 
-    /**
-     * 获得手机号码
-     *
-     * @param context
-     *
-     * @return
-     */
-
-    public static String getTEL(Context context) {
-        TelephonyManager telephonymanager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        return telephonymanager.getLine1Number();
-    }
 
     /**
      * 获得设备型号
@@ -257,7 +256,6 @@ public class AppUtil {
      * 获得App版本号
      *
      * @param context
-     *
      * @return
      */
 
@@ -276,7 +274,6 @@ public class AppUtil {
      * 获得App版本名称
      *
      * @param context
-     *
      * @return
      */
 
@@ -298,7 +295,7 @@ public class AppUtil {
      * @return
      * @throws Exception
      */
-    public static  String getRedirectUrl(String path) {
+    public static String getRedirectUrl(String path) {
         String url = null;
         try {
             HttpURLConnection conn = (HttpURLConnection) new URL(path).openConnection();
@@ -311,12 +308,11 @@ public class AppUtil {
         }
         return url;
     }
-    
+
     /**
      * 获得设备类型
      *
      * @param context
-     *
      * @return
      */
 
@@ -352,7 +348,6 @@ public class AppUtil {
      * [获取应用程序版本名称信息]
      *
      * @param context
-     *
      * @return 当前应用的版本名称
      */
     public static String getVersionName(Context context) {
@@ -371,7 +366,6 @@ public class AppUtil {
      * 获取当前进程的名字
      *
      * @param context
-     *
      * @return
      */
     public static String getCurrentProcessName(Context context) {
@@ -392,11 +386,11 @@ public class AppUtil {
      */
     public static String getMac() {
         String macSerial = null;
-        String str       = "";
+        String str = "";
 
         try {
-            Process pp    = Runtime.getRuntime().exec("cat /sys/class/net/wlan0/address ");
-            InputStreamReader ir    = new InputStreamReader(pp.getInputStream());
+            Process pp = Runtime.getRuntime().exec("cat /sys/class/net/wlan0/address ");
+            InputStreamReader ir = new InputStreamReader(pp.getInputStream());
             LineNumberReader input = new LineNumberReader(ir);
 
             for (; null != str; ) {
@@ -417,13 +411,12 @@ public class AppUtil {
      * g获取无线mac地址 不连wifi也可获取
      *
      * @param context
-     *
      * @return
      */
     public static String getWIFIMac(Context context) {
         String macAddress = "";
-        WifiManager wifiMgr    = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-        WifiInfo info       = (null == wifiMgr ? null : wifiMgr.getConnectionInfo());
+        WifiManager wifiMgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiInfo info = (null == wifiMgr ? null : wifiMgr.getConnectionInfo());
         if (null != info) {
             macAddress = info.getMacAddress();
         }
@@ -473,6 +466,7 @@ public class AppUtil {
         }
         return Formatter.formatFileSize(context, initial_memory);// Byte转换为KB或者MB，内存大小规格化
     }
+
     /**
      * 检查应用程序是否安装
      *
@@ -492,46 +486,45 @@ public class AppUtil {
         }
     }
 
-    /**
-     * 获得设备号
-     *
-     * @param context
-     *
-     * @return
-     */
-    public static String getIMEI(Context context) {
+//    /**
+//     * 获得设备号
+//     *
+//     * @param context
+//     * @return
+//     */
+//    public static String getIMEI(Context context) {
+//
+//        try {
+//            TelephonyManager telephonymanager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+//            return telephonymanager.getDeviceId();
+//        } catch (Exception e) {
+//            return "";
+//        }
+//    }
 
-        try {
-            TelephonyManager telephonymanager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            return telephonymanager.getDeviceId();
-        } catch (Exception e) {
-            return "";
-        }
-    }
-
-    /**
-     * 获取设置唯一标识, 以此标识来确认此设备
-     *
-     * @param context
-     * @return
-     */
-    public static String getDeviceId(Context context) {
-        String mac = getWIFIMac(context);
-        String imei = getIMEI(context);
-
-        if (mac.isEmpty()) {
-            mac = getInfo().replaceAll(" ", ".").replaceAll("_", ".").replaceAll("-", ".");
-        } else {
-            mac = mac.replaceAll(":", "");
-        }
-
-        if (imei.isEmpty()) {
-            String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-            imei = SharedUtil.get(context, "UUID", uuid).toString();
-        }
-
-        return "a" + mac + "_" + imei;
-    }
+//    /**
+//     * 获取设置唯一标识, 以此标识来确认此设备
+//     *
+//     * @param context
+//     * @return
+//     */
+//    public static String getDeviceId(Context context) {
+//        String mac = getWIFIMac(context);
+//        String imei = getIMEI(context);
+//
+//        if (mac.isEmpty()) {
+//            mac = getInfo().replaceAll(" ", ".").replaceAll("_", ".").replaceAll("-", ".");
+//        } else {
+//            mac = mac.replaceAll(":", "");
+//        }
+//
+//        if (imei.isEmpty()) {
+//            String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+//            imei = SharedUtil.get(context, "UUID", uuid).toString();
+//        }
+//
+//        return "a" + mac + "_" + imei;
+//    }
 
     /**
      * 判断链接网络是否是wifi
@@ -544,8 +537,8 @@ public class AppUtil {
         if (connectivity != null) {
             info = connectivity.getAllNetworkInfo();
             if (info != null) {
-                int forSize=info.length;
-                for (int i = 0; i <forSize; i++) {
+                int forSize = info.length;
+                for (int i = 0; i < forSize; i++) {
                     if (info[i].getTypeName().equals("WIFI") && info[i].isConnected()) {
                         return true;
                     }
@@ -577,7 +570,7 @@ public class AppUtil {
         intent.setData(Uri.parse("tel:" + mobile));
         context.startActivity(intent);
     }
-    
+
 //    /**
 //     * @Function：发短信
 //     */
@@ -602,7 +595,7 @@ public class AppUtil {
      * @Function：在浏览器中打开url
      */
     public static void OpenUrl(Context context, String url) {
-        
+
         Intent intent = new Intent();
         //Intent intent = new Intent(Intent.ACTION_VIEW,uri);
         intent.setAction("android.intent.action.VIEW");
@@ -613,7 +606,7 @@ public class AppUtil {
 //        intent.setClassName("com.opera.mini.android", "com.opera.mini.android.Browser");//opera 用其他浏览器打开时必须添加对应浏览器
 //        intent.setClassName("com.tencent.mtt", "com.tencent.mtt.MainActivity");//qq浏览器 用其他浏览器打开时必须添加对应浏览器
         context.startActivity(intent);
-        
+
         //其他浏览器
     }
 
@@ -656,7 +649,7 @@ public class AppUtil {
             return;
         }
         int totalHeight = 0;
-        int forSize=listAdapter.getCount();
+        int forSize = listAdapter.getCount();
         for (int i = 0; i < forSize; i++) {
             View listItem = listAdapter.getView(i, null, listView);
             listItem.measure(0, 0);
@@ -670,15 +663,15 @@ public class AppUtil {
     }
 
     /*
-	 * 设置gridview高度
-	 */
+     * 设置gridview高度
+     */
     public static void setGridViewHeight(GridView gridView) {
         ListAdapter listAdapter = gridView.getAdapter();
         if (listAdapter == null) {
             return;
         }
         int totalHeight = 0;
-        int forSize=listAdapter.getCount();
+        int forSize = listAdapter.getCount();
         for (int i = 0; i < forSize; i++) {
             View listItem = (View) listAdapter.getView(i, null, gridView);
             listItem.measure(0, 0);
@@ -699,12 +692,12 @@ public class AppUtil {
 
     /**
      * Describution :修改下划线宽度
-     * 
+     * <p>
      * Author : DKjuan
-     * 
+     * <p>
      * Date : 2017/12/5 10:17
      **/
-    public static void setIndicator (Context mContext,TabLayout tabs, int padding) {
+    public static void setIndicator(Context mContext, TabLayout tabs, int padding) {
         try {
             //拿到tabLayout的mTabStrip属性  
             Field mTabStripField = tabs.getClass().getDeclaredField("mTabStrip");
@@ -713,8 +706,8 @@ public class AppUtil {
             LinearLayout mTabStrip = (LinearLayout) mTabStripField.get(tabs);
 
             padding = ScreenUtil.dp2px(mContext, padding);
-            int forSize=mTabStrip.getChildCount();
-            for (int i = 0; i <forSize; i++) {
+            int forSize = mTabStrip.getChildCount();
+            for (int i = 0; i < forSize; i++) {
                 View tabView = mTabStrip.getChildAt(i);
 
                 //拿到tabView的mTextView属性  
@@ -734,8 +727,8 @@ public class AppUtil {
                 //设置tab左右间距为10dp  注意这里不能使用Padding 因为源码中线的宽度是根据 tabView的宽度来设置的  
                 LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tabView.getLayoutParams();
                 params.width = width;
-                params.leftMargin = padding/2;
-                params.rightMargin = padding/2;
+                params.leftMargin = padding / 2;
+                params.rightMargin = padding / 2;
                 tabView.setLayoutParams(params);
 
                 tabView.invalidate();
@@ -776,35 +769,34 @@ public class AppUtil {
         }
         return false;
     }
+
     /**
      * 返回当前的应用是否处于前台显示状态
+     *
      * @param $packageName
      * @return
      */
-    public static boolean isTopActivity(Context context, String $packageName)
-    {
+    public static boolean isTopActivity(Context context, String $packageName) {
         //_context是一个保存的上下文
         ActivityManager __am = (ActivityManager) context.getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> __list = __am.getRunningAppProcesses();
-        if(__list.size() == 0) return false;
-        for(ActivityManager.RunningAppProcessInfo __process:__list)
-        {
-            if(__process.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND &&
-                    __process.processName.equals($packageName))
-            {
+        if (__list.size() == 0) return false;
+        for (ActivityManager.RunningAppProcessInfo __process : __list) {
+            if (__process.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND &&
+                    __process.processName.equals($packageName)) {
                 return true;
             }
         }
         return false;
     }
-    
-    public static boolean isAPPALive(Context mcontext,String packageName){
-        Boolean isAppRunning=false;
-        ActivityManager am = (ActivityManager)mcontext.getSystemService(Context.ACTIVITY_SERVICE);
+
+    public static boolean isAPPALive(Context mcontext, String packageName) {
+        Boolean isAppRunning = false;
+        ActivityManager am = (ActivityManager) mcontext.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningTaskInfo> list = am.getRunningTasks(100);
         for (ActivityManager.RunningTaskInfo info : list) {
             if (info.topActivity.getPackageName().equals(packageName) && info.baseActivity.getPackageName().equals(packageName)) {
-                isAppRunning= true;
+                isAppRunning = true;
                 //find it, break
                 break;
             }
@@ -814,16 +806,25 @@ public class AppUtil {
 
     /**
      * Describution : 复制到剪切板
-     * 
+     * <p>
      * Author : DKjuan
-     * 
+     * <p>
      * Date : 2018/5/17 13:22
      **/
-    public static void CopyToClip(Context mContext,String text) {
+    public static void CopyToClip(Context mContext, String text) {
         // 从API11开始android推荐使用android.content.ClipboardManager
         // 为了兼容低版本我们这里使用旧版的android.text.ClipboardManager，虽然提示deprecated，但不影响使用。
-        ClipboardManager cm = (ClipboardManager)mContext.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipboardManager cm = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
         // 将文本内容放到系统剪贴板里。
         cm.setText(text);
+    }
+
+    /**
+     * 复制到剪切板
+     */
+    public static void CopyMessageToClip(Context context, String text) {
+        ClipboardManager cm = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("3DM APP", text);
+        cm.setPrimaryClip(clipData);
     }
 }

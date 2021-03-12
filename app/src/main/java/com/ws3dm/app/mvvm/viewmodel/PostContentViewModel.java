@@ -37,10 +37,15 @@ import okhttp3.RequestBody;
 public class PostContentViewModel extends ViewModel implements LifecycleObserver {
     private MutableLiveData<ForumTidTypeRespBean.DataBean> TidList = new MutableLiveData<>();
     private MutableLiveData<UpLoadImageBean> netImagePath = new MutableLiveData<>();
-    private MutableLiveData<BaseViewModel.State> state = new MutableLiveData<>();
+    private MutableLiveData<BaseViewModel.State> upImageState = new MutableLiveData<>();
+    private MutableLiveData<BaseViewModel.State> postContentState = new MutableLiveData<>();
 
-    public MutableLiveData<BaseViewModel.State> getState() {
-        return state;
+    public MutableLiveData<BaseViewModel.State> getPostContentState() {
+        return postContentState;
+    }
+
+    public MutableLiveData<BaseViewModel.State> getUpImageState() {
+        return upImageState;
     }
 
     public MutableLiveData<UpLoadImageBean> getNetImagePath() {
@@ -79,10 +84,10 @@ public class PostContentViewModel extends ViewModel implements LifecycleObserver
             @Override
             public void onResponse(ForumTidTypeRespBean response) {
                 if (response.getCode() == 1) {
-                    state.postValue(BaseViewModel.State.SUCCESS);
+                    upImageState.postValue(BaseViewModel.State.SUCCESS);
                     TidList.postValue(response.getData());
                 } else {
-                    state.postValue(BaseViewModel.State.ERR);
+                    upImageState.postValue(BaseViewModel.State.ERR);
                     ToastUtil.showToast(context, response.getMessage());
                 }
             }
@@ -97,7 +102,7 @@ public class PostContentViewModel extends ViewModel implements LifecycleObserver
      * @param file
      */
     public void upLoadImage(Context context, String plateId, File file) {
-        state.postValue(BaseViewModel.State.LOADING);
+        upImageState.postValue(BaseViewModel.State.LOADING);
         long timeMillis = System.currentTimeMillis();
         String s = "" + MyApplication.getUserData().uid + plateId + 0 + 0 + timeMillis;
         String sign = StringUtil.MD5(s);
@@ -118,6 +123,8 @@ public class PostContentViewModel extends ViewModel implements LifecycleObserver
         build.newCall(request).enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                upImageState.postValue(BaseViewModel.State.ERR);
+                e.printStackTrace();
 
             }
 
@@ -127,10 +134,10 @@ public class PostContentViewModel extends ViewModel implements LifecycleObserver
                     String string = Objects.requireNonNull(response.body()).string();
                     UpLoadImageBean imageData = new Gson().fromJson(string, UpLoadImageBean.class);
                     if (imageData.getCode() == 1) {
-                        state.postValue(BaseViewModel.State.SUCCESS);
+                        upImageState.postValue(BaseViewModel.State.SUCCESS);
                         netImagePath.postValue(imageData);
                     } else {
-                        state.postValue(BaseViewModel.State.ERR);
+                        upImageState.postValue(BaseViewModel.State.ERR);
                         netImagePath.postValue(imageData);
                     }
                 }
@@ -149,6 +156,7 @@ public class PostContentViewModel extends ViewModel implements LifecycleObserver
      * @param content
      */
     public void PostContent(Context context, String typeId, String plateId, String title, String content) {
+        postContentState.postValue(BaseViewModel.State.LOADING);
         Map<String, Object> map = new HashMap<>();
         map.put("uid", MyApplication.getUserData().uid);
         map.put("typeId", typeId);
@@ -170,8 +178,10 @@ public class PostContentViewModel extends ViewModel implements LifecycleObserver
             @Override
             public void onResponse(UpLoadImageBean response) {
                 if (response.getCode() == 1) {
+                    postContentState.postValue(BaseViewModel.State.SUCCESS);
                     ToastUtil.showToast(context, response.getMsg());
                 } else {
+                    postContentState.postValue(BaseViewModel.State.ERR);
                     ToastUtil.showToast(context, response.getMsg());
                 }
             }

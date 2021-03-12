@@ -151,7 +151,7 @@ public class FragmentHomePage extends BaseFragment {
         mAdapter.setOnClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
-                MobclickAgent.onEvent(mContext,"03");
+                MobclickAgent.onEvent(mContext, "03");
                 mAdapter.getDataByPosition(position).setHavesee(1);
                 NewsBean news = mAdapter.getDataByPosition(position);
                 if (news.getArcurl() == null) {
@@ -269,7 +269,7 @@ public class FragmentHomePage extends BaseFragment {
     }
 
     /**
-     * 新的首页接口  只取猜你喜欢的数据和新闻
+     * 新的首页接口
      */
     private void getHotNewsPage() {
         long timeMillis = System.currentTimeMillis();
@@ -282,7 +282,6 @@ public class FragmentHomePage extends BaseFragment {
             @Override
             public HomeNewsListBean parseNetworkResponse(com.squareup.okhttp.Response response) throws IOException {
                 long end = System.currentTimeMillis();
-                Log.d("hotnewspage响应时间", String.valueOf(end - timeMillis));
                 String string = response.body().string();
                 return new Gson().fromJson(string, HomeNewsListBean.class);
             }
@@ -478,7 +477,7 @@ public class FragmentHomePage extends BaseFragment {
             header.findViewById(R.id.ll_vote).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MobclickAgent.onEvent(mContext,"02");
+                    MobclickAgent.onEvent(mContext, "02");
                     NewsBean news = voteDate;
                     if (news.getShowtype() == 1 || news.getShowtype() == 13) {
                         Intent intent = new Intent(mContext, NewsActivity.class);

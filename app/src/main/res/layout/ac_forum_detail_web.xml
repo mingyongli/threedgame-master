@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#323232"
+            android:gravity="center"
+            app:navigationIcon="@drawable/ic_arrow_back_while_24">
+
+            <TextView
+                android:id="@+id/forum_title"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/edit_tools"
+            android:layout_below="@+id/toolbar" />
+
+        <RelativeLayout
+            android:id="@+id/loadViewShare"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.6"
+            android:background="#000000"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/mProgressShare"
+                style="?android:progressBarStyle"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mProgressShare"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:text="分享中..."
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/edit_tools"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:background="#EFEFF4"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/replay"
+                android:layout_width="130dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/shape_button_bg"
+                android:backgroundTint="#FFFFFF"
+                android:gravity="center|left"
+                android:padding="5dp"
+                android:text="我来说两句"
+                android:textColor="#9195A3"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp">
+
+
+                <ImageView
+                    android:id="@+id/collection"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_collection" />
+
+                <ImageView
+                    android:id="@+id/share"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_share" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</layout>

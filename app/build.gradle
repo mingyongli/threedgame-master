@@ -4,7 +4,7 @@ plugins {
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '30.0.2'
+    buildToolsVersion '30.0.3'
     defaultConfig {
         applicationId "com.ws3dm.app"
         minSdkVersion 23
@@ -121,7 +121,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'org.jetbrains:annotations:16.0.1'
     implementation 'com.android.support:support-annotations:28.0.0'
-    def lifecycle_version = "2.2.0"
+    def lifecycle_version = "2.3.0"
     def arch_version = "2.1.0"
 
     // ViewModel

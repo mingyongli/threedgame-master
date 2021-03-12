@@ -1,5 +1,6 @@
 package com.ws3dm.app.mvvm.view.activity;
 
+import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -69,17 +70,16 @@ public class PlateSearchActivity extends BaseActivity {
                 plateContent = mBind.search.getText().toString();
                 if (plateContent.length() != 0) {
                     page = 1;
-                    viewModel.SearchPlate(plateId,plateContent,page);
+                    viewModel.SearchPlate(plateId, plateContent, page);
                     hideInput();
-                }else {
-                    ToastUtil.showToast(mContext,"请输入关键字");
+                } else {
+                    ToastUtil.showToast(mContext, "请输入关键字");
                 }
             }
         });
         mBind.search.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                LogUtils.d("Edit" + keyCode + "" + event.toString());
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     plateContent = mBind.search.getText().toString().trim();
                     // 监听到回车键，会执行2次该方法。按下与松开
@@ -90,7 +90,7 @@ public class PlateSearchActivity extends BaseActivity {
                             viewModel.SearchPlate(plateId, plateContent, page);
                             hideInput();
                         } else {
-                            ToastUtil.showToast(mContext,"请输入关键字");
+                            ToastUtil.showToast(mContext, "请输入关键字");
                         }
                     }
                 }
@@ -98,7 +98,6 @@ public class PlateSearchActivity extends BaseActivity {
                 return false;
             }
         });
-
         viewModel.getState().observe(this, new Observer<BaseViewModel.State>() {
             @Override
             public void onChanged(BaseViewModel.State state) {
@@ -151,6 +150,23 @@ public class PlateSearchActivity extends BaseActivity {
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 page += 1;
                 viewModel.SearchPlate(plateId, plateContent, page);
+            }
+        });
+        adapter.setPlateItemClickListener(new ForumPlateListAdapter.PlateItemClickListener() {
+            @Override
+            public void ItemClick(ForumPlateBean.DataBean.ListBean item) {
+                try {
+                    Intent intent = new Intent(mContext, ForumDetailWeb.class);
+                    intent.putExtra("url", item.getWebviewurl());
+                    intent.putExtra("title", item.getTopicTitle());
+                    intent.putExtra("fid", item.getTopicId());
+                    intent.putExtra("tid", item.getTid());
+                    startActivity(intent);
+                } catch (Exception e) {
+
+                }
+
+
             }
         });
     }

@@ -73,6 +73,7 @@ public class SectionSearchActivity extends BaseActivity {
                 }
             }
         });
+
         mBind.search.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {

@@ -18,13 +18,11 @@ import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ws3dm.app.R;
-import com.ws3dm.app.activity.ForumDetailActivity;
-import com.ws3dm.app.bean.ForumDetailBean;
-import com.ws3dm.app.bean.UserDataBean;
 import com.ws3dm.app.databinding.FgHotForumBinding;
 import com.ws3dm.app.fragment.BaseFragment;
 import com.ws3dm.app.mvvm.adapter.ForumHotAdapter;
 import com.ws3dm.app.mvvm.bean.PlateContentBean;
+import com.ws3dm.app.mvvm.view.activity.ForumDetailWeb;
 import com.ws3dm.app.mvvm.viewmodel.BaseViewModel;
 import com.ws3dm.app.mvvm.viewmodel.ForumHotsViewModel;
 
@@ -106,23 +104,28 @@ public class ForumHotsFragment extends BaseFragment {
         adapter.setHotItemClickListener(new ForumHotAdapter.HotItemClickListener() {
             @Override
             public void ItemClickListener(PlateContentBean.DataBean.ListBean item) {
-                ForumDetailBean bean = new ForumDetailBean();
-                UserDataBean userDataBean = new UserDataBean();
-                bean.setArcurl(item.getArcurl());
-                bean.setTid(String.valueOf(item.getTid()));
-                bean.setFid(String.valueOf(item.getTopicId()));
-                bean.setTitle(item.getTopicTitle());
-                bean.setWebviewurl(item.getWebviewurl());
-                bean.setPubdate_at(item.getCommentCount());
-                bean.setReplies(String.valueOf(item.getCommentCount()));
-
-                userDataBean.setNickname(item.getTopicSendUserName());
-                userDataBean.setAvatarstr(item.getTopicSendUserIcon());
-                bean.setUser(userDataBean);
-                Intent intent = new Intent(mContext, ForumDetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("forumDetailBean", bean);
-                intent.putExtras(bundle);
+//                ForumDetailBean bean = new ForumDetailBean();
+//                UserDataBean userDataBean = new UserDataBean();
+//                bean.setArcurl(item.getArcurl());
+//                bean.setTid(String.valueOf(item.getTid()));
+//                bean.setFid(String.valueOf(item.getTopicId()));
+//                bean.setTitle(item.getTopicTitle());
+//                bean.setWebviewurl(item.getWebviewurl());
+//                bean.setPubdate_at(item.getCommentCount());
+//                bean.setReplies(String.valueOf(item.getCommentCount()));
+//
+//                userDataBean.setNickname(item.getTopicSendUserName());
+//                userDataBean.setAvatarstr(item.getTopicSendUserIcon());
+//                bean.setUser(userDataBean);
+//                Intent intent = new Intent(mContext, ForumDetailActivity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable("forumDetailBean", bean);
+//                intent.putExtras(bundle);
+                Intent intent = new Intent(mContext, ForumDetailWeb.class);
+                intent.putExtra("url", item.getWebviewurl());
+                intent.putExtra("title", item.getTopicTitle());
+                intent.putExtra("fid", item.getTopicId());
+                intent.putExtra("tid", String.valueOf(item.getTid()));
                 startActivity(intent);
             }
         });

@@ -16,7 +16,6 @@ import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ws3dm.app.R;
-import com.ws3dm.app.activity.ForumPostListActivity;
 import com.ws3dm.app.activity.GameHomeActivity;
 import com.ws3dm.app.activity.NewsActivity;
 import com.ws3dm.app.activity.OriginalActivity;
@@ -204,13 +203,13 @@ public class SearchFragment extends BaseFragment {
 						}
 						break;
 					case 4:
-						intent = new Intent(mContext, ForumPostListActivity.class);
-						intent.putExtra("title",clickBean.getTitle());
-						intent.putExtra("fid",clickBean.getFid());
-						startActivity(intent);
-//						intent = new Intent(mContext, SectionPageActivity.class);
-//						intent.putExtra("plateId",String.valueOf(clickBean.getFid()));
+//						intent = new Intent(mContext, ForumPostListActivity.class);
+//						intent.putExtra("title",clickBean.getTitle());
+//						intent.putExtra("fid",clickBean.getFid());
 //						startActivity(intent);
+						intent = new Intent(mContext, SectionPageActivity.class);
+						intent.putExtra("plateId",String.valueOf(clickBean.getFid()));
+						startActivity(intent);
 						break;
 				}
 			}

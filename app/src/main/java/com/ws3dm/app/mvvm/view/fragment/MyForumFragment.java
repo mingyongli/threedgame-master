@@ -20,7 +20,6 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ws3dm.app.MyApplication;
 import com.ws3dm.app.R;
-import com.ws3dm.app.activity.BaseActivity;
 import com.ws3dm.app.activity.LoginActivity;
 import com.ws3dm.app.databinding.FgMyForumBinding;
 import com.ws3dm.app.databinding.HeadMyForumBinding;

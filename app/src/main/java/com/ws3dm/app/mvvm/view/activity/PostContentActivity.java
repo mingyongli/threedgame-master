@@ -1,6 +1,7 @@
 package com.ws3dm.app.mvvm.view.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
@@ -31,6 +32,7 @@ import com.ws3dm.app.databinding.AcPostContentBinding;
 import com.ws3dm.app.mvp.model.RespBean.ForumTidTypeRespBean;
 import com.ws3dm.app.mvvm.viewmodel.BaseViewModel;
 import com.ws3dm.app.mvvm.viewmodel.PostContentViewModel;
+import com.ws3dm.app.util.AppUtil;
 import com.ws3dm.app.util.ProDialog;
 import com.ws3dm.app.util.ToastUtil;
 
@@ -51,6 +53,7 @@ public class PostContentActivity extends BaseActivity {
     private PopupWindow mPopupWindowCate;
     public static final int PICK_PHOTO = 102;
     private Dialog dialog;
+    private Activity activity;
 
     @Override
     protected void init() {
@@ -66,7 +69,9 @@ public class PostContentActivity extends BaseActivity {
 
     @SuppressLint("ResourceAsColor")
     private void initView() {
+        setSupportActionBar(mBind.toolbar);
         dialog = ProDialog.createLoadingDialog(mContext, "上传中");
+        activity = this;
         mBind.forumTitle.setText(plateTitle);
         mBind.RichEditor.setEditorFontSize(16);
         mBind.RichEditor.setPadding(10, 10, 10, 10);
@@ -120,7 +125,13 @@ public class PostContentActivity extends BaseActivity {
     }
 
     private void initListener() {
-        viewModel.getState().observe(this, new Observer<BaseViewModel.State>() {
+        mBind.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        viewModel.getUpImageState().observe(this, new Observer<BaseViewModel.State>() {
             @Override
             public void onChanged(BaseViewModel.State state) {
                 switch (state) {
@@ -134,12 +145,34 @@ public class PostContentActivity extends BaseActivity {
                 }
             }
         });
+        viewModel.getPostContentState().observe(this, new Observer<BaseViewModel.State>() {
+            @Override
+            public void onChanged(BaseViewModel.State state) {
+                switch (state) {
+                    case SUCCESS:
+                        finish();
+                        break;
+                    case ERR:
+                        ToastUtil.showToast(mContext, "发送帖子失败");
+                        break;
+                    case LOADING:
+                        dialog.show();
+                        break;
+                }
+
+            }
+        });
         mBind.insertImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, PICK_PHOTO);
+                if (AppUtil.CheckStoragePermissions(activity)) {
+                    Intent intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");
+                    startActivityForResult(intent, PICK_PHOTO);
+                } else {
+                    AppUtil.verifyStoragePermissions(activity);
+                }
+
             }
         });
         mBind.label.setOnClickListener(new View.OnClickListener() {
@@ -171,9 +204,11 @@ public class PostContentActivity extends BaseActivity {
             }
 
         });
+
         mBind.postContentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //String html = mBind.RichEditor.getHtml();
                 if (typeid != null && typeid.length() > 0) {
                     if (Objects.requireNonNull(mBind.editTitle.getText()).toString().length() > 0) {
                         if (mBind.RichEditor.getHtml().length() > 0) {
@@ -206,7 +241,6 @@ public class PostContentActivity extends BaseActivity {
     private void upLoadImage(Intent data) {
         String imagePath = getImagePath(data);
         if (imagePath != null) {
-
             File file = new File(imagePath);
             viewModel.upLoadImage(mContext, String.valueOf(plateId), file);
         } else {
@@ -218,8 +252,9 @@ public class PostContentActivity extends BaseActivity {
     @RequiresApi(api = Build.VERSION_CODES.Q)
     private String getImagePath(Intent data) {
         Uri uri = data.getData();
-        Cursor cursor = getContentResolver()
+        @SuppressLint("Recycle") Cursor cursor = getContentResolver()
                 .query(uri, null, null, null, null, null);
+
         if (cursor != null && cursor.moveToNext()) {
             return cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
         } else {

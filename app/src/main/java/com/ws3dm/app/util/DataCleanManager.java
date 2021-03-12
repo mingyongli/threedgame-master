@@ -173,7 +173,7 @@ public class DataCleanManager {
 	 * 删除指定目录下文件及目录
 	 * 
 	 * @param deleteThisPath
-	 * @param filepath
+	 * @param filePath
 	 * @return
 	 */
 	public static void deleteFolderFile(String filePath, boolean deleteThisPath) {

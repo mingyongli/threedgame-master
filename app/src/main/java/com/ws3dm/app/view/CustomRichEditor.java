@@ -20,7 +20,10 @@ public class CustomRichEditor extends RichEditor {
 
     //图片自适应
     public void insertAutoImage(String url, String alt) {
+//        exec("javascript:RE.prepareInsert();");
+//        exec("javascript:RE.insertImageWH('" + url + "', '" + alt + "','" + "100%" + "', '" + "auto" + "');");
+
         exec("javascript:RE.prepareInsert();");
-        exec("javascript:RE.insertImageWH('" + url + "', '" + alt + "','" + "100%" + "', '" + "auto" + "');");
+        exec("javascript:RE.insertImageW('" + url + "', '" + alt + "','" + "100%" + "');");
     }
 }

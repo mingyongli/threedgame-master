@@ -1,17 +1,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="handler"
-            type="com.ws3dm.app.fragment.FragmentNewsComment"/>
+            type="com.ws3dm.app.fragment.FragmentNewsComment" />
     </data>
 
     <com.ws3dm.app.view.IMMListenerRelativeLayout
-                    android:id="@+id/rlAllComment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/bg_content">
+        android:id="@+id/rlAllComment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/bg_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,10 +29,10 @@
 
                 <com.jcodecraeer.xrecyclerview.XRecyclerView
                     android:id="@+id/mRecycleView"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/rlHead"/>
+                    android:layout_below="@+id/rlHead"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
                 <TextView
                     android:id="@+id/txtNoComment"
@@ -74,13 +75,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="7dp"
-                    android:minHeight="27dp"
-                    android:maxLines="5"
                     android:layout_toLeftOf="@+id/llComment"
                     android:layout_weight="1"
                     android:background="@drawable/shape_comment"
                     android:gravity="center_vertical"
                     android:hint="说点什么..."
+                    android:maxLines="5"
+                    android:minHeight="27dp"
+                    android:selectAllOnFocus="true"
                     android:textColor="?attr/txt_content"
                     android:textColorHint="?attr/txt_content"
                     android:textSize="14sp" />

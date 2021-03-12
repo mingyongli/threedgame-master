@@ -86,5 +86,10 @@ public class NewUrl {
     public static final String GET_FORUM_TID_TYPE = "https://my.3dmgame.com/app/" + "getforumtidtype";
     //发布新主题
     public static final String NEW_THREAD = BASE_URL + "newThread";
-
+    //添加删除收藏
+    public static final String SET_TID_FAVORITE = "https://my.3dmgame.com/app/" + "settidfavorite";
+    //获取帖子状态
+    public static final String GET_TID_FAVORITE = "https://my.3dmgame.com/app/" + "gettidfavorite";
+    //举报留言
+    public static final String BBS_REPORT = BASE_URL + "bbsreport";
 }

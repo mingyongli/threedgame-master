@@ -34,9 +34,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏锁定
+       // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏锁定
 //        if (SharedUtil.getSharedPreferencesData("isNight").equals("0"))
-        setTheme(R.style.DayTheme);
+//       setTheme(R.style.DayTheme);
 //        else
 //            setTheme(R.style.NightTheme); 
         TAG = this.getClass().getSimpleName();

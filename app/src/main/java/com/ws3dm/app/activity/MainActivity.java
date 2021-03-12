@@ -44,7 +44,6 @@ import com.ws3dm.app.fragment.OriginalFragment;
 import com.ws3dm.app.mvp.model.RespBean.VersionRespBean;
 import com.ws3dm.app.mvp.presenter.UserPresenter;
 import com.ws3dm.app.mvvm.view.fragment.NewForumFragment;
-import com.ws3dm.app.service.JobHandleService;
 import com.ws3dm.app.util.AppUtil;
 import com.ws3dm.app.util.DialogHelper;
 import com.ws3dm.app.util.EventBus;
@@ -526,7 +525,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         EventBus.getDefault().unregister(this);
-        stopService(new Intent(this, JobHandleService.class));
         super.onDestroy();
     }
 

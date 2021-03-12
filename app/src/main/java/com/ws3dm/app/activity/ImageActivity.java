@@ -137,20 +137,11 @@ public class ImageActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.txtDown:// 保存
-
-                checkAndRequestPermission();
-                if (WRITE_PERMISSION) {
-                    if (AppUtil.isNetworkConnected(this)) {
-                        if (SharedUtil.getSharedPreferencesData(arrUrl[position]).equals("0")) {
-                            new GetDataTask().execute(arrUrl[position]);
-                            SharedUtil.setSharedPreferencesData(arrUrl[position], "1");
-                        } else
-                            ToastUtil.showToast(mContext, "已保存过此图片");
-                    } else {
-                        ToastUtil.showToast(mContext, "请确保网络开启");
-                    }
+                //通过MediaStore保存图片到共有目录无需权限
+                if (AppUtil.isNetworkConnected(this)) {
+                    new GetDataTask().execute(arrUrl[position]);
                 } else {
-                    ToastUtil.showToast(mContext, "未获取读写权限");
+                    ToastUtil.showToast(mContext, "请确保网络开启");
                 }
                 break;
         }
@@ -159,12 +150,12 @@ public class ImageActivity extends BaseActivity {
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void checkAndRequestPermission() {
         List<String> lackedPermission = new ArrayList<String>();
-        if (!(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)) {
+        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             lackedPermission.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            WRITE_PERMISSION = true;
         }
         // 权限都已经有了，那么直接调用SDK
         if (lackedPermission.size() == 0) {
+            WRITE_PERMISSION = true;
         } else {
             // 请求所缺少的权限，在onRequestPermissionsResult中再看是否获得权限，如果获得权限就可以调用SDK，否则不要调用SDK。
             String[] requestPermissions = new String[lackedPermission.size()];

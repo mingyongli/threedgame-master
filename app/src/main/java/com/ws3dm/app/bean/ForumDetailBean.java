@@ -9,106 +9,116 @@ import java.io.Serializable;
  */
 
 public class ForumDetailBean implements Serializable {
-	/**
-	 * fid : 18
-	 * tid : 5723178
-	 * arcurl : http://bbs.3dmgame.com/thread-5723178-1.html
-	 * title : 【3DMGAME新闻中心】招聘值班编辑
-	 * pubdate_at : 1521706238
-	 * replies : 5
-	 * views : 4575
-	 * type : 公告
-	 * user : {"uid":"1056597","nickname":"NT","avatarstr":"http://user.3dmgame.com/data/avatar/001/05/65/97_avatar_small.jpg"}
-	 */
+    /**
+     * fid : 18
+     * tid : 5723178
+     * arcurl : http://bbs.3dmgame.com/thread-5723178-1.html
+     * title : 【3DMGAME新闻中心】招聘值班编辑
+     * pubdate_at : 1521706238
+     * replies : 5
+     * views : 4575
+     * type : 公告
+     * user : {"uid":"1056597","nickname":"NT","avatarstr":"http://user.3dmgame.com/data/avatar/001/05/65/97_avatar_small.jpg"}
+     */
 
-	private String fid;
-	private String tid;
-	private String arcurl;
-	private String title;
-	private long pubdate_at;
-	private String replies;
-	private String views;
-	private String type;
-	private String webviewurl;
-	private UserDataBean user;
+    private String fid;
+    private String tid;
+    private String arcurl;
+    private String title;
+    private long pubdate_at;
+    private String replies;
+    private String views;
+    private String type;
+    private String webviewurl;
+    private String webviewnewurl;
 
-	public String getFid() {
-		return fid;
-	}
+    public String getWebviewnewurl() {
+        return webviewnewurl;
+    }
 
-	public void setFid(String fid) {
-		this.fid = fid;
-	}
+    public void setWebviewnewurl(String webviewnewurl) {
+        this.webviewnewurl = webviewnewurl;
+    }
 
-	public String getTid() {
-		return tid;
-	}
+    private UserDataBean user;
 
-	public void setTid(String tid) {
-		this.tid = tid;
-	}
+    public String getFid() {
+        return fid;
+    }
 
-	public String getArcurl() {
-		return arcurl;
-	}
+    public void setFid(String fid) {
+        this.fid = fid;
+    }
 
-	public void setArcurl(String arcurl) {
-		this.arcurl = arcurl;
-	}
+    public String getTid() {
+        return tid;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setTid(String tid) {
+        this.tid = tid;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getArcurl() {
+        return arcurl;
+    }
 
-	public long getPubdate_at() {
-		return pubdate_at;
-	}
+    public void setArcurl(String arcurl) {
+        this.arcurl = arcurl;
+    }
 
-	public void setPubdate_at(long pubdate_at) {
-		this.pubdate_at = pubdate_at;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public String getReplies() {
-		return replies;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setReplies(String replies) {
-		this.replies = replies;
-	}
+    public long getPubdate_at() {
+        return pubdate_at;
+    }
 
-	public String getViews() {
-		return views;
-	}
+    public void setPubdate_at(long pubdate_at) {
+        this.pubdate_at = pubdate_at;
+    }
 
-	public void setViews(String views) {
-		this.views = views;
-	}
+    public String getReplies() {
+        return replies;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public void setReplies(String replies) {
+        this.replies = replies;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public String getViews() {
+        return views;
+    }
 
-	public String getWebviewurl() {
-		return webviewurl;
-	}
+    public void setViews(String views) {
+        this.views = views;
+    }
 
-	public void setWebviewurl(String webviewurl) {
-		this.webviewurl = webviewurl;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public UserDataBean getUser() {
-		return user;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public void setUser(UserDataBean user) {
-		this.user = user;
-	}
+    public String getWebviewurl() {
+        return webviewurl;
+    }
+
+    public void setWebviewurl(String webviewurl) {
+        this.webviewurl = webviewurl;
+    }
+
+    public UserDataBean getUser() {
+        return user;
+    }
+
+    public void setUser(UserDataBean user) {
+        this.user = user;
+    }
 }

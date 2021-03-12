@@ -36,6 +36,7 @@ public class SectionPageActivity extends BaseActivity {
     private ForumPlateViewPageAdapter viewPageAdapter;
     private int isFollow;
     private String plateTitle;
+    private NoticeAdapter adapter;
 
 
     @Override
@@ -54,7 +55,7 @@ public class SectionPageActivity extends BaseActivity {
         isFollow = dataBean.getHead().getIsFollow();
         refreshFollow();
         mBind.topPlaced.setLayoutManager(new LinearLayoutManager(mContext));
-        NoticeAdapter adapter = new NoticeAdapter(mContext, R.layout.adapter_forum_notice_item);
+        adapter = new NoticeAdapter(mContext, R.layout.adapter_forum_notice_item);
         mBind.topPlaced.setAdapter(adapter);
         GlideUtil.loadImage(mContext, dataBean.getHead().getPlateIcon(), mBind.forumImg);
         GlideUtil.loadImage(mContext, dataBean.getHead().getPlateIcon(), mBind.forumBg);
@@ -66,6 +67,17 @@ public class SectionPageActivity extends BaseActivity {
             return;
         }
         adapter.clearAndAddList(dataBean.getHead().getNotice());
+        adapter.setNoticeItemOnclickListener(new NoticeAdapter.NoticeItemClick() {
+            @Override
+            public void onClick(PlateListHeadBean.DataBean.HeadBean.NoticeBean item) {
+                Intent intent = new Intent(mContext, ForumDetailWeb.class);
+                intent.putExtra("url", item.getWebviewurl());
+                intent.putExtra("title", item.getTopicTitle());
+                intent.putExtra("fid", item.getTopicId());
+                intent.putExtra("tid", item.getTid());
+                startActivity(intent);
+            }
+        });
     }
 
     private void refreshFollow() {
@@ -132,6 +144,7 @@ public class SectionPageActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+
     }
 
     private void LoadData() {

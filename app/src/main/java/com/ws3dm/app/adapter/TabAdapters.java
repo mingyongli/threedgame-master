@@ -35,28 +35,22 @@ public class TabAdapters extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (tabsData.get(position).getType() == 0) {
             if (tabsData.get(position).getCid() == 0) {
-                FragmentHomePage homePage = new FragmentHomePage();
-                return homePage;
+                return new FragmentHomePage();
             }
             if (tabsData.get(position).getCid() == 1) {
                 //数码
-                Fragment mFragmentNewsDigital = new FragmentNewsDigital();
-                return mFragmentNewsDigital;
+                return new FragmentNewsDigital();
             } else if (tabsData.get(position).getCid() == 2) {
                 //娱乐
-                Fragment mFragmentNewsENT = new FragmentNewsENT();
-                return mFragmentNewsENT;
+                return new FragmentNewsENT();
             } else if (tabsData.get(position).getCid() == 3) {
                 //攻略
-                FragmentGonglue fragmentGonglue = new FragmentGonglue();
-                return fragmentGonglue;
+                return new FragmentGonglue();
             } else {
-                FragmentHomePageOther pageOther = new FragmentHomePageOther().newInstance(tabsData.get(position));
-                return pageOther;
+                return new FragmentHomePageOther().newInstance(tabsData.get(position));
             }
         } else {
-            FragmentHomePageOther pageOther = new FragmentHomePageOther().newInstance(tabsData.get(position));
-            return pageOther;
+            return new FragmentHomePageOther().newInstance(tabsData.get(position));
         }
     }
 

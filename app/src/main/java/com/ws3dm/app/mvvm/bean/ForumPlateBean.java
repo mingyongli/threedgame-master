@@ -79,6 +79,15 @@ public class ForumPlateBean {
             private String arcurl;
             private String webviewurl;
             private String tid;
+            private String webviewnewurl;
+
+            public String getWebviewnewurl() {
+                return webviewnewurl;
+            }
+
+            public void setWebviewnewurl(String webviewnewurl) {
+                this.webviewnewurl = webviewnewurl;
+            }
 
             public String getTid() {
                 return tid;

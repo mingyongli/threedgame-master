@@ -14,17 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smart.refresh.footer.ClassicsFooter;
-import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.ws3dm.app.R;
-import com.ws3dm.app.activity.ForumDetailActivity;
-import com.ws3dm.app.bean.ForumDetailBean;
-import com.ws3dm.app.bean.UserDataBean;
 import com.ws3dm.app.fragment.BaseFragment;
 import com.ws3dm.app.mvvm.adapter.ForumPlateListAdapter;
 import com.ws3dm.app.mvvm.bean.ForumPlateBean;
+import com.ws3dm.app.mvvm.view.activity.ForumDetailWeb;
 import com.ws3dm.app.mvvm.viewmodel.BaseViewModel;
 import com.ws3dm.app.mvvm.viewmodel.ForumPlateViewModel;
 import com.ws3dm.app.view.DMFreshHead;
@@ -118,24 +115,30 @@ public class ForumPlateContentFragment extends BaseFragment {
         adapter.setPlateItemClickListener(new ForumPlateListAdapter.PlateItemClickListener() {
             @Override
             public void ItemClick(ForumPlateBean.DataBean.ListBean item) {
-                ForumDetailBean bean = new ForumDetailBean();
-                UserDataBean userDataBean = new UserDataBean();
-                bean.setArcurl(item.getArcurl());
-                //TODO:
-                bean.setTid(String.valueOf(item.getTid()));
-                bean.setFid(String.valueOf(item.getTopicId()));
-                bean.setTitle(item.getTopicTitle());
-                bean.setWebviewurl(item.getWebviewurl());
-                bean.setPubdate_at(item.getCommentCount());
-                bean.setReplies(String.valueOf(item.getCommentCount()));
-
-                userDataBean.setNickname(item.getTopicSendUserName());
-                userDataBean.setAvatarstr(item.getTopicSendUserIcon());
-                bean.setUser(userDataBean);
-                Intent intent = new Intent(mContext, ForumDetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("forumDetailBean", bean);
-                intent.putExtras(bundle);
+//                ForumDetailBean bean = new ForumDetailBean();
+//                UserDataBean userDataBean = new UserDataBean();
+//                bean.setArcurl(item.getArcurl());
+//                //TODO:
+//                bean.setTid(String.valueOf(item.getTid()));
+//                bean.setFid(String.valueOf(item.getTopicId()));
+//                bean.setTitle(item.getTopicTitle());
+//                bean.setWebviewurl(item.getWebviewurl());
+//                bean.setPubdate_at(item.getCommentCount());
+//                bean.setReplies(String.valueOf(item.getCommentCount()));
+//
+//                userDataBean.setNickname(item.getTopicSendUserName());
+//                userDataBean.setAvatarstr(item.getTopicSendUserIcon());
+//                bean.setUser(userDataBean);
+//                Intent intent = new Intent(mContext, ForumDetailActivity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable("forumDetailBean", bean);
+//                intent.putExtras(bundle);
+//                startActivity(intent);
+                Intent intent = new Intent(mContext, ForumDetailWeb.class);
+                intent.putExtra("url", item.getWebviewurl());
+                intent.putExtra("title", item.getTopicTitle());
+                intent.putExtra("fid", item.getTopicId());
+                intent.putExtra("tid", item.getTid());
                 startActivity(intent);
             }
         });

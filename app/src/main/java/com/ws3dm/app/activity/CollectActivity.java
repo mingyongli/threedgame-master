@@ -102,7 +102,7 @@ public class CollectActivity extends BaseActivity {
 		mBinding.mTabLayout.post(new Runnable() {
 			@Override
 			public void run() {
-				AppUtil.setIndicator(mContext,mBinding.mTabLayout,56);
+				//AppUtil.setIndicator(mContext,mBinding.mTabLayout,56);
 			}
 		});
 	}

@@ -36,6 +36,7 @@
             </LinearLayout>
 
             <EditText
+                android:selectAllOnFocus="true"
                 android:id="@+id/etSearch"
                 android:layout_width="0dp"
                 android:layout_height="27dp"
