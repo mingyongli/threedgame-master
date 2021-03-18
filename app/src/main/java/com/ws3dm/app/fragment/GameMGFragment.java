@@ -262,7 +262,7 @@ public class GameMGFragment extends BaseFragment implements View.OnClickListener
                     if (originalBean.getHttp() == 1) {
                         AdExposure.getInstance().putExposure(
                                 originalBean.getId()
-                                , String.valueOf(UUID.randomUUID())
+                                , SharedUtil.getSharedPreferencesData("uuid")
                                 , AppUtil.getVersionCode(mContext)
                                 , "Android"
                                 , SharedUtil.getSharedPreferencesData("device")

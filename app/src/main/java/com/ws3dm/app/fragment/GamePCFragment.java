@@ -232,7 +232,7 @@ public class GamePCFragment extends BaseFragment implements View.OnClickListener
                 if (mList.get(position).getHttp() == 1) {
                     AdExposure.getInstance().putExposure(
                             mList.get(position).getId()
-                            , String.valueOf(UUID.randomUUID())
+                            , SharedUtil.getSharedPreferencesData("uuid")
                             , AppUtil.getVersionCode(mContext)
                             , "Android"
                             , SharedUtil.getSharedPreferencesData("device")

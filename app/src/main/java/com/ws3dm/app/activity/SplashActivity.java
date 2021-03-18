@@ -35,6 +35,7 @@ import com.ws3dm.app.bean.SlidesBean;
 import com.ws3dm.app.bean.SoftGameBean;
 import com.ws3dm.app.databinding.AcSplashBinding;
 import com.ws3dm.app.fragment.WelcomeFragmentGuide;
+import com.ws3dm.app.network.AdExposure;
 import com.ws3dm.app.network.RetrofitFactory;
 import com.ws3dm.app.network.service.UserService;
 import com.ws3dm.app.util.AppUtil;
@@ -52,6 +53,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -201,6 +203,13 @@ public class SplashActivity extends BaseActivity {
                                         //返回true，说明你自己想根据url，做新的跳转，比如在判断url符合条件的情况下，我想让webView加载http://ask.csdn.net/questions/178242
                                         if (!url.equals(data.getWebviewurl())) {
                                             goToOut();
+                                            AdExposure.getInstance().putExposure(
+                                                    99999
+                                                    , SharedUtil.getSharedPreferencesData("uuid")
+                                                    , AppUtil.getVersionCode(mContext)
+                                                    , "Android"
+                                                    , SharedUtil.getSharedPreferencesData("device")
+                                                    , String.valueOf(System.currentTimeMillis()));
                                             Uri uri = Uri.parse(url);
                                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                                             startActivity(intent);
@@ -270,6 +279,7 @@ public class SplashActivity extends BaseActivity {
 
         public static class DataDTO {
             private int isopen;
+
             private String webviewurl;
             private int countdown;
 

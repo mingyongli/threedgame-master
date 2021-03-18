@@ -126,7 +126,7 @@ public class ViewPagerAdapter extends PagerAdapter {
                 if (slidesBean.getHttp() == 1) {
                     AdExposure.getInstance().putExposure(
                             slidesBean.getId()
-                            , String.valueOf(UUID.randomUUID())
+                            , SharedUtil.getSharedPreferencesData("uuid")
                             , AppUtil.getVersionCode(mContext)
                             , "Android"
                             , SharedUtil.getSharedPreferencesData("device")

@@ -267,7 +267,7 @@ public class GameNETFragment extends BaseFragment implements View.OnClickListene
                     if (originalBean.getHttp() == 1) {
                         AdExposure.getInstance().putExposure(
                                 originalBean.getId()
-                                , String.valueOf(UUID.randomUUID())
+                                , SharedUtil.getSharedPreferencesData("uuid")
                                 , AppUtil.getVersionCode(mContext)
                                 , "Android"
                                 , SharedUtil.getSharedPreferencesData("device")
