@@ -64,7 +64,7 @@ public class NewsFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  AppUtil.verifyStoragePermissions(getActivity());
+        //  AppUtil.verifyStoragePermissions(getActivity());
         titleFile = new TitleFile(mContext);
         setHasOptionsMenu(true);
     }

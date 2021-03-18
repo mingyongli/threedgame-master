@@ -2,7 +2,10 @@ package com.ws3dm.app.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+
 import androidx.databinding.DataBindingUtil;
+
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +28,7 @@ import com.jcodecraeer.demo.MyAdapter;
 import com.jcodecraeer.xrecyclerview.CustomRefreshHeader;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.squareup.okhttp.OkHttpClient;
 import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.GameCategoryActivity;
@@ -36,8 +41,11 @@ import com.ws3dm.app.adapter.CommonFragmentPagerAdapter;
 import com.ws3dm.app.bean.GameBean;
 import com.ws3dm.app.databinding.FgBaseRecyclerviewBinding;
 import com.ws3dm.app.mvp.model.RespBean.GameDJhomeRespBean;
+import com.ws3dm.app.network.AdExposure;
 import com.ws3dm.app.network.RetrofitFactory;
 import com.ws3dm.app.network.service.GameService;
+import com.ws3dm.app.util.AppUtil;
+import com.ws3dm.app.util.SharedUtil;
 import com.ws3dm.app.util.StringUtil;
 import com.ws3dm.app.util.TimeUtil;
 import com.ws3dm.app.util.glide.GlideUtil;
@@ -51,7 +59,13 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.annotations.NonNull;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -99,7 +113,7 @@ public class GamePCFragment extends BaseFragment implements View.OnClickListener
             public void onRefresh() {
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
-                        obtainData();
+                        initData();
                     }
                 }, 50);            //refresh data here
             }
@@ -143,6 +157,38 @@ public class GamePCFragment extends BaseFragment implements View.OnClickListener
         });
     }
 
+    private void initData() {
+        //获取数据
+        long time = System.currentTimeMillis();
+        String sign = StringUtil.MD5(time + "");
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("time", time);
+            obj.put("sign", sign);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+//		mGamePresenter.getDJhome(obj.toString());//异步请求
+        //同步请求
+        Retrofit retrofit = RetrofitFactory.getNewRetrofitV4(0);
+        GameService.Api service = retrofit.create(GameService.Api.class);
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), obj.toString());
+        Call<GameDJhomeRespBean> call = service.djHome(body);
+        call.enqueue(new Callback<GameDJhomeRespBean>() {
+            @Override
+            public void onResponse(Call<GameDJhomeRespBean> call, Response<GameDJhomeRespBean> response) {
+                Log.e("requestSuccess", "-----------------------" + response.body());
+                initView(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<GameDJhomeRespBean> call, Throwable throwable) {
+                mBinding.recyclerview.loadMoreError();
+            }
+        });
+
+    }
+
     public void initView(GameDJhomeRespBean mData) {
         if (!hasHead) {
             mBinding.recyclerview.addHeaderView(header);
@@ -183,14 +229,27 @@ public class GamePCFragment extends BaseFragment implements View.OnClickListener
         vpAdvice.setOnTopViewClickListener(new CoverFlowView.OnTopViewClickListener() {
             @Override
             public void onClick(int position, View itemView) {
-                Intent intent = new Intent(mContext, GameHomeActivity.class);
-                Bundle bundle = new Bundle();
+                if (mList.get(position).getHttp() == 1) {
+                    AdExposure.getInstance().putExposure(
+                            mList.get(position).getId()
+                            , String.valueOf(UUID.randomUUID())
+                            , AppUtil.getVersionCode(mContext)
+                            , "Android"
+                            , SharedUtil.getSharedPreferencesData("device")
+                            , String.valueOf(System.currentTimeMillis()));
+                    Uri parse = Uri.parse(mList.get(position).getArcurl());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, parse);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(mContext, GameHomeActivity.class);
+                    Bundle bundle = new Bundle();
 //				bundle.putSerializable("game",mList.get(position));
 //					bundle.putSerializable("game", finalGame);//数据太大，超出系统限制
-                GameBean tempGame = mList.get(position);
-                bundle.putString("str_game", JSON.toJSONString(tempGame));
-                intent.putExtras(bundle);
-                startActivity(intent);
+                    GameBean tempGame = mList.get(position);
+                    bundle.putString("str_game", JSON.toJSONString(tempGame));
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -553,7 +612,7 @@ public class GamePCFragment extends BaseFragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         Intent intent;
-        MobclickAgent.onEvent(mContext,"04");
+        MobclickAgent.onEvent(mContext, "04");
         switch (view.getId()) {
             case R.id.img0://游戏库
                 intent = new Intent(mContext, GameCategoryActivity.class);

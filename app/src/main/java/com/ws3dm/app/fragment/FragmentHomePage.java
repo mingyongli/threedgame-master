@@ -132,7 +132,7 @@ public class FragmentHomePage extends BaseFragment {
             public void onRefresh() {
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
-                        obtainData(1);
+                        //obtainData(1);
                         getHotNewsPage();
                     }
                 }, 50);            //refresh data here
@@ -187,7 +187,7 @@ public class FragmentHomePage extends BaseFragment {
                 }
             }
         });
-        obtainData(1);
+        //obtainData(1);
         mBinding.recyclerview.setRefreshing(true);
         //getHotNewsPage();
         return mBinding.getRoot();
@@ -205,7 +205,7 @@ public class FragmentHomePage extends BaseFragment {
             mAdapter.notifyDataSetChanged();
     }
 
-    public void obtainData(int page) {
+   /* public void obtainData(int page) {
         //获取数据
         long time = System.currentTimeMillis();
         String validate = "10" + page + time;
@@ -266,7 +266,7 @@ public class FragmentHomePage extends BaseFragment {
                 mBinding.recyclerview.loadMoreError();
             }
         });
-    }
+    }*/
 
     /**
      * 新的首页接口
@@ -278,11 +278,12 @@ public class FragmentHomePage extends BaseFragment {
         map.put("time", timeMillis);
         map.put("sign", sign);
         String s = JSON.toJSON(map).toString();
-        OkHttpUtils.postString().content(s).url(NewUrl.HOTNEWSPAGE).build().connTimeOut(5000).execute(new com.zhy.http.okhttp.callback.Callback<HomeNewsListBean>() {
+        OkHttpUtils.postString().content(s).url(NewUrl.New_Hot_Page).build().connTimeOut(5000).execute(new com.zhy.http.okhttp.callback.Callback<HomeNewsListBean>() {
             @Override
             public HomeNewsListBean parseNetworkResponse(com.squareup.okhttp.Response response) throws IOException {
                 long end = System.currentTimeMillis();
                 String string = response.body().string();
+
                 return new Gson().fromJson(string, HomeNewsListBean.class);
             }
 
@@ -294,7 +295,8 @@ public class FragmentHomePage extends BaseFragment {
             @Override
             public void onResponse(HomeNewsListBean response) {
                 if (response.getCode() == 1) {
-                    //因为不准备重写home界面  所以请求回来的数据和老接口数据结构设置成一样的NewsBean
+                    setSlideView(response.getData().getSlides());
+                    setVoteView(response.getData().getVote());
                     setTopNews(response.getData().getTopnews());
                     setGussLike(response.getData().getGuesslike());
                     setNewList(response.getData().getList());
@@ -303,6 +305,160 @@ public class FragmentHomePage extends BaseFragment {
                 }
             }
         });
+    }
+
+    //投票
+    private void setVoteView(HomeNewsListBean.DataBean.VoteBean vote) {
+        NewsBean voteDate = new NewsBean();
+        voteDate.setAid(Integer.parseInt(vote.getAid()));
+        voteDate.setArcurl(vote.getArcurl());
+        voteDate.setTitle(vote.getTitle());
+        voteDate.setLitpic(vote.getLitpic());
+        voteDate.setShowtype(vote.getShowtype());
+        voteDate.setBt_title(vote.getBt_title());
+        voteDate.setDetail_title(vote.getDetail_title());
+        voteDate.setWebviewurl(vote.getWebviewurl());
+
+        if (voteDate != null) {
+//			GlideUtil.loadRoundImage(getActivity(),voteDate.getLitpic(),(ImageView)header.findViewById(R.id.img_vote),1);
+            Glide.with(mContext).load(voteDate.getLitpic())
+//				.placeholder(R.drawable.load_default)
+//				.error(R.drawable.load_error)
+                    .transform(new GlideRoundTransform(mContext, 4))//20：圆角半径
+                    .into((ImageView) header.findViewById(R.id.img_vote));
+            ((TextView) header.findViewById(R.id.tv_title)).setText(voteDate.getTitle());
+            ((TextView) header.findViewById(R.id.bt_vote)).setText(voteDate.getBt_title());
+            header.findViewById(R.id.ll_vote).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MobclickAgent.onEvent(mContext, "02");
+                    NewsBean news = voteDate;
+                    if (news.getShowtype() == 1 || news.getShowtype() == 13) {
+                        Intent intent = new Intent(mContext, NewsActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("newsBean", news);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    } else if (news.getShowtype() == 14) {
+                        Intent webIntent = new Intent(mContext, SingleWebActivity.class);
+                        webIntent.putExtra("title", news.getDetail_title());
+                        webIntent.putExtra("url", news.getWebviewurl());
+                        startActivity(webIntent);
+                    }
+                }
+            });
+
+            header.findViewById(R.id.ll_vote).setVisibility(View.VISIBLE);
+        }
+        //卡片
+    }
+
+    //轮播图
+    private void setSlideView(List<HomeNewsListBean.DataBean.SlidesBean> slides) {
+        List<SlidesBean> slidesBeans = new ArrayList<>();
+        for (HomeNewsListBean.DataBean.SlidesBean slide : slides) {
+            SlidesBean bean = new SlidesBean();
+            bean.setId(slide.getId());
+            bean.setAid(slide.getAid());
+            bean.setArcurl(slide.getArcurl());
+            bean.setLitpic(slide.getLitpic());
+            bean.setTitle(slide.getTitle());
+            bean.setHttp(slide.getHttp());
+            bean.setShowtype(String.valueOf(slide.getShowtype()));
+            bean.setWebviewurl(slide.getWebviewurl());
+            slidesBeans.add(bean);
+        }
+
+        mBinding.recyclerview.refreshComplete();
+        pointList = new ArrayList<>();
+        mSlideViewPager = (ViewPager) header.findViewById(R.id.top_slide);
+        titleBanner = (TextView) header.findViewById(R.id.tv_info);
+        titleBanner.setText(slidesBeans.get(0).getTitle());
+        mSlideCount = slidesBeans.size();
+        mViewPagerAdapter = new ViewPagerAdapter(slidesBeans, mContext);
+        final LinearLayout ll_points = (LinearLayout) header.findViewById(R.id.point_group);
+        if (ll_points.getChildCount() > 0)
+            ll_points.removeAllViews();
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        for (int i = 0; i < mSlideCount; i++) {
+            ImageView imageView = new ImageView(mContext);
+            if (i == 0) {
+                imageView.setImageResource(R.drawable.red_point);
+            } else {
+                imageView.setImageResource(R.drawable.white_point);
+            }
+            params.leftMargin = 5;
+            params.rightMargin = 5;
+            pointList.add(imageView);
+            ll_points.addView(imageView, params);
+        }
+        ll_points.setGravity(Gravity.CENTER_VERTICAL);
+        //初始化图片
+//		for(int i=0;i<mSlideCount;i++){
+//			ImageView img=new ImageView(getActivity());
+//			GlideUtil.loadImage(mContext,bannerList.get(i).getLitpic(),img);
+//			img.setScaleType(ImageView.ScaleType.FIT_XY);
+//			imageViewList.add(img);
+//		}
+        mSlideViewPager.setAdapter(mViewPagerAdapter);
+        mSlideViewPager.setOffscreenPageLimit(mSlideCount);
+        /**
+
+         //        private static final float MIN_SCALE = 0.85f;    可以修改当前图片的缩放尺寸
+         vp_head.setPageTransformer(true, new ViewPager.PageTransformer() {
+        @Override public void transformPage(View view, float position) {
+        if (position <= 1) {
+        float scaleFactor = Math.max(MIN_SCALE,1 - Math.abs(position));
+        view.setScaleX(scaleFactor);
+        view.setScaleY(scaleFactor);
+        }
+        }
+        });
+         **/
+        mSlideViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                for (int i = 0; i < mSlideCount; i++) {
+                    if (i == (position % mSlideCount)) {
+                        pointList.get(i).setImageResource(R.drawable.red_point);
+                    } else {
+                        //设置非当前显示页圆点
+                        pointList.get(i).setImageResource(R.drawable.white_point);
+                    }
+                }
+                index = position;
+                titleBanner.setText(slidesBeans.get(position % mSlideCount).getTitle());
+            }
+        });
+        //如果图片多于1张开启广告轮播
+        if (mSlideCount > 1) {
+            //开启广告轮播
+            index = 0;
+            if (mSlideMessager == null) {
+                // 发消息让轮播图动起来
+                mSlideMessager = new Handler() {
+                    public void handleMessage(Message msg) {
+                        if (mSlideRunning) {
+                            // 执行滑动到下一个页面
+                            mSlideViewPager.setCurrentItem(index + 1);
+                            // 在发一个handler延时
+                            sendEmptyMessageDelayed(0, 5000);
+                        }
+                    }
+                };
+                mSlideMessager.sendEmptyMessageDelayed(0, 3500);
+            }
+        }
+
+
     }
 
     //设置最新的6条新闻
@@ -370,7 +526,7 @@ public class FragmentHomePage extends BaseFragment {
         });
     }
 
-    //头部的滑动广告栏
+/*    //头部的滑动广告栏
     private void initHeadView(NewsListRespBean bean) {
         mBinding.recyclerview.refreshComplete();
         final List<SlidesBean> bannerList = bean.getData().getSlides();
@@ -406,19 +562,21 @@ public class FragmentHomePage extends BaseFragment {
 //		}
         mSlideViewPager.setAdapter(mViewPagerAdapter);
         mSlideViewPager.setOffscreenPageLimit(mSlideCount);
-        /**
+        */
 
-         //        private static final float MIN_SCALE = 0.85f;    可以修改当前图片的缩放尺寸
-         vp_head.setPageTransformer(true, new ViewPager.PageTransformer() {
-        @Override public void transformPage(View view, float position) {
-        if (position <= 1) {
-        float scaleFactor = Math.max(MIN_SCALE,1 - Math.abs(position));
-        view.setScaleX(scaleFactor);
-        view.setScaleY(scaleFactor);
-        }
-        }
-        });
-         **/
+    /**
+     * //        private static final float MIN_SCALE = 0.85f;    可以修改当前图片的缩放尺寸
+     * vp_head.setPageTransformer(true, new ViewPager.PageTransformer() {
+     *
+     * @Override public void transformPage(View view, float position) {
+     * if (position <= 1) {
+     * float scaleFactor = Math.max(MIN_SCALE,1 - Math.abs(position));
+     * view.setScaleX(scaleFactor);
+     * view.setScaleY(scaleFactor);
+     * }
+     * }
+     * });
+     **//*
         mSlideViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrollStateChanged(int arg0) {
@@ -497,8 +655,7 @@ public class FragmentHomePage extends BaseFragment {
             header.findViewById(R.id.ll_vote).setVisibility(View.VISIBLE);
         }
         //卡片
-    }
-
+    }*/
     private void initData(NewsListRespBean bean) {
         mBinding.recyclerview.refreshComplete();
         if (bean == null || bean.getData() == null || bean.getData().getList() == null)

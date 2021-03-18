@@ -17,10 +17,12 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.constant.RefreshState;
 import com.scwang.smart.refresh.layout.constant.SpinnerStyle;
 import com.ws3dm.app.R;
+import com.ws3dm.app.util.ScreenUtil;
+import com.yu.imgpicker.utils.ScreenUtils;
 
 import static android.widget.RelativeLayout.CENTER_IN_PARENT;
 
-public class DMFreshHead extends LinearLayout implements RefreshHeader {
+public class DMFreshHead extends RelativeLayout implements RefreshHeader {
     private Context mContext = null;
     private AnimationDrawable resources;
 
@@ -29,11 +31,12 @@ public class DMFreshHead extends LinearLayout implements RefreshHeader {
         mContext = context;
         this.initView();
     }
+
     private void initView() {
         setGravity(Gravity.CENTER);
         ImageView imageView = new ImageView(mContext);
         imageView.setImageResource(R.drawable.refreshhead);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(CENTER_IN_PARENT);
         layoutParams.width = 125;
         layoutParams.height = 125;
@@ -41,6 +44,7 @@ public class DMFreshHead extends LinearLayout implements RefreshHeader {
         resources = (AnimationDrawable) imageView.getDrawable();
         resources.start();
     }
+
     @NonNull
     @Override
     public View getView() {

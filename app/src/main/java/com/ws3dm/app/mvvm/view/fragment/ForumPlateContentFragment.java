@@ -21,10 +21,16 @@ import com.ws3dm.app.R;
 import com.ws3dm.app.fragment.BaseFragment;
 import com.ws3dm.app.mvvm.adapter.ForumPlateListAdapter;
 import com.ws3dm.app.mvvm.bean.ForumPlateBean;
+import com.ws3dm.app.mvvm.event.Message;
 import com.ws3dm.app.mvvm.view.activity.ForumDetailWeb;
+import com.ws3dm.app.mvvm.view.activity.SectionPageActivity;
 import com.ws3dm.app.mvvm.viewmodel.BaseViewModel;
 import com.ws3dm.app.mvvm.viewmodel.ForumPlateViewModel;
 import com.ws3dm.app.view.DMFreshHead;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -55,6 +61,9 @@ public class ForumPlateContentFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
         viewModel = new ViewModelProvider(this).get(ForumPlateViewModel.class);
 
     }
@@ -150,5 +159,19 @@ public class ForumPlateContentFragment extends BaseFragment {
         plateId = arguments.getString("plateId");
         page = 1;
         viewModel.getPlateContentList(plateId, type, page);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getMessage(Message message) {
+        if (message.message.equals("refresh")) {
+            recyclerView.smoothScrollToPosition(0);
+            viewModel.getPlateContentList(plateId, type, page);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
     }
 }

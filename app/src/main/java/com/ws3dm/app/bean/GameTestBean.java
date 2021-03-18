@@ -14,14 +14,15 @@ public class GameTestBean implements Serializable {//游戏-网游 开测实体�
      * showtype : 23
      * title : 王者荣耀KPL赛事专题
      * webviewurl : https://m.3dmgame.com/ol/webview/esports/kpl/
-     * 
+     * <p>
      * state : 新服公测
      * pubdate_at : 1573056000
-     * type : 
+     * type :
      * firm : 完美世界
      * score : 0
      */
     private int aid;
+    private int id;
     private String arcurl;
     private String litpic;
     private int showtype;
@@ -33,9 +34,26 @@ public class GameTestBean implements Serializable {//游戏-网游 开测实体�
     private int pubdate_at;
     private double score;
     private String reward;
+    private int http;
     private String place;
     private int start_date;
     private int end_date;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getHttp() {
+        return http;
+    }
+
+    public void setHttp(int http) {
+        this.http = http;
+    }
 
     public int getAid() {
         return aid;

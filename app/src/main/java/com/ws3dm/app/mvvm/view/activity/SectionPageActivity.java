@@ -1,6 +1,7 @@
 package com.ws3dm.app.mvvm.view.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.lifecycle.Observer;
@@ -8,17 +9,24 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
+import com.ws3dm.app.MyApplication;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.BaseActivity;
+import com.ws3dm.app.activity.LoginActivity;
 import com.ws3dm.app.activity.PublishActivity;
 import com.ws3dm.app.databinding.AcSectionPageBinding;
 import com.ws3dm.app.mvvm.adapter.ForumPlateViewPageAdapter;
 import com.ws3dm.app.mvvm.adapter.NoticeAdapter;
 import com.ws3dm.app.mvvm.bean.PlateListHeadBean;
+import com.ws3dm.app.mvvm.event.Message;
+import com.ws3dm.app.mvvm.view.fragment.ForumPlateContentFragment;
 import com.ws3dm.app.mvvm.viewmodel.BaseViewModel;
 import com.ws3dm.app.mvvm.viewmodel.SectionPageViewModel;
+import com.ws3dm.app.util.StringUtil;
 import com.ws3dm.app.util.ToastUtil;
 import com.ws3dm.app.util.glide.GlideUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +46,10 @@ public class SectionPageActivity extends BaseActivity {
     private String plateTitle;
     private NoticeAdapter adapter;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     protected void init() {
@@ -101,7 +113,6 @@ public class SectionPageActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
-
         mBind.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,13 +149,25 @@ public class SectionPageActivity extends BaseActivity {
         mBind.postBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, PostContentActivity.class);
-                intent.putExtra("plateId", plateId);
-                intent.putExtra("plateTitle", plateTitle);
-                startActivity(intent);
+
+                if (MyApplication.getUserData() == null || !MyApplication.getUserData().loginStatue) {
+                    startActivity(new Intent(mContext, LoginActivity.class));
+                } else {
+                    Intent intent = new Intent(mContext, PostContentActivity.class);
+                    intent.putExtra("plateId", plateId);
+                    intent.putExtra("plateTitle", plateTitle);
+                    startActivity(intent);
+                }
+
             }
         });
-
+        mBind.refreshBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Message message = Message.getInstance("refresh");
+                EventBus.getDefault().post(message);
+            }
+        });
     }
 
     private void LoadData() {
@@ -162,5 +185,11 @@ public class SectionPageActivity extends BaseActivity {
         viewPageAdapter = new ForumPlateViewPageAdapter(getSupportFragmentManager(), BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, plateId, type);
         mBind.tablayout.setupWithViewPager(mBind.viewpager);
         mBind.viewpager.setAdapter(viewPageAdapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 }

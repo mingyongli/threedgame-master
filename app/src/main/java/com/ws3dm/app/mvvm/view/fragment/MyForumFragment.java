@@ -34,6 +34,8 @@ import com.ws3dm.app.mvvm.viewmodel.MyForumViewModel;
 
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * 我的论坛界面,包含最近逛的版块和关注的版块
  */
@@ -58,19 +60,24 @@ public class MyForumFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBind = DataBindingUtil.inflate(inflater, R.layout.fg_my_forum, container, false);
         mBindHead = DataBindingUtil.inflate(inflater, R.layout.head_my_forum, container, false);
+        checkLogin();
+        return mBind.getRoot();
+    }
+
+    private void checkLogin() {
         //判断用户是否登录
         if (MyApplication.getUserData() == null || !MyApplication.getUserData().loginStatue) {
             mBind.prompt.setVisibility(View.VISIBLE);
             mBind.loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(mContext, LoginActivity.class));
+                    startActivityForResult(new Intent(mContext, LoginActivity.class), 2);
+//                    startActivity(new Intent(mContext, LoginActivity.class));
                 }
             });
         } else {
             userLogin();
         }
-        return mBind.getRoot();
     }
 
     private void userLogin() {
@@ -165,8 +172,19 @@ public class MyForumFragment extends BaseFragment {
             }
         });
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 2) {
+                checkLogin();
+            }
+        }
     }
 }

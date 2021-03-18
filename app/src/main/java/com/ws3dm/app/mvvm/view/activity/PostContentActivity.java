@@ -5,9 +5,12 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -37,7 +40,13 @@ import com.ws3dm.app.util.ProDialog;
 import com.ws3dm.app.util.ToastUtil;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Objects;
+
+import static android.os.Environment.DIRECTORY_DCIM;
 
 public class PostContentActivity extends BaseActivity {
 
@@ -90,11 +99,13 @@ public class PostContentActivity extends BaseActivity {
         mCategoryRecyclerAdapter.setOnClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View itemView, int position) {
+                if (bean != null) {
+                    selectGid = bean.getList().get(position);
+                    typeid = selectGid.getTypeid();
+                    mBind.label.setText(selectGid.getName());
+                    mPopupWindowCate.dismiss();
+                }
 
-                selectGid = bean.getList().get(position);
-                typeid = selectGid.getTypeid();
-                mBind.label.setText(selectGid.getName());
-                mPopupWindowCate.dismiss();
             }
         });
 
@@ -178,16 +189,24 @@ public class PostContentActivity extends BaseActivity {
         mBind.label.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int[] location = new int[2];
-                v.getLocationInWindow(location);
-                mPopupWindowCate.showAtLocation(v, Gravity.BOTTOM, location[0], location[1] + v.getHeight());
+                if (bean != null) {
+                    int[] location = new int[2];
+                    v.getLocationInWindow(location);
+                    mPopupWindowCate.showAtLocation(v, Gravity.BOTTOM, location[0], location[1] + v.getHeight());
+                }
             }
         });
         viewModel.getTidList().observe(this, new Observer<ForumTidTypeRespBean.DataBean>() {
             @Override
             public void onChanged(ForumTidTypeRespBean.DataBean dataBean) {
-                bean = dataBean;
-                mCategoryRecyclerAdapter.clearAndAddList(bean.getList());
+                if (dataBean.getList().size() > 0) {
+                    bean = dataBean;
+                    mCategoryRecyclerAdapter.clearAndAddList(bean.getList());
+                } else {
+                    typeid = "0";
+                    mBind.label.setText("其他");
+                }
+
             }
         });
         viewModel.getNetImagePath().observe(this, new Observer<UpLoadImageBean>() {
@@ -239,9 +258,9 @@ public class PostContentActivity extends BaseActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     private void upLoadImage(Intent data) {
-        String imagePath = getImagePath(data);
-        if (imagePath != null) {
-            File file = new File(imagePath);
+        dialog.show();
+        File file = bitmapCompress(data.getData());
+        if (file != null) {
             viewModel.upLoadImage(mContext, String.valueOf(plateId), file);
         } else {
             ToastUtil.showToast(mContext, "图片选取失败");
@@ -250,8 +269,8 @@ public class PostContentActivity extends BaseActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
-    private String getImagePath(Intent data) {
-        Uri uri = data.getData();
+    private String getImagePath(Uri uri) {
+
         @SuppressLint("Recycle") Cursor cursor = getContentResolver()
                 .query(uri, null, null, null, null, null);
 
@@ -260,6 +279,41 @@ public class PostContentActivity extends BaseActivity {
         } else {
             return null;
         }
+    }
+
+    //压缩图片
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    public File bitmapCompress(Uri uriClipUri) {
+        //创建路径
+        String path = mContext.getExternalFilesDir(DIRECTORY_DCIM).getPath();
+        //获取外部储存目录
+        File file = new File(path);
+        //创建新目录, 创建此抽象路径名指定的目录，包括创建必需但不存在的父目录。
+        file.mkdirs();
+        //以当前时间重新命名文件
+        long i = System.currentTimeMillis();
+        //生成新的文件
+        file = new File(file.toString() + "/" + i + ".png");
+        //创建输出流
+        OutputStream out = null;
+        try {
+            out = new FileOutputStream(file.getPath());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = false; 
+        options.inSampleSize = 10;
+        Bitmap bm = BitmapFactory.decodeFile(getImagePath(uriClipUri), options); // 解码文件
+        boolean compress = bm.compress(Bitmap.CompressFormat.PNG, 50, out);
+
+        if (compress) {
+            return file;
+        } else {
+            return null;
+        }
+
     }
 
 }

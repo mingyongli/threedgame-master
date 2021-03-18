@@ -1,5 +1,6 @@
 package com.ws3dm.app.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -94,9 +95,11 @@ public class MainActivity extends BaseActivity {
     public static AcMainBinding mBinding;
     private TextView tv_update, tv_ignore, tv_content;
     NewUserInfo.Info info;
+    private Activity mActivity;
 
     @Override
     protected void init() {
+        mActivity = this;
         mBinding = bindView(R.layout.ac_main);
         setSupportActionBar(mBinding.toolbar);
         mBinding.setHandler(this);
@@ -324,9 +327,14 @@ public class MainActivity extends BaseActivity {
         tv_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                popupWindow.dismiss();
+
 //				mContext.startService(new Intent(mContext, DownLoadService.class));
-                UpdateUtil.showDownloadDialog(mContext);
+                if (AppUtil.CheckStoragePermissions(mActivity)) {
+                    popupWindow.dismiss();
+                    UpdateUtil.showDownloadDialog(mContext);
+                } else {
+                    AppUtil.verifyStoragePermissions(mActivity);
+                }
 //				UpdateUtil.showTitleDownload(mContext);
             }
         });

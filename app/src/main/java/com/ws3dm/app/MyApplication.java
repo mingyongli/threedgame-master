@@ -2,7 +2,9 @@ package com.ws3dm.app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 
 import androidx.multidex.MultiDexApplication;
@@ -135,6 +137,12 @@ public class MyApplication extends MultiDexApplication {
         };
         mPushAgent.setNotificationClickHandler(notificationClickHandler);
         mPushAgent.setDisplayNotificationNumber(0);
+        if (!SharedUtil.contains(mInstance, "device")) {
+            SharedUtil.setSharedPreferencesData("device", Build.BRAND + Build.MODEL);
+        }
+        if (!SharedUtil.contains(mInstance, "uuid")) {
+            SharedUtil.setSharedPreferencesData("uuid", Settings.System.getString(getContentResolver(), Settings.Secure.ANDROID_ID));
+        }
 
     }
 
@@ -177,7 +185,7 @@ public class MyApplication extends MultiDexApplication {
     public void onLowMemory() {
         super.onLowMemory();
         GlideUtil.GuideClearMemory(this);
-        DataCleanManager.cleanInternalCache(this);
+//        DataCleanManager.cleanInternalCache(this);
     }
 
 }

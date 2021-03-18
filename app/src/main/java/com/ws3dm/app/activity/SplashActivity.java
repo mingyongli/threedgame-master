@@ -1,6 +1,7 @@
 package com.ws3dm.app.activity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -8,6 +9,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -16,16 +24,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
-import android.util.Log;
-import android.view.View;
-import android.view.WindowManager;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.squareup.okhttp.Request;
-import com.umeng.analytics.MobclickAgent;
 import com.ws3dm.app.MyApplication;
 import com.ws3dm.app.NewUrl;
 import com.ws3dm.app.R;
@@ -58,6 +59,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+
+import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
 
 /**
  * Describution :启动页
@@ -177,15 +180,19 @@ public class SplashActivity extends BaseActivity {
                         Log.e("message", e.getMessage());
                     }
 
+                    @SuppressLint("SetJavaScriptEnabled")
                     @Override
                     public void onResponse(Ads response) {
                         if (response.getCode() == 1) {
-                            final Ads.Ad data = response.getData();
+                            Ads.DataDTO data = response.getData();
                             if (data.getIsopen() == 1) {
                                 mBinding.webview.setVisibility(View.VISIBLE);
                                 mBinding.skipView.setVisibility(View.VISIBLE);
                                 mBinding.imgCover.setVisibility(View.VISIBLE);
+                                mBinding.webview.getSettings().setMixedContentMode(MIXED_CONTENT_ALWAYS_ALLOW);
                                 mBinding.webview.getSettings().setJavaScriptEnabled(true);
+                                mBinding.webview.getSettings().setLoadsImagesAutomatically(true);
+                                mBinding.webview.setWebChromeClient(new WebChromeClient());
                                 mBinding.webview.setWebViewClient(new WebViewClient() {
                                     @Override
                                     public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -199,7 +206,7 @@ public class SplashActivity extends BaseActivity {
                                             startActivity(intent);
                                             return true;
                                         }
-                                        return false;
+                                        return true;
                                     }
                                 });
                                 mBinding.webview.loadUrl(data.getWebviewurl());
@@ -219,9 +226,22 @@ public class SplashActivity extends BaseActivity {
     }
 
 
-    class Ads {
+    static class Ads {
+
+        /**
+         * code : 1
+         * data : {"isopen":0,"webviewurl":"https://m.3dmgame.com/fakerment.html","countdown":0}
+         * msg : 成功
+         */
+
         private int code;
-        private Ad data;
+        /**
+         * isopen : 0
+         * webviewurl : https://m.3dmgame.com/fakerment.html
+         * countdown : 0
+         */
+
+        private DataDTO data;
         private String msg;
 
         public int getCode() {
@@ -232,11 +252,11 @@ public class SplashActivity extends BaseActivity {
             this.code = code;
         }
 
-        public Ad getData() {
+        public DataDTO getData() {
             return data;
         }
 
-        public void setData(Ad data) {
+        public void setData(DataDTO data) {
             this.data = data;
         }
 
@@ -248,7 +268,7 @@ public class SplashActivity extends BaseActivity {
             this.msg = msg;
         }
 
-        class Ad {
+        public static class DataDTO {
             private int isopen;
             private String webviewurl;
             private int countdown;
@@ -290,7 +310,7 @@ public class SplashActivity extends BaseActivity {
             checkAndRequestPermission();
         }
         if (MyApplication.getmVersion().equals("" + AppUtil.getVersionCode(MyApplication.getInstance()))) {
-            obtainData();
+            //obtainData();
             showCounter();
         } else {
             goToOut();

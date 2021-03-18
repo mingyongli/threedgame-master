@@ -44,4 +44,5 @@ public class ForumPlateViewPageAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return mtype.size();
     }
+
 }

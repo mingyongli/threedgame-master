@@ -3,8 +3,8 @@ package com.ws3dm.app.mvvm.view.activity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.ws3dm.app.MyApplication;
 import com.ws3dm.app.R;
 import com.ws3dm.app.activity.BaseActivity;
+import com.ws3dm.app.activity.LoginActivity;
 import com.ws3dm.app.databinding.AcForumDetailWebBinding;
 import com.ws3dm.app.mvvm.view.ForumUserOperationDialog;
 import com.ws3dm.app.mvvm.view.ReplyMessageDialog;
@@ -28,8 +29,9 @@ import com.ws3dm.app.util.SharedUtil;
 import com.ws3dm.app.util.ToastUtil;
 import com.ws3dm.app.view.SharePopupWindow;
 
+import java.util.UUID;
+
 import static android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW;
-import static android.webkit.WebSettings.MIXED_CONTENT_NEVER_ALLOW;
 
 public class ForumDetailWeb extends BaseActivity {
 
@@ -68,7 +70,11 @@ public class ForumDetailWeb extends BaseActivity {
     }
 
     private void loadData() {
-        viewModel.getThreadCollect(String.valueOf(tid));
+        if (MyApplication.getUserData() == null || !MyApplication.getUserData().loginStatue) {
+            startActivity(new Intent(mContext, LoginActivity.class));
+        } else {
+            viewModel.getThreadCollect(String.valueOf(tid));
+        }
     }
 
     @SuppressLint({"JavascriptInterface", "SetJavaScriptEnabled"})
@@ -137,7 +143,11 @@ public class ForumDetailWeb extends BaseActivity {
         }).setReportListener(new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                viewModel.submitReport(mContext, id, tid, pid, fid);
+                if (MyApplication.getUserData() == null || !MyApplication.getUserData().loginStatue) {
+                    startActivity(new Intent(mContext, LoginActivity.class));
+                } else {
+                    viewModel.submitReport(mContext, id, tid, pid, fid);
+                }
                 dialog.dismiss();
             }
         }).setCopyListener(new DialogInterface.OnClickListener() {
@@ -161,7 +171,7 @@ public class ForumDetailWeb extends BaseActivity {
         replyDialog.setReplayBtnListener(new ReplyMessageDialog.ReplayMessage() {
             @Override
             public void getMessage(Dialog replyDialog, String message) {
-                if (message.length() > 0) {
+                if (message.trim().length() > 4) {
                     setWebMessage(uid, tid, fid, pid, message);
                 } else {
                     ToastUtil.showToast(mContext, "请输入内容");
@@ -251,12 +261,18 @@ public class ForumDetailWeb extends BaseActivity {
 
     //通过js发送message
     private void setWebMessage(String uid, String tid, String fid, String pid, String msg) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mBind.webView.loadUrl("javascript:getMessage('" + uid + "','" + tid + "','" + fid + "','" + pid + "','" + msg + "')");
-            }
-        });
+
+        if (MyApplication.getUserData() == null || !MyApplication.getUserData().loginStatue) {
+            startActivity(new Intent(mContext, LoginActivity.class));
+        } else {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mBind.webView.loadUrl("javascript:getMessage('" + uid + "','" + tid + "','" + fid + "','" + pid + "','" + msg + "')");
+                }
+            });
+        }
+
     }
 
     private void closeReply() {

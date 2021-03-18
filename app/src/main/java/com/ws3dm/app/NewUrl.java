@@ -59,6 +59,7 @@ public class NewUrl {
     public static final String AUTHPSNCODE = BASE_URL + "authpsncode";
     public static final String TOPTABDETAIL = BASE_URL + "toptabdetail";
     public static final String HOTNEWSPAGE = BASE_URL + "hotnewspage";
+    public static final String New_Hot_Page = BASE_URL+"newhotnewspage";
     public static final String HOTNEWSLIST = BASE_URL + "hotnewslist";
     public static final String GUESSLIST = BASE_URL + "guesslist";
     public static final String GUESSNEWS = BASE_URL + "guessnews";

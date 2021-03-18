@@ -228,10 +228,29 @@ public class HomeNewsListBean {
 
         public static class SlidesBean {
             private int aid;
+            private int id;
             private String arcurl;
             private String litpic;
             private String title;
             private int showtype;
+            private int http;
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public int getHttp() {
+                return http;
+            }
+
+            public void setHttp(int http) {
+                this.http = http;
+            }
+
             private String webviewurl;
 
             public int getAid() {

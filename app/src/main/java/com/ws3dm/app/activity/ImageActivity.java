@@ -137,9 +137,13 @@ public class ImageActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.txtDown:// 保存
-                //通过MediaStore保存图片到共有目录无需权限
+                //AndroidQ以上的系统通过MediaStore保存图片到共有目录无需权限,Android P一下的需要
                 if (AppUtil.isNetworkConnected(this)) {
-                    new GetDataTask().execute(arrUrl[position]);
+                    if (AppUtil.CheckStoragePermissions(this)) {
+                        new GetDataTask().execute(arrUrl[position]);
+                    } else {
+                        AppUtil.verifyStoragePermissions(this);
+                    }
                 } else {
                     ToastUtil.showToast(mContext, "请确保网络开启");
                 }

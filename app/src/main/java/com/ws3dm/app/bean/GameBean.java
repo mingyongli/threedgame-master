@@ -30,11 +30,12 @@ public class GameBean implements Serializable {
      * imgs : []
      * showtype : 3
      * content : 刺客信条：起源_专题
-     " webviewurl": "http:\/\/www2.3dmgame.com\/app\/games\/danganronpav3\/",
-     * 
+     * " webviewurl": "http:\/\/www2.3dmgame.com\/app\/games\/danganronpav3\/",
+     * <p>
      * "num": 1, 排序编号
      */
     private int aid;
+    private int id;
     private String arcurl;
     private String title;
     private String litpic;
@@ -54,6 +55,9 @@ public class GameBean implements Serializable {
     private int series_id;
     private int showtype;
     private String content;
+    private int http;
+
+
     private List<AvatarBean> labels;
     private List<String> imgs;
     private int isfavorite;//收藏状态0未收藏1已收藏
@@ -61,6 +65,21 @@ public class GameBean implements Serializable {
     private int num;
     private String pubday;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getHttp() {
+        return http;
+    }
+
+    public void setHttp(int http) {
+        this.http = http;
+    }
     public String getShowdate_at() {
         return showdate_at;
     }
@@ -269,15 +288,15 @@ public class GameBean implements Serializable {
         this.pubday = pubday;
     }
 
-    public String getLabelString(){
-        if(labels==null)
+    public String getLabelString() {
+        if (labels == null)
             return "";
-        else{
-            String str_label="";
-            for(AvatarBean bean:labels){
-                str_label=str_label+bean.getName()+" ";
+        else {
+            String str_label = "";
+            for (AvatarBean bean : labels) {
+                str_label = str_label + bean.getName() + " ";
             }
-            return str_label; 
+            return str_label;
         }
     }
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import androidx.databinding.DataBindingUtil;
 
 import android.graphics.drawable.ClipDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -49,8 +50,11 @@ import com.ws3dm.app.bean.NewsBean;
 import com.ws3dm.app.bean.OriginalBean;
 import com.ws3dm.app.databinding.FgBaseRecyclerviewBinding;
 import com.ws3dm.app.mvp.model.RespBean.GameMGhomeRespBean;
+import com.ws3dm.app.network.AdExposure;
 import com.ws3dm.app.network.RetrofitFactory;
 import com.ws3dm.app.network.service.GameService;
+import com.ws3dm.app.util.AppUtil;
+import com.ws3dm.app.util.SharedUtil;
 import com.ws3dm.app.util.StringUtil;
 import com.ws3dm.app.util.TimeUtil;
 import com.ws3dm.app.util.glide.GlideUtil;
@@ -60,6 +64,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -136,7 +141,7 @@ public class GameMGFragment extends BaseFragment implements View.OnClickListener
         }
 //		mGamePresenter.getDJhome(obj.toString());//异步请求
         //同步请求
-        Retrofit retrofit = RetrofitFactory.getNewRetrofit(0);
+        Retrofit retrofit = RetrofitFactory.getNewRetrofitV4(0);
         GameService.Api service = retrofit.create(GameService.Api.class);
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), obj.toString());
         Call<GameMGhomeRespBean> call = service.syHome(body);
@@ -254,13 +259,26 @@ public class GameMGFragment extends BaseFragment implements View.OnClickListener
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mContext, GameHomeActivity.class);
-                    Bundle bundle = new Bundle();
+                    if (originalBean.getHttp() == 1) {
+                        AdExposure.getInstance().putExposure(
+                                originalBean.getId()
+                                , String.valueOf(UUID.randomUUID())
+                                , AppUtil.getVersionCode(mContext)
+                                , "Android"
+                                , SharedUtil.getSharedPreferencesData("device")
+                                , String.valueOf(System.currentTimeMillis()));
+                        Uri parse = Uri.parse(originalBean.getArcurl());
+                        Intent intent = new Intent(Intent.ACTION_VIEW, parse);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(mContext, GameHomeActivity.class);
+                        Bundle bundle = new Bundle();
 //						bundle.putSerializable("game",mGame);
 //					bundle.putSerializable("game", finalGame);//数据太大，超出系统限制
-                    bundle.putString("str_game", JSON.toJSONString(mGame));
-                    intent.putExtras(bundle);
-                    startActivity(intent);
+                        bundle.putString("str_game", JSON.toJSONString(mGame));
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
                 }
             });
             container.addView(view);

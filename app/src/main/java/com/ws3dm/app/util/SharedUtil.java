@@ -236,7 +236,7 @@ public class SharedUtil {
      */
     public static void setSharedPreferencesData(String key, String value) {
         SharedPreferences userInfo = MyApplication.getInstance().getSharedPreferences("user_info", 0);
-        userInfo.edit().putString(key, value).commit();
+        userInfo.edit().putString(key, value).apply();
     }
 
 
